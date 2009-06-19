@@ -4,7 +4,10 @@ alto = \transpose c'' a \relative c''' {
   \Key
   \partial 2
   r2
-  R1*16
+  R1*16 |
+  
+  \mark "A"
+  
   % 18
   ees8 f g4 f ees | d2. r4 | d8 ees f4 ees d | c2. r4 |
   % 22
@@ -18,55 +21,20 @@ alto = \transpose c'' a \relative c''' {
   % 35
   
   \tempo 4 = 220 
-  ees4*100/120 s4*20/120 ees4*100/120 s4*20/120 ees4*100/120 
-  s4*20/120 ees4*100/120 s4*20/120 |
-  % 36
-  ees4*100/120 s4*20/120 ees4*100/120 s4*20/120 ees4*100/120 
-  s4*20/120 ees4*100/120 s4*20/120 |
-  % 37
-  des4*100/120 s4*20/120 des4*100/120 s4*20/120 des4*100/120 
-  s4*20/120 des4*100/120 s4*20/120 |
-  % 38
-  des4*100/120 s4*20/120 des4*100/120 s4*20/120 des4*100/120 
-  s4*20/120 des4*100/120 s4*20/120 |
-  % 39
-  ees4*100/120 s4*20/120 ees4*100/120 s4*20/120 ees4*100/120 
-  s4*20/120 ees4*100/120 s4*20/120 |
-  % 40
-  ees4*100/120 s4*20/120 ees4*100/120 s4*20/120 ees4*100/120 
-  s4*20/120 ees4*100/120 s4*20/120 |
-  % 41
-  des4*100/120 s4*20/120 des4*100/120 s4*20/120 des4*100/120 
-  s4*20/120 des4*100/120 s4*20/120 |
-  % 42
-  des4*100/120 s4*20/120 des4*100/120 s4*20/120 des4*100/120 
-  s4*20/120 des8. s16 |
+  ees4 ees ees ees | ees ees ees ees | des des des des | des des des des |
+  ees4 ees ees ees | ees ees ees ees | des des des des | des des des des |
+  
   % 43
-  ees,16*7 s16 ees4*100/120 s4*20/120 f4*100/120 s4*20/120 |
-  % 44
-  ges16*7 s16 bes16*7 s16 |
-  % 45
-  aes16*15 s16*17 ees16*7 s16 ees4*100/120 s4*20/120 f4*100/120 
-  s4*20/120 |
-  % 48
-  ges16*7 s16 bes16*7 s16 |
-  % 49
-  des16*15 s16 |
-  % 50
-  aes16*15 s16 |
+  ees,2 ees4 f | ges2 bes | aes1 | r |
+  ees2 ees4 f | ges2 bes | des1 | aes |
   % 51
-  aes16*7 s16 aes4*100/120 s4*20/120 bes4*100/120 s4*20/120 |
-  % 52
-  b16*7 s16 ees16*7 s16 |
-  % 53
-  des16*15 s16*17 aes16*7 s16 aes4*100/120 s4*20/120 bes4*100/120 
-  s4*20/120 |
-  % 56
-  b16*7 s16 ees16*7 s16 |
-  % 57
-  ges16*15 s16 |
-  % 58
-  des16*15 s16*29 ees8. s16*61 ees8. s16*61 ees8. s16*61 ees8. 
+  aes2 aes4 bes | b2 ees | des1 | r |
+  aes2 aes4 bes | b2 ees | ges1 | des1 |
+  
+  
+  
+  
+  s16*29 ees8. s16*61 ees8. s16*61 ees8. s16*61 ees8. 
   s16*33 ees8. s16 ees4*100/120 s4*20/120 ees4*100/120 s4*20/120 ees4*100/120 
   s4*20/120 |
   % 76

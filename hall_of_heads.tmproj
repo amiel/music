@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>Documents/hall_of_heads/hall_of_heads.ly</string>
+	<string>tenor2.ily</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,9 +29,13 @@
 			<key>filename</key>
 			<string>hall_of_heads.ly</string>
 			<key>lastUsed</key>
-			<date>2009-06-16T05:52:37Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2009-06-17T08:26:20Z</date>
+		</dict>
+		<dict>
+			<key>filename</key>
+			<string>README.textile</string>
+			<key>lastUsed</key>
+			<date>2009-06-17T08:24:02Z</date>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -49,6 +53,10 @@
 				<dict>
 					<key>filename</key>
 					<string>tenor2.ily</string>
+					<key>lastUsed</key>
+					<date>2009-06-17T08:26:20Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -69,7 +77,21 @@
 	<integer>258</integer>
 	<key>metaData</key>
 	<dict>
-		<key>Documents/hall_of_heads/hall_of_heads.ly</key>
+		<key>README.textile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>hall_of_heads.ly</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -83,10 +105,26 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>tenor2.ily</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>Documents/hall_of_heads/hall_of_heads.ly</string>
+		<string>hall_of_heads.ly</string>
+		<string>tenor2.ily</string>
+		<string>README.textile</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>

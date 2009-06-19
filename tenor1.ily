@@ -5,35 +5,22 @@ tenorOne = \transpose c d \relative c' {
   bes4 bes | ees2 r8 g8 f ees des2 r4 f | ees2 r4 aes | des,2 r4 des | ees2 r8 g f ees | des2 r4 f | ees2 r4 des4 | ees2 r2 |
   % 10
   ees2 r8 g f ees | d2 r4 f4 | ees2 r4 aes | des,2 r2 | ees2 r8 g f ees | des2 r4 f | ees2 r4 des | ees2 r2 |
-  
-  
-  R1*17 |
-  
-   s16*285 aes4*70/120 s4*50/120 aes4*70/120 s4*50/120 ees4*100/120 
-  s4*20/120 |
-  % 36
-  aes4 s8 aes4 s8 ees4*100/120 s4*20/120 |
-  % 37
-  aes16*7 s16 ges4*100/120 s4*20/120 d16*15 s16*9 aes'4*100/120 
-  s4*20/120 aes4*100/120 s4*20/120 ees4*100/120 s4*20/120 |
-  % 40
-  aes4*160/120 s4*20/120 aes4*160/120 s4*20/120 ees4*100/120 
-  s4*20/120 |
-  % 41
-  aes16*7 s16 ges4*100/120 s4*20/120 d16*15 s16*5 |
+ 
+  R1*17
+
+  % 35
+  r4 aes aes ees | aes r8 aes8(aes4) ees4 | aes2 ges4 d4( | d2.) r4 |
+  r4 aes' aes ees | aes-. aes2 ees4 | aes2 ges4 d4( | d2.) r4 |
+
   % 43
-  ees16*7 s16 ees4*100/120 s4*20/120 f4*100/120 s4*20/120 |
-  % 44
-  ges16*7 s16 bes16*7 s16 |
-  % 45
-  aes16*15 s16*17 ees16*7 s16 ees4*100/120 s4*20/120 f4*100/120 
-  s4*20/120 |
-  % 48
-  ges16*7 s16 bes16*7 s16 |
-  % 49
-  des16*15 s16 |
-  % 50
-  aes16*15 s16 |
+  ees2 ees4 f | ges2 bes | aes1 | r |
+  ees2 ees4 f | ges2 bes | des1 | aes |
+  
+  
+  % 51
+  aes2 aes4 bes | b2 ees | des1 | r |
+  aes2 aes4 bes | b2 ees | ges1 | des1 |
+
   % 51
   aes16*7 s16 aes4*100/120 s4*20/120 bes4*100/120 s4*20/120 |
   % 52

@@ -1,5 +1,6 @@
 
-bari = \transpose c a' \relative c {
+
+bari = \transpose c a' \relative c, {
   \Key
   \partial 2
   r2
@@ -8,57 +9,22 @@ bari = \transpose c a' \relative c {
   r8 ees r ees r2 | r8 des r des r2 | r8 ees r ees r2 | r8 ees r ees r2 |
   r8 ees r ees r2 | r8 des r des r2 | r8 ees r ees r2 | r8 des r des r2 |
   r8 ees r ees r2 | r8 des r des r2 | r8 ees r ees r2 | r8 ees r ees r2 |
-  % 17
+
   % 18
   ees1 | d | d | c | d | e2 f | g aes | ees d | ees1 | d | d | c | d | ees2 f | g aes | ees d | c1 |
-  d16*15 s16 |
-  % 28
-  d16*15 s16 |
-  % 29
-  c1 |
-  % 30
-  d16*15 s16 |
-  % 31
-  ees16*7 s16 f4. s8 |
-  % 32
-  g4. s8 aes16*7 s16 |
-  % 33
-  ees4. s8 d4. s8 |
-  % 34
-  c4. s8*5 |
+  
   % 35
-  aes'2. aes4 |
-  % 36
-  b2. b4 |
-  % 37
-  des2. des4 |
-  % 38
-  b4. des b4 |
-  % 39
-  aes2. aes4 |
-  % 40
-  b2. b4 |
-  % 41
-  des2. des4 |
-  % 42
-  b4. des b4 |
+  aes'2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 | aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 |
   % 43
-  ees,2. ees4 |
-  % 44
-  ges2. ges4 |
-  % 45
-  aes2. aes4 |
-  % 46
-  ges4. aes ges4 |
-  % 47
-  ees2. ees4 |
-  % 48
-  ges2. ges4 |
-  % 49
-  aes2. aes4 |
-  % 50
-  ges4. aes ges4 |
+  ees,2. ees4 | ges2. ges4 | aes2. aes4 | ges4. aes8(aes4) ges4 | ees2. ees4 | ges2. ges4 | aes2. aes4 | ges4. aes8(aes4) ges4 |
   % 51
+  aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 | aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 |
+
+  ees,2. ees4 | ges2. ges4 | aes2. aes4 | ges4. aes8(aes4) ges4 | ees2. ees4 | ges2. ges4 | aes2. aes4 | ges4. aes8(aes4) ges4 |
+  
+  
+  
+  
   aes2. aes4 |
   % 52
   b2. b4 |
