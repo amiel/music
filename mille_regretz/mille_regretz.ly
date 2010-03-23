@@ -1,4 +1,11 @@
+
+
 \version "2.12.2"
+\header {
+	title = "Mille regretz"
+	subsubtitle = "Chanson"
+	composer = "Josquin des Prez"
+}
 
 global = {
   \key c \major
@@ -11,8 +18,30 @@ sopranonotes = \relative c' {
 	d4. c8 d2 |
 	c4 \melismaEnd c' c c |
 	b4 b a2 |
+	r2 c2 |
+	% bar 8
+	b2 a2( |
+	a4) g8 f g2 |
+	r2 c |
+	b2 a( |
+	a4) g8 f g2 |
+	a4 a a a |
+	g4 g f2 |
+	% bar 15
+	e1 |
+	r1 |
+	b'1 |
+	c2 a |
+	b2 e |
+	d2. c4 |
+	b4 a g2 % oh holy shit
 }
-sopranowords = \lyricmode { Mil -- le re -- gretz __ de vous  ha -- ban -- don -- ner }
+sopranowords = \lyricmode {
+	Mil -- le re -- gretz __ de vous  ha -- ban -- don -- ner Et
+	% bar 8
+	des -- lon -- \skip4 ger,
+	et des -- lon -- \skip4 ger
+}
 
 
 altonotes = \relative c' {
@@ -22,6 +51,23 @@ altonotes = \relative c' {
 	r1 |
 	r4 e e e |
 	g2 f2 |
+	e2 e |
+	% bar 8
+	d2 c |
+	b1 |
+	e1 |
+	d2 c2 |
+	b2 e2 |
+	f2. f4 |
+	e4 e d2 |
+	% bar 15
+	c4 c c c |
+	b4 b a2 |
+	b2 g' |
+	e2 e |
+	e2 r4 e |
+	f2. e4 |
+	d4 c b2 |
 }
 altowords = \lyricmode { Mil -- le re -- gretz de vous ha -- ban -- don -- ner }
 
@@ -32,16 +78,49 @@ tenornotes = \relative c' {
 	g2 g |
 	a2 r4 a |
 	g4 e f d |
+	a'1 |
+	% bar 8
+	r1 |
+	r1 |
+	c1 |
+	g2 a |
+	e1 |
+	r1 |
+	r1 |
+	% bar 15
+	r4 e' e e |
+	e4 e d2 | e2 e |
+	c2 c |
+	b1 |
+	r1 |
+	r2 e2 |
 }
 tenorwords = \lyricmode { Mil - le re -- gretz de vous ha -- ban -- don -- ner }
 
-bassnotes = { \clef bass
+bassnotes = \relative c { \clef bass
 	e1 |
 	f2 d |
 	e2. \melisma d8 c |
 	b4. a8 b2 |
 	a1 \melismaEnd |
 	r1 |
+	c'1 |
+	% bar 8
+	g2 a |
+	e1 |
+	r1 |
+	r1 |
+	r2 c |
+	f2. f4 |
+	c4 c d2 |
+	% bar 15
+	a4 a'4 a a |
+	g4 g f2 |
+	e2 e |
+	a2 a |
+	e1 |
+	r1 |
+	r2 e |
 }
 basswords = \lyricmode { Mil -- le re -- gretz __ Et }
 
