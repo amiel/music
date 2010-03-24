@@ -1,15 +1,11 @@
 
 
 \version "2.12.2"
-\header {
-	title = "Mille regretz"
-	subsubtitle = "Chanson"
-	composer = "Josquin des Prez"
-}
 
 global = {
   \key c \major
   \time 2/2
+	\set suggestAccidentals = ##t 
 }
 sopranonotes = \relative c' {
 	e1 |
@@ -34,7 +30,7 @@ sopranonotes = \relative c' {
 	c2 a |
 	b2 e |
 	d2. c4 |
-	b4 a g2 % oh holy shit
+	b4 a gis2 |
 }
 sopranowords = \lyricmode {
 	Mil -- le re -- gretz __ de vous  ha -- ban -- don -- ner Et
@@ -124,7 +120,16 @@ bassnotes = \relative c { \clef bass
 }
 basswords = \lyricmode { Mil -- le re -- gretz __ Et }
 
-\score{
+
+
+\header {
+	title = "Mille regretz"
+	subsubtitle = "Chanson"
+	composer = "Josquin des Prez"
+}
+
+\score {
+
   \context ChoirStaff
   <<
     \context Staff = soprano <<
@@ -144,4 +149,35 @@ basswords = \lyricmode { Mil -- le re -- gretz __ Et }
       \lyricsto "bas" \new Lyrics \basswords
     >>
   >>
+}
+
+%{\markup {
+	Mille regretz de vous habandonner
+	Et d'eslonger vostre fashe amoureuse,
+	Jay si grand dueil et paine douloureuse,
+	Qu'on me verra brief mes jours definer.
+	
+	A thousand regrets at deserting you
+	and leaving behind your loving face,
+	I feel so much sadness and such painful distress,
+	that it seems to me my days will soon dwindle away.
+}%}
+
+
+\markup {
+  \fill-line {
+    \column {
+			"Mille regretz de vous habandonner"
+			"Et d'eslonger vostre fashe amoureuse,"
+			"Jay si grand dueil et paine douloureuse,"
+			"Qu'on me verra brief mes jours definer."
+
+    }
+    \column {
+			"A thousand regrets at deserting you"
+			"and leaving behind your loving face,"
+			"I feel so much sadness and such painful distress,"
+			"that it seems to me my days will soon dwindle away."
+    }
+  }
 }
