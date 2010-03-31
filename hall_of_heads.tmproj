@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>tenor2.ily</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -29,13 +27,13 @@
 			<key>filename</key>
 			<string>hall_of_heads.ly</string>
 			<key>lastUsed</key>
-			<date>2009-06-17T08:26:20Z</date>
+			<date>2009-06-24T05:58:27Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>README.textile</string>
 			<key>lastUsed</key>
-			<date>2009-06-17T08:24:02Z</date>
+			<date>2009-06-19T21:30:00Z</date>
 		</dict>
 		<dict>
 			<key>children</key>
@@ -44,23 +42,27 @@
 					<key>filename</key>
 					<string>alto.ily</string>
 					<key>lastUsed</key>
-					<date>2009-06-16T05:51:46Z</date>
+					<date>2009-06-24T05:58:27Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>tenor1.ily</string>
+					<key>lastUsed</key>
+					<date>2009-06-24T05:58:27Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>tenor2.ily</string>
 					<key>lastUsed</key>
-					<date>2009-06-17T08:26:20Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2009-06-24T05:58:28Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>bari.ily</string>
+					<key>lastUsed</key>
+					<date>2009-06-24T05:58:28Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -76,56 +78,7 @@
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>258</integer>
 	<key>metaData</key>
-	<dict>
-		<key>README.textile</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>hall_of_heads.ly</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>15</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>tenor2.ily</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>6</integer>
-				<key>line</key>
-				<integer>10</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>hall_of_heads.ly</string>
-		<string>tenor2.ily</string>
-		<string>README.textile</string>
-	</array>
+	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>

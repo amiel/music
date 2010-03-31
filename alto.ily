@@ -6,7 +6,7 @@ alto = \transpose c'' a \relative c''' {
   r2
   R1*16 |
   
-  \mark "A"
+  \mark "17"
   
   % 18
   ees8 f g4 f ees | d2. r4 | d8 ees f4 ees d | c2. r4 |
@@ -20,9 +20,13 @@ alto = \transpose c'' a \relative c''' {
     
   % 35
   
+  \mark "34"
+  
   \tempo 4 = 220 
   ees4 ees ees ees | ees ees ees ees | des des des des | des des des des |
   ees4 ees ees ees | ees ees ees ees | des des des des | des des des des |
+  
+  \mark "42"
   
   % 43
   ees,2 ees4 f | ges2 bes | aes1 | r |
@@ -31,8 +35,14 @@ alto = \transpose c'' a \relative c''' {
   aes2 aes4 bes | b2 ees | des1 | r |
   aes2 aes4 bes | b2 ees | ges1 | des1 |
   
+  \mark "58"
   
-  
+  r1 | r2. d4 | R1*2 |
+  r1 | r2. d4 | R1*2 |
+  r1 | r2. d4 | R1*2 |
+  r1 | r2. d4 | R1*2 |
+
+  \mark "74"
   
   s16*29 ees8. s16*61 ees8. s16*61 ees8. s16*61 ees8. 
   s16*33 ees8. s16 ees4*100/120 s4*20/120 ees4*100/120 s4*20/120 ees4*100/120 

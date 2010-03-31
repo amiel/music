@@ -20,35 +20,15 @@ tenorTwo = \transpose c d \relative c' {
 
   ees'4 ees ees ees | ees ees ees ees | des des des des | des des des des |
   ees4 ees ees ees | ees ees ees ees | des des des des | des des des des |
-
-
-
+  
   % 51
-  aes'8. s16 aes4*100/120 s4*20/120 aes4*100/120 s4*20/120 aes4*100/120 
-  s4*20/120 |
-  % 52
-  aes4*100/120 s4*20/120 aes4*100/120 s4*20/120 aes4*100/120 
-  s4*20/120 aes4*100/120 s4*20/120 |
-  % 53
-  ges4*100/120 s4*20/120 ges4*100/120 s4*20/120 ges4*100/120 
-  s4*20/120 ges4*100/120 s4*20/120 |
-  % 54
-  ges4*100/120 s4*20/120 ges4*100/120 s4*20/120 ges4*100/120 
-  s4*20/120 ges4*100/120 s4*20/120 |
-  % 55
-  aes4*100/120 s4*20/120 aes4*100/120 s4*20/120 aes4*100/120 
-  s4*20/120 aes4*100/120 s4*20/120 |
-  % 56
-  aes4*100/120 s4*20/120 aes4*100/120 s4*20/120 aes4*100/120 
-  s4*20/120 aes4*100/120 s4*20/120 |
-  % 57
-  ges4*100/120 s4*20/120 ges4*100/120 s4*20/120 ges4*100/120 
-  s4*20/120 ges4*100/120 s4*20/120 |
-  % 58
-  ges4*100/120 s4*20/120 ges4*100/120 s4*20/120 ges4*100/120 
-  s4*20/120 ges4*100/120 s4*20/120 |
+  aes4 aes aes aes | aes aes aes aes | ges ges ges ges | ges ges ges ges |
+  aes4 aes aes aes | aes aes aes aes | ges ges ges ges | ges ges ges ges |
+
+
+
   % 59
-  ees,16*7 s16 ees16*7 s16 |
+  ees,2(^\markup "solo") s16 ees16*7 s16 |
   % 60
   ees4*100/120 s4*20/120 ees16*7 s16 des16*15 s16*17 des4*100/120 
   s4*20/120 |

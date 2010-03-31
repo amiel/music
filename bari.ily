@@ -20,9 +20,9 @@ bari = \transpose c a' \relative c, {
   % 51
   aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 | aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 |
 
-  ees,2. ees4 | ges2. ges4 | aes2. aes4 | ges4. aes8(aes4) ges4 | ees2. ees4 | ges2. ges4 | aes2. aes4 | ges4. aes8(aes4) ges4 |
+  aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 | aes2. aes4 | ces2. ces4 | des2. des4 | ces4. des8(des4) ces4 |
   
-  
+  % 75  
   
   
   aes2. aes4 |
