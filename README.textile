@@ -3,14 +3,26 @@ h1. Random Collections of Music in Lilypond
 
 h2. What's here
 
+h3. Hall of Heads
+
+Hall of Heads by They Might Be Giants, arranged for Saxophone Quartet.
+
+Transcribed and arranged by Amiel Martin.
+
 h3. Mille regretz
 
 by Josquin
 
-I'm only just starting this one.
+I've been typesetting this from my music history book.
 
 
 h3. No Fast Funk
 
 No Fast Funk is a sax quartet. This is just a small section that we transposed down two octaves so it would be legible.
+
+h3. The Fox
+
+The Fox (traditional folk song) melody and chords. http://en.wikipedia.org/wiki/The_Fox_(folk_song)
+
+Transcribed by Amiel Martin.
 
