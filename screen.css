@@ -1,0 +1,13 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {  margin: 0;  padding: 0;  border: 0;  outline: 0;  font-size: 100%;  vertical-align: baseline;  background: transparent;}body { line-height: 1; }ol, ul { list-style: none; }
+
+body{ color: #223; font-family: "Trebuchet MS", Tahoma, Arial, sans-serif; background: #fff url(images/mille_regretz_full.png) fixed no-repeat right bottom; height: 100%; }
+#fork_me{ position: absolute; top: 0; right: 0; border: 0; }
+#content{ margin: 5em 10px 0 40px; }
+
+ul#pieces{ margin-top: 2em; }
+#pieces li{ overflow: hidden; margin: 1em 0; }
+	#pieces li a{ line-height: 50px; display: block; height: 75px; margin-left: 2em; color: #223; text-decoration: none; }
+		#pieces li a img{ opacity: 0.3; float: left; }
+			#pieces li a:hover img{ opacity: 0.9; }
+		#pieces li a span{ padding-left: 2em; display: block; float: left; }
+/*#pieces li img.preview{ display: block; }*/
