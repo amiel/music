@@ -24,7 +24,9 @@ chordnames = \chordmode {
   e2..     |
 
   % B
+  \set chordChanges = ##f
   e4. d2:m |
+  \set chordChanges = ##t
   e2..     |
   e        |
 
@@ -49,6 +51,7 @@ chordnames = \chordmode {
 
   e2..     |
 
+  % 1st and 2nd ending handled by other parts
 }
 
 %   \autoBeamOn
@@ -59,21 +62,19 @@ rhythmpart = \relative c' {
   \clef percussion
 
   % A
-  e8 r r  r4   r4     |
-  r4.     r4   r4     |
-  e8 r r  r4   r4     |
-  d8 r r  e8[r e8] r  |
+  \repeat volta 2 {
+    e8 r r  r4   r4     |
+    r4.     r4   r4     |
+    e8 r r  r4   r4     |
+    d8 r r  e8[r e8] r  |
 
-  r4.     e8[r e8] r  |
-  r4.     r4   r4     |
-  e8 r r  b8[r d8] r  |
-  e8 r r  r4   r4     |
+    r4.     e8[r e8] r  |
+    r4.     r4   r4     |
+    e8 r r  b8[r d8] r  |
+    e8 r r  r4   r4     |
+  }
 
-  % B
-  e8 r r  b8[r d8] r  |
-  e8 r r  r4   e8  r  |
-  r4.     e8 r r4     |
-
+  % B {
   e8 r r  b8[r d8] r  |
   e8 r r  r4   e8  r  |
   r4.     e8 r r4     |
@@ -82,8 +83,32 @@ rhythmpart = \relative c' {
   e8 r r  r4   e8  r  |
   r4.     e8 r r4     |
 
+  e8 r r  b8[r d8] r  |
+  e8 r r  r4   e8  r  |
+  r4.     e8 r r4     |
+  % }
 
+  % C
+  \repeat volta 2 {
+    a8 r r  r4   a8  r  |
+    a8 r r  d8 r r4     |
+    g8 r r  r4   g8  r  |
+    g8 r r  c8 r r4     |
 
+    a8 r r  r4   a8  r  |
+    d8 r r  r4   d8  r  |
+    f8 r r  r4   f8  r  |
+    e8 r r  d8[r d8] r  |
+
+    e8 r r  r4   r4     |
+  }
+
+  \alternative {
+    { e8 r r  r4   r4   | }
+    { e8 r r  r4   r4   | }
+  }
+
+  \bar "|."
 }
 
 bass = \relative c {
@@ -91,30 +116,52 @@ bass = \relative c {
   \clef bass
 
   % A
-  e4. b4 d4 |
-  e4. b4 d4 |
-  e4. b4 d4 |
-  d4. b4 d4 |
+  \repeat volta 2 {
+    e4. b4 d4 |
+    e4. b4 d4 |
+    e4. b4 d4 |
+    d4. b4 d4 |
 
-  e4. b4 d4 |
-  e4. b4 d4 |
-  e4. d4 d4 |
-  e4. b4 d4 |
+    e4. b4 d4 |
+    e4. b4 d4 |
+    e4. d4 d4 |
+    e4. b4 d4 |
+  }
 
   % B
-  e4. d4 d4 |
-  e4. b4 d4 |
-  e4. b4 d4 |
+    e4. d4 d4 |
+    e4. b4 d4 |
+    e4. b4 d4 |
 
-  e4. d4 d4 |
-  e4. b4 d4 |
-  e4. b4 d4 |
+    e4. d4 d4 |
+    e4. b4 d4 |
+    e4. b4 d4 |
 
-  e4. d4 d4 |
-  e4. b4 d4 |
-  e4. b4 d4 |
+    e4. d4 d4 |
+    e4. b4 d4 |
+    e4. b4 d4 |
 
   % C
+  \repeat volta 2 {
+    a4. e4  g4 |
+    a4. d,4 f4 |
+    g4. d4  f4 |
+    g4. c4  g4 |
+
+    a4. a4  c4 |
+    d4. d4  f4 |
+    f4. f4  f4 |
+    e4. d4  d4 |
+
+    e4. b4  d4 |
+  }
+
+  \alternative {
+    { e4. b4 d4 | }
+    { e4. b4 d4 | }
+  }
+
+  \bar "|."
 }
 
 
