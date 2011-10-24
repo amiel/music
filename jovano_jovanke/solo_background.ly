@@ -12,6 +12,8 @@
 \version "2.8.6"
 
 chordnames = \chordmode {
+  \set chordChanges = ##t
+
   % A
   e2..     |
   e        |
@@ -88,6 +90,7 @@ rhythmpart = \relative c' {
   r4.     e8 r r4     |
   % }
 
+  \break
   % C
   \repeat volta 2 {
     a8 r r  r4   a8  r  |
@@ -105,10 +108,14 @@ rhythmpart = \relative c' {
 
   \alternative {
     { e8 r r  r4   r4   | }
-    { e8 r r  r4   r4   | }
+    {
+      e8 r r  r4   r4 %^"D.C" |
+    }
   }
 
   \bar "|."
+  \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+  \mark "D.C."
 }
 
 bass = \relative c {
@@ -171,9 +178,18 @@ bass = \relative c {
     \time 7/8
 
     \new ChordNames {
-      \set chordChanges = ##t
       \chordnames
     }
+
+%     \new ChordNames {
+%       \transpose ees c
+%       \chordnames
+%     }
+%
+%     \new ChordNames {
+%       \transpose bes c
+%       \chordnames
+%     }
     \new RhythmicStaff = "rhythm" \rhythmpart
     \new Staff = "Bass" \bass
   >>
