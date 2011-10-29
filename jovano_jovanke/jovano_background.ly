@@ -70,7 +70,8 @@ rhythmpart = \relative c' {
     e8 r r  r4   r4     |
     d8 r r  e8[r e8] r  |
 
-    r4.     e8[r e8] r  |
+%     r4.     e8[r e8] r  |
+    e8 r r  r4   r4     |
     r4.     r4   r4     |
     e8 r r  b8[r d8] r  |
     e8 r r  r4   r4     |
