@@ -9,8 +9,8 @@ global = {
   \context {
     \Score
     skipBars = ##t
-    midiInstrument = #"french horn"
-    %% try to mimic Breitkopf
+%     midiInstrument = #"french horn
+%     try to mimic Breitkopf
     \override RehearsalMark #'padding = #1
     \override MultiMeasureRest #'padding = #0.5
     restNumberThreshold = #1
