@@ -63,6 +63,8 @@ rhythmpart = \relative c' {
   \set Staff.instrumentName = #"Rhythm"
   \clef percussion
 
+  \bar "|:"
+
   % A
   \repeat volta 2 {
     e8 r r  r4   r4     |
@@ -186,7 +188,7 @@ bass = \relative c {
 %       \transpose ees c
 %       \chordnames
 %     }
-%
+
 %     \new ChordNames {
 %       \transpose bes c
 %       \chordnames
