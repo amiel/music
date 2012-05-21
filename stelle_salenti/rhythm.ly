@@ -9,7 +9,7 @@ rhythm = \relative c' {
 
   % A
 
-  \repeat volta 2 {
+  \repeat volta 3 {
 
     r8 g8 r8 g8 r8 g8 g4 |
     r8 g8 r8 g8 r8 g8 g4 |

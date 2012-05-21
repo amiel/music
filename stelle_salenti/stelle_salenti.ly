@@ -13,7 +13,7 @@
 
 \include "melody.ly"
 \include "chords.ly"
-% \include "rhythm.ly"
+\include "rhythm.ly"
 % \include "bass.ly"
 
 \layout {
@@ -57,11 +57,11 @@
     \new ChordNames {
       \chordnames
     }
-%
-%     \new RhythmicStaff {
-%       \rhythm
-%     }
-%
+
+    \new RhythmicStaff {
+      \rhythm
+    }
+
 %     \new Staff {
 %       \clef bass
 %       \bass

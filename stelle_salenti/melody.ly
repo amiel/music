@@ -24,7 +24,6 @@ melody = \relative c'' {
     {
 
       f?8 g a
-      \once \override Voice.TextScript #'font-size = #-1
 
       bes^\markup { "to B" } g2 |
 %       \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
@@ -35,18 +34,19 @@ melody = \relative c'' {
 
       \set Score.measureLength = #(ly:make-moment 4 4)
       g2 r2 |
-      r1 |
+
+      r1^\markup { "    to C" } |
     }
   }
 
   \mark "B"
   \improvisationOn
   \repeat volta 4 {
-    s1 | s1 | s1
+    s1 | s1 | s1 |
   }
   \alternative {
-    { s1 }
-    { s1 }
+    { s1 |}
+    { s1 |}
   }
 
   \improvisationOff
@@ -69,6 +69,6 @@ melody = \relative c'' {
 
   \alternative {
     { ees?1 | }
-    { c1 | }
+    { c1^\markup { "to A" } | }
   }
 }

@@ -34,10 +34,17 @@ chordnames = \chordmode {
   \mark "B"
 
   \repeat volta 4 {
+    \set chordChanges = ##f
     g1:m |
+    \set chordChanges = ##t
+
     g1:m |
     c1:m |
-    d1 |
+  }
+
+  \alternative {
+    { d1 |}
+    { d1 |}
   }
 
   \mark "C"
@@ -49,11 +56,12 @@ chordnames = \chordmode {
     c1:m |
     c1 |
     c1:m |
+    c1 |
   }
 
   \alternative {
-    { c1 | c1:m |}
-    { c1 | c1:m |}
+    { c1:m |}
+    { c1:m |}
   }
 
 
