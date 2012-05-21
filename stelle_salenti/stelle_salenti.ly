@@ -1,53 +1,10 @@
-\header{
-%   filename = "test.ly"
-%   composer          = "Amiel Martin"
-  title             = "Stelle Salenti"
-  subtitle          = "(Soaring Star)"
-  tagline = "" % remove
-
-%   copyright         = "Creative Commons Attribution-ShareAlike 2.5"
-  maintainer        = "Amiel Martin"
-  lastupdated       = "2012/05/20"
-}
-
-\version "2.8.6"
+\include "header.ly"
 
 \include "melody.ly"
 \include "chords.ly"
 \include "rhythm.ly"
 \include "bass.ly"
 
-\layout {
-%     indent = #0
-  \context { \ChordNames
-     \override ChordName #'font-size = #1
-%      \override ChordName #'font-series = #'bold
-  }
-
-%   line-width = #150
-%   ragged-last = ##t
-}
-
-
-%
-% \markup {
-%    Structure:
-%    A\small\raise #1 {1}
-%    A\small\raise #1 {2}
-%    B*4
-%    A\small \raise #1 3
-%    C*2
-%    A\small \raise #1 2
-%    B*8
-%    A \small \raise #1 3
-%    C*2
-%    A \small \raise #1 1
-% }
-
-
-\markup {
-  "C Instruments"
-}
 
 \score {
   <<
@@ -72,10 +29,8 @@
   >>
 }
 
-% \pageBreak
-
 %
-% \markup { "E" \flat " Instruments" }
+%
 % \score {
 %   <<
 %     \time 4/4
@@ -103,14 +58,22 @@
 %     }
 %
 %   >>
-% }
-
-
 %
-% \markup { "B" \flat " Instruments" }
+%   \header {
+%     piece = \markup { "E" \flat " Instruments" }
+%   }
+% }
+%
+%
 % \score {
 %   <<
 %     \time 4/4
+%
+%
+%     \new Staff {
+%       \transpose bes c
+%       \melody
+%     }
 %
 %     \new ChordNames {
 %       \transpose bes c
@@ -118,12 +81,20 @@
 %     }
 %
 %
+%     \new RhythmicStaff {
+%       \rhythm
+%     }
+%
 %     \new Staff {
-%       \transpose bes c'
-%       \background
+%       \clef treble
+%       \transpose bes c''
+%       \bass
 %     }
 %
 %   >>
-% }
 %
+%   \header {
+%     piece = \markup { "B" \flat " Instruments" }
+%   }
+% }
 
