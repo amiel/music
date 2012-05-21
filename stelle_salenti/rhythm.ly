@@ -29,7 +29,7 @@ rhythm = \relative c' {
       \set Score.measureLength = #(ly:make-moment 4 4)
 
       g4 g g g8 d |
-      g4 g g g8 d |
+      g4 g g g4 |
     }
   }
 
@@ -49,8 +49,24 @@ rhythm = \relative c' {
 
   \mark "C"
 
-  c4 c c c8 c |
-  c8 c c c c c c c |
+  \repeat volta 2 {
+
+    c4 c c c8 c |
+    c8 c c c c c c c |
+
+    c4 c c c8 c |
+    c8 c c c c c c c |
+
+    c4 c c c8 c |
+    c8 c c c c c c c |
+
+    c4 c c c8 c |
+  }
+
+  \alternative {
+    { c8 c c c c c c c | }
+    { c1| }
+  }
 
 
 }

@@ -61,7 +61,11 @@ chordnames = \chordmode {
 
   \alternative {
     { c1:m |}
-    { c1:m |}
+    {
+      \set chordChanges = ##f
+      c1:m |
+      \set chordChanges = ##t
+    }
   }
 
 
