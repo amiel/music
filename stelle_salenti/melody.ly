@@ -47,7 +47,7 @@ melody = \relative c'' {
 
   \improvisationOn
   \repeat volta 4 {
-    s1 | s1 | s1 |
+    s1^"Improv" | s1 | s1 |
   }
   \alternative {
     { s1 |}
