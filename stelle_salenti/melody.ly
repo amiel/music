@@ -31,7 +31,7 @@ melody = \relative c'' {
 
       bes^\markup { to \box B } g2 |
 %       \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
-
+      \bar "|."
     }
     {
       \set Score.measureLength = #(ly:make-moment 2 4) f?8 g a bes |
