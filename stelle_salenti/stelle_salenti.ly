@@ -13,20 +13,39 @@
 
 \include "melody.ly"
 \include "chords.ly"
-\include "rhythm.ly"
-\include "bass.ly"
+% \include "rhythm.ly"
+% \include "bass.ly"
 
 \layout {
 %     indent = #0
   \context { \ChordNames
-     \override ChordName #'font-size = #1
+%      \override ChordName #'font-size = #1
 %      \override ChordName #'font-series = #'bold
   }
 %   line-width = #150
 %   ragged-last = ##t
 }
 
-\markup { "C Instruments" }
+%
+% \markup {
+%    Structure:
+%    A\small\raise #1 {1}
+%    A\small\raise #1 {2}
+%    B*4
+%    A\small \raise #1 3
+%    C*2
+%    A\small \raise #1 2
+%    B*8
+%    A \small \raise #1 3
+%    C*2
+%    A \small \raise #1 1
+% }
+
+
+\markup {
+  "C Instruments"
+}
+
 \score {
   <<
     \time 4/4
@@ -38,50 +57,50 @@
     \new ChordNames {
       \chordnames
     }
-
-    \new RhythmicStaff {
-      \rhythm
-    }
-
-    \new Staff {
-      \clef bass
-      \bass
-    }
+%
+%     \new RhythmicStaff {
+%       \rhythm
+%     }
+%
+%     \new Staff {
+%       \clef bass
+%       \bass
+%     }
   >>
 }
 
 % \pageBreak
 
-
-\markup { "E" \flat " Instruments" }
-\score {
-  <<
-    \time 4/4
-
-
-    \new Staff {
-      \transpose ees c
-      \melody
-    }
-
-    \new ChordNames {
-      \transpose ees c
-      \chordnames
-    }
-
-
-    \new RhythmicStaff {
-      \rhythm
-    }
-
-    \new Staff {
-        \clef treble
-        \transpose ees c''
-        \bass
-    }
-
-  >>
-}
+%
+% \markup { "E" \flat " Instruments" }
+% \score {
+%   <<
+%     \time 4/4
+%
+%
+%     \new Staff {
+%       \transpose ees c
+%       \melody
+%     }
+%
+%     \new ChordNames {
+%       \transpose ees c
+%       \chordnames
+%     }
+%
+%
+%     \new RhythmicStaff {
+%       \rhythm
+%     }
+%
+%     \new Staff {
+%         \clef treble
+%         \transpose ees c''
+%         \bass
+%     }
+%
+%   >>
+% }
 
 
 %

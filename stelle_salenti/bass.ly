@@ -31,7 +31,27 @@ bass = \relative c {
 
   \alternative {
     { a,4 r8 ees'8 d4 d,4 | }
-    { a'4 r8 ees'8 d4 d,4 | }
+    { a'4 r8 ees'8-> d4-> d,4 | }
   }
+
+  \mark "A'"
+
+  g4. g8 d'4. d8 |
+  ees4. ees8 d4. d8 |
+  c4. c8 bes4. bes8 |
+  a4. a8 d4 d, |
+
+  g4. g8 a4. a8 |
+  bes2. c4~ |
+  c1 |
+
+  \set Score.measureLength = #(ly:make-moment 2 4) r2 |
+  \set Score.measureLength = #(ly:make-moment 4 4)
+
+  g4 g g g8 d |
+  g4 g g g8 d |
+  \mark "C"
+
+
 
 }
