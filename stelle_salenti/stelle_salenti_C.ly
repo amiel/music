@@ -5,21 +5,21 @@
 \include "rhythm.ly"
 \include "bass.ly"
 
-
 \header {
   instrument = \markup { "C Instruments" }
 }
-
 
 \score {
   <<
     \time 4/4
 
     \new Staff {
+
       \melody
     }
 
     \new ChordNames {
+
       \chordnames
     }
 
@@ -29,6 +29,7 @@
 
     \new Staff {
       \clef bass
+
       \bass
     }
   >>

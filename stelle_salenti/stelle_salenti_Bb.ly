@@ -5,16 +5,13 @@
 \include "rhythm.ly"
 \include "bass.ly"
 
-
 \header {
   instrument = \markup { "B" \flat " Instruments" }
 }
 
-
 \score {
   <<
     \time 4/4
-
 
     \new Staff {
       \transpose bes c
@@ -26,7 +23,6 @@
       \chordnames
     }
 
-
     \new RhythmicStaff {
       \rhythm
     }
@@ -36,7 +32,6 @@
       \transpose bes c''
       \bass
     }
-
   >>
 }
 

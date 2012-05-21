@@ -49,15 +49,15 @@ bass = \relative c {
 
   \repeat volta 2 {
     \repeat percent 3 {
-      c'4 c c c8 c |
-      c8 c c c c c c c |
+      c'4\f c c c8 c |
+      c4\p c c c8 c |
     }
 
-    c4 c c c8 c |
+    c4\f c c c8 c |
   }
 
   \alternative {
-    { c8 c c c c c c c |}
+    { c4\p c c c8 c |}
     { c1 |}
   }
 

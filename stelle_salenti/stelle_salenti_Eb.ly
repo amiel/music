@@ -13,7 +13,6 @@
   <<
     \time 4/4
 
-
     \new Staff {
       \transpose ees c
       \melody
@@ -24,19 +23,16 @@
       \chordnames
     }
 
-
     \new RhythmicStaff {
       \rhythm
     }
 
     \new Staff {
-        \clef treble
-        \transpose ees c''
-        \bass
+      \clef treble
+      \transpose ees c''
+      \bass
     }
-
   >>
-
 }
 
 

@@ -22,7 +22,9 @@ melody = \relative c'' {
   }
 
   \alternative {
-    { f?8 g a bes g2 | }
+    {
+      f?8 g a bes g2^\markup { \italic fin } |
+    }
     {
 
       f?8 g a

@@ -37,9 +37,10 @@ rhythm = \relative c' {
   \mark \markup { \box "B" }
 
   \repeat volta 4 {
-    \repeat percent 3 {
+    \repeat percent 2 {
       r8 g8 r8 g8 r8 g8 g4 |
     }
+    r8 g8 r8 g8 r8 g8 g4 |
   }
 
   \alternative {
@@ -51,10 +52,13 @@ rhythm = \relative c' {
   \mark \markup { \box "C" }
 
   \repeat volta 2 {
-    \repeat percent 3 {
+    \repeat unfold 2 { % unfold
       c4 c c c8 c |
       c8 c c c c c c c |
     }
+
+    c4 c c c8 c |
+    c8 c c c c c c c |
 
     c4 c c c8 c |
   }
