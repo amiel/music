@@ -1,13 +1,14 @@
 
 
 rhythm = \relative c' {
+  \set Score.markFormatter = #format-mark-circle-letters
   \set Staff.instrumentName = #"Rhythm"
   \clef percussion
   \override Stem #'direction = #down
 
   \improvisationOn
 
-  % A
+  \mark \markup { \box "A" }
 
   \repeat volta 3 {
 
@@ -33,39 +34,34 @@ rhythm = \relative c' {
     }
   }
 
-  % B
+  \mark \markup { \box "B" }
 
   \repeat volta 4 {
-    r8 g8 r8 g8 r8 g8 g4 |
-    r8 g8 r8 g8 r8 g8 g4 |
-    r8 g8 r8 g8 r8 g8 g4 |
+    \repeat percent 3 {
+      r8 g8 r8 g8 r8 g8 g4 |
+    }
   }
 
   \alternative {
-    { r8 g8 r8 g8 r8 g8 g4 | }
-    { g4 r8 ees'8-> d4.-> r8 | }
+    { r8 g8 r8 g8 r8 g8 g4 |}
+    { g4 r8 ees'8-> d4.-> r8 |}
   }
 
 
-  \mark "C"
+  \mark \markup { \box "C" }
 
   \repeat volta 2 {
-
-    c4 c c c8 c |
-    c8 c c c c c c c |
-
-    c4 c c c8 c |
-    c8 c c c c c c c |
-
-    c4 c c c8 c |
-    c8 c c c c c c c |
+    \repeat percent 3 {
+      c4 c c c8 c |
+      c8 c c c c c c c |
+    }
 
     c4 c c c8 c |
   }
 
   \alternative {
-    { c8 c c c c c c c | }
-    { c1| }
+    { c8 c c c c c c c |}
+    { c1 |}
   }
 
 

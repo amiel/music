@@ -1,7 +1,8 @@
 chordnames = \chordmode {
+  \set Score.markFormatter = #format-mark-circle-letters
   \set chordChanges = ##t
 
-  \mark "A"
+  \mark \markup { \box "A" }
 
   \repeat volta 3 {
     g1:m |
@@ -31,7 +32,7 @@ chordnames = \chordmode {
     }
   }
 
-  \mark "B"
+  \mark \markup { \box "B" }
 
   \repeat volta 4 {
     \set chordChanges = ##f
@@ -47,7 +48,7 @@ chordnames = \chordmode {
     { d1 |}
   }
 
-  \mark "C"
+  \mark \markup { \box "C" }
 
   \repeat volta 2 {
     c1 |

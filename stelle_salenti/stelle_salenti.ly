@@ -3,10 +3,11 @@
 %   composer          = "Amiel Martin"
   title             = "Stelle Salenti"
   subtitle          = "(Soaring Star)"
+  tagline = "" % remove
 
 %   copyright         = "Creative Commons Attribution-ShareAlike 2.5"
   maintainer        = "Amiel Martin"
-  lastupdated       = "2011/10/20"
+  lastupdated       = "2012/05/20"
 }
 
 \version "2.8.6"
@@ -14,17 +15,19 @@
 \include "melody.ly"
 \include "chords.ly"
 \include "rhythm.ly"
-% \include "bass.ly"
+\include "bass.ly"
 
 \layout {
 %     indent = #0
   \context { \ChordNames
-%      \override ChordName #'font-size = #1
+     \override ChordName #'font-size = #1
 %      \override ChordName #'font-series = #'bold
   }
+
 %   line-width = #150
 %   ragged-last = ##t
 }
+
 
 %
 % \markup {
@@ -62,10 +65,10 @@
       \rhythm
     }
 
-%     \new Staff {
-%       \clef bass
-%       \bass
-%     }
+    \new Staff {
+      \clef bass
+      \bass
+    }
   >>
 }
 
