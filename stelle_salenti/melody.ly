@@ -27,16 +27,15 @@ melody = \relative c'' {
     }
     {
 
-      f?8 g a
+      f8 g a
 
       bes^\markup { to \box B } g2 |
-%       \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
       \bar "|."
     }
     {
-      \set Score.measureLength = #(ly:make-moment 2 4) f?8 g a bes |
-
-      \set Score.measureLength = #(ly:make-moment 4 4)
+      \time 2/4
+      f8[ g a bes] |
+      \time 4/4
       g2 r2 |
 
       r1^\markup { to \box C } |
@@ -47,7 +46,7 @@ melody = \relative c'' {
 
   \improvisationOn
   \repeat volta 4 {
-    s1^"Improv" | s1 | s1 |
+    s1 ^"Improv" | s1 | s1 |
   }
   \alternative {
     { s1 |}

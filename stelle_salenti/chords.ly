@@ -24,8 +24,9 @@ chordnames = \chordmode {
     }
 
     {
-      \set Score.measureLength = #(ly:make-moment 2 4) g2:m |
-      \set Score.measureLength = #(ly:make-moment 4 4)
+      \time 2/4
+      g2:m |
+      \time 4/4
 
       g1:m |
       g1:m |

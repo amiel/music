@@ -28,8 +28,8 @@
     }
 
     \new Staff {
-      \clef treble
-      \transpose bes c''
+      \clef bass
+      \transpose bes c'
       \bass
     }
   >>

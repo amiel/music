@@ -26,8 +26,9 @@ rhythm = \relative c' {
     { d2 d4 r4 | }
     { r2 r4 d4 | }
     {
-      \set Score.measureLength = #(ly:make-moment 2 4) r2 |
-      \set Score.measureLength = #(ly:make-moment 4 4)
+      \time 2/4
+      r2 |
+      \time 4/4
 
       g4 g g g8 d |
       g4 g g g4 |
