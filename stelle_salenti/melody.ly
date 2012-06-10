@@ -17,8 +17,8 @@ melody = \relative c'' {
     \times 2/3 { g4 bes d8 g } bes a g fis |
     g4 f?8 ees d bes c4~ |
     c4. d8 ees4
-    \acciaccatura { c16[ bes] }
-    a8 g |
+    \acciaccatura { d16[ c] }
+    bes8 g |
   }
 
   \alternative {
