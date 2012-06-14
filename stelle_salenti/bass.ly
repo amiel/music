@@ -18,8 +18,8 @@ bass = \relative c {
   }
 
   \alternative {
-    { a2 a4 r4 | }
-    { r2 r4 a4 | }
+    { aes2 g4 r4 | }
+    { r2 r4 aes4 | }
     {
       \time 2/4
       r2 |
