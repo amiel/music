@@ -16,16 +16,16 @@ chordnames = \chordmode {
   }
 
   \alternative {
-    { d2 g2 | }
+    { f2:m7 g2 | }
     {
       \set chordChanges = ##f
-      d1 |
+      f1:m7 |
       \set chordChanges = ##t
     }
 
     {
       \time 2/4
-      g2:m |
+      f2:m7 |
       \time 4/4
 
       g1:m |

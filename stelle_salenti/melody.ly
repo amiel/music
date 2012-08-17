@@ -50,7 +50,7 @@ melody = \relative c'' {
   }
   \alternative {
     { s1 |}
-    { s1 |}
+    { s1^\markup { to \box A } |}
   }
 
   \improvisationOff
