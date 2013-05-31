@@ -32,15 +32,15 @@ global = {
 Key = { \key ees \major }
 
 \include "alto.ily"
-\include "tenor1.ily"
-\include "tenor2.ily"
+\include "clar.ily"
+\include "horn.ily"
 \include "bari.ily"
 
 \score {
   \new StaffGroup <<
     \new Staff = "alto" \altoSax
-    \new Staff = "tenor1" \tenorSaxOne
-    \new Staff = "tenor2" \tenorSaxTwo
+    \new Staff = "clar" \clarinet
+    \new Staff = "horn" \horn
     \new Staff = "bari" \bariSax
   >>
 %{  \midi { }%}
