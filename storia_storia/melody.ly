@@ -2,6 +2,7 @@
 \version "2.22.2"
 
 melody = \relative c''' {
+  \key bes \minor
   r8 bes ges4 ees bes |
   aes' aes aes8( bes) f ges( |
   ges4) r ges8 f4 ees8 |
