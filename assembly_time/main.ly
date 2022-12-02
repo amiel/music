@@ -71,43 +71,100 @@ bottom = \relative c' {
   r1 |
   r1 |
   r1 |
-  r2 r4\mf g,4 |
+  r4 r8\mf d r c g4 |
   f2\p c'4 f,4 |
   c'4\mp\< b a \! r |
   r1 |
-  r4 d4 \f c4 c, |
+  r8\f b d4 c4 c, |
 }
 
 
 \pointAndClickOff
 
-\score {
-  <<
-    \new ChordNames { \theChords }
+\book {
+  \bookOutputName "main"
 
-    \new Staff \new Voice = "melody" \melody
- 
-    \new Lyrics \lyricsto melody { \melodyLyrics }
-
-      \transpose bes c' 
-     \new Staff \with {
-       instrumentName = \markup { B \flat }
-       midiInstrument = "trumpet"
-     }
-      \partCombine #'(2 . 3) \top \middle
-
-      \transpose ees c'' 
-     \new Staff \with {
-      instrumentName = \markup { E \flat }
-      midiInstrument = "baritone sax"
-    }
-    {
-      % \clef "bass"
-      \bottom
-    }
-
-  >>
-  \layout {}
-
-   \midi { \tempo 4 = 130 }
+  \score { 
+    <<
+      \new Staff \melody
+       \new Staff \with { midiInstrument = "trumpet" } \top
+       \new Staff \with { midiInstrument = "clarinet" } \middle
+       \new Staff \with { midiInstrument = "trombone" } \bottom
+    >>
+  \midi { \tempo 4 = 130 }
+  }
 }
+
+\book {
+
+  \header { 
+    subtitle = \markup { Chorus in concert pitch }
+  }
+
+  \layout { }
+
+  \bookOutputName "assembly-time-concert"
+  \score { 
+    <<
+      \new ChordNames { \theChords }
+
+      \new Staff \new Voice = "melody" \melody
+   
+      \new Lyrics \lyricsto melody { \melodyLyrics }
+
+        % \transpose bes c' 
+       \new Staff \with {
+         instrumentName = \markup { middle parts }
+       }
+        \partCombine #'(2 . 3) \top \middle
+
+        % \transpose ees c'' 
+       \new Staff \with {
+         instrumentName = \markup { low part }
+      }
+      {
+        \clef "bass"
+        \bottom
+      }
+    >>
+  }
+}
+
+
+\book {
+
+  \header { 
+    subtitle = \markup { Chorus for B \flat parts }
+  }
+
+
+  \layout{}
+  \bookOutputName "assembly-time-b-flat"
+  \score { 
+    <<
+        \transpose bes c' 
+      \new ChordNames { \theChords }
+
+        \transpose bes c' 
+      \new Staff \new Voice = "melody" \melody
+   
+      \new Lyrics \lyricsto melody { \melodyLyrics }
+
+        \transpose bes c' 
+       \new Staff \with {
+         instrumentName = \markup { middle parts }
+       }
+        \partCombine #'(2 . 3) \top \middle
+
+        \transpose bes c''
+       \new Staff \with {
+         instrumentName = \markup { low part }
+      }
+      {
+        \bottom
+      }
+
+    >>
+  }
+}
+
