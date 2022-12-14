@@ -34,14 +34,26 @@ Timeline = {
   \repeat unfold 4 { s2. s2 | }
   \repeat volta 2 {
     \repeat unfold 8 { s2. s2 | }
+      \mark \markup { "Fine" }
   }
 
   \time 6/8
   
   \repeat volta 2 {
-    \repeat unfold 8 { s2. | }
+    \repeat unfold 6 { s2. | }
+  }
+  \alternative {
+    { s2. | s2. |}
+    { s2. | s2. |}
   }
 
+  \repeat volta 2 {
+    \repeat unfold 6 { s2. | }
+  }
+  \alternative {
+    { s2. | s2. |}
+    { s2. | \mark \markup { \small "D.C. al fine" } s2. |}
+  }
 }
 
 % ##### Vocal Part
@@ -83,8 +95,11 @@ vocal = \transpose c c \relative c'' {
 
     c4. c |
     e8 e r16 g fis8 r d |
-    fis2. |
-    R1*6/8 |
+    
+  }
+  \alternative {
+    { fis2. | r4. r8 e d | }
+    { fis2. | R1*6/8 | }
   }
 }
 
@@ -108,12 +123,18 @@ vocalHarmony = \transpose c c \chordmode {
   }
 
   \repeat volta 2 {
-    \repeat unfold 2 {
-      c2. |
-      g2. |
-      d2.:sus4 |
-      d2.: |
-    }
+    c2. |
+    g2. |
+    d2.:sus4 |
+    d2.: |
+
+    c2. |
+    g2. |
+    
+  }
+  \alternative {
+    { d2.:sus4 | d2.: | }
+    { d2.:sus4 | d2.: | }
   }
 }
 
@@ -146,14 +167,43 @@ bTwo = \lyricmode {
 cOne = \lyricmode { 
   Chum pink | co -- ho and | sock -- eye |
   Steel -- head | cut -- throat chin -- ook is | King
+
+  They are
 }
 
 % ############ Horns ############
 
 % ------ Trumpet ------
-trpt = \transpose c d \relative c'' {
+trpt = \transpose c c \relative c'' {
   \Key
-  R1*5/4 |
+
+  \repeat unfold 4 { R1*5/4 | }
+
+  \repeat volta 2 {
+    \repeat unfold 8 { R1*5/4 | }
+  }
+
+  \repeat volta 2 {
+    \repeat unfold 6 { R1*6/8 | }
+  }
+  \alternative {
+    { R1*6/8 | R1*6/8 }
+    { R1*6/8 | d4. \p fis8 \breathe e d | }
+  }
+
+  \repeat volta 2 {
+    c4. c |
+    b4. b |
+    a4. a8 c g' |
+    fis8 d4~d4. |
+
+    c4. c |
+    b4. b |
+  }
+  \alternative {
+    {a4. e'8 e r16 g | fis8 r8 d8 fis8 \breathe e d | }
+    {a4. a | a2. | }
+  }
 }
 trumpet = {
   \clef treble
@@ -161,6 +211,88 @@ trumpet = {
     \trpt
   >>
 }
+
+clar = \transpose c c \relative c' {
+  \Key
+
+  \repeat unfold 4 { R1*5/4 | }
+
+  \repeat volta 2 {
+    \repeat unfold 8 { R1*5/4 | }
+  }
+
+  \repeat volta 2 {
+    \repeat unfold 6 { R1*6/8 | }
+  }
+  \alternative {
+    { R1*6/8 | R1*6/8 }
+    { R1*6/8 | d4. \p fis8 \breathe r4 | }
+  }
+
+  \repeat volta 2 {
+    g4. g |
+    g4. g |
+    g4. g |
+    fis4. fis4. |
+
+    g4. g |
+    g4. g |
+    
+  }
+  \alternative {
+    {g4. g | fis4. fis4. | }
+    {g4. g | a2. | }
+  }
+}
+clarinet = {
+  \clef treble
+  <<
+    \clar
+  >>
+}
+
+
+
+bart = \transpose c c \relative c' {
+  \Key
+
+  \repeat unfold 4 { R1*5/4 | }
+
+  \repeat volta 2 {
+    \repeat unfold 8 { R1*5/4 | }
+  }
+
+  \repeat volta 2 {
+    \repeat unfold 6 { R1*6/8 | }
+  }
+  \alternative {
+    { R1*6/8 | R1*6/8 }
+    { R1*6/8 | d4. \p fis8 \breathe r4 | }
+  }
+
+  \repeat volta 2 {
+    e4. e |
+    e4. d |
+    d4. d |
+    d4. d |
+
+    e4. e |
+    e4. d |
+    
+  }
+  \alternative {
+    {d4. d | d4. d | }
+    {d4. d | d2. | }
+  }
+}
+baritone = {
+  \clef treble
+  <<
+    \bart
+  >>
+}
+
+
 
 
 %%%%%%%%% It All Goes Together Here %%%%%%%%%%%%%%%%%%%%%%
@@ -180,18 +312,18 @@ trumpet = {
 
     \new StaffGroup = "horns" <<
       \new Staff = "trumpet" \with { instrumentName = "Trumpet" }
-      \Timeline
       \trumpet
-      % \new Staff = "altosax" \with { instrumentName = "Alto Sax" }
-      % \altoSax
-      % \new ChordNames = "barichords" \with { instrumentName = "Trumpet" }
-      % \bariHarmony
-      % \trombone
+
+      \new Staff = "clarinet" \with { instrumentName = "Clarinet" }
+      \clarinet
+
+      \new Staff = "baritone" \with { instrumentName = "Baritone" }
+      \baritone
     >>
   >>
 
   \layout {
-    \context { \Staff \RemoveEmptyStaves }
+    % \context { \Staff \RemoveEmptyStaves }
     \context {
       \Score
       \override BarNumber.padding = #3
