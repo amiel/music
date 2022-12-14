@@ -26,7 +26,7 @@
 %%%%%%%%%%%% Keys'n'thangs %%%%%%%%%%%%%%%%%
 
 Key = {
-  \key d \major
+  \key g \major
 }
 
 Timeline = {
@@ -188,7 +188,7 @@ trpt = \transpose c c \relative c'' {
   }
   \alternative {
     { R1*6/8 | R1*6/8 }
-    { R1*6/8 | d4. \p fis8 \breathe e d | }
+    { r4. fis~ \pp \< | fis4.~fis8 \! \breathe e \mf d | }
   }
 
   \repeat volta 2 {
@@ -201,7 +201,7 @@ trpt = \transpose c c \relative c'' {
     b4. b |
   }
   \alternative {
-    {a4. e'8 e r16 g | fis8 r8 d8 fis8 \breathe e d | }
+    {a4. a4. | a4. a8 \breathe e' d | }
     {a4. a | a2. | }
   }
 }
@@ -212,7 +212,7 @@ trumpet = {
   >>
 }
 
-clar = \transpose c c \relative c' {
+clar = \transpose c c \relative c'' {
   \Key
 
   \repeat unfold 4 { R1*5/4 | }
@@ -226,7 +226,7 @@ clar = \transpose c c \relative c' {
   }
   \alternative {
     { R1*6/8 | R1*6/8 }
-    { R1*6/8 | d4. \p fis8 \breathe r4 | }
+    { r4. a~ \pp \< | a4.~a8 \! \breathe g \mf fis | }
   }
 
   \repeat volta 2 {
@@ -240,7 +240,7 @@ clar = \transpose c c \relative c' {
     
   }
   \alternative {
-    {g4. g | fis4. fis4. | }
+    {g4. e8 e r16 g | fis8 r8 d8 fis8 \breathe g fis | }
     {g4. g | a2. | }
   }
 }
@@ -267,11 +267,11 @@ bart = \transpose c c \relative c' {
   }
   \alternative {
     { R1*6/8 | R1*6/8 }
-    { R1*6/8 | d4. \p fis8 \breathe r4 | }
+    { r4. d~ \pp \< | d4.~d8 \! \breathe r4 | }
   }
 
   \repeat volta 2 {
-    e4. e |
+    e4. \mf e |
     e4. d |
     d4. d |
     d4. d |
