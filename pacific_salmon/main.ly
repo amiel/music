@@ -106,6 +106,15 @@ vocalHarmony = \transpose c c \chordmode {
     { d2. | s2. | }
     { d2. | s2. | }
   }
+
+  \repeat volta 2 {
+    \repeat unfold 2 {
+      c2. |
+      g2. |
+      d2.:sus4 |
+      d2.: |
+    }
+  }
 }
 
 aOne = \lyricmode {
@@ -137,7 +146,6 @@ bTwo = \lyricmode {
 cOne = \lyricmode { 
   Chum pink | co -- ho and | sock -- eye |
   Steel -- head | cut -- throat chin -- ook is | King
-
 }
 
 % ############ Horns ############
