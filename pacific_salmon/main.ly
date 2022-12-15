@@ -5,13 +5,13 @@
   % subtitle = "(tune)"
   % composer = "Me"
   % meter = "moderato"
-  % piece = "Swing"
-  % tagline = \markup {
+  subtitle = "Horn accompaniment"
+  tagline = \markup {
     % \column {
       % "LilyPond example file by Amelie Zapf,"
       % "Berlin 07/07/2003"
     % }
-  % }
+  }
 }
 % To make the example display in the documentation
 % \paper {
@@ -202,7 +202,7 @@ trpt = \transpose c c \relative c'' {
   }
   \alternative {
     {a4. a4. | a4. a8 \breathe e' d | }
-    {a4. a | a2. | }
+    {a4. \> a | a2. \! | }
   }
 }
 trumpet = {
@@ -240,8 +240,8 @@ clar = \transpose c c \relative c'' {
     
   }
   \alternative {
-    {g4. e8 e r16 g | fis8 r8 d8 fis8 \breathe g fis | }
-    {g4. g | a2. | }
+    {g4. e4 g8 | fis4 d8 fis8 \breathe g fis | }
+    {g4. \> g | a2. \! | }
   }
 }
 clarinet = {
@@ -267,7 +267,7 @@ bart = \transpose c c \relative c' {
   }
   \alternative {
     { R1*6/8 | R1*6/8 }
-    { r4. d~ \pp \< | d4.~d8 \! \breathe r4 | }
+    { r4. d~ \pp \< | d4.~d8 \! r4 | }
   }
 
   \repeat volta 2 {
@@ -281,8 +281,8 @@ bart = \transpose c c \relative c' {
     
   }
   \alternative {
-    {d4. d | d4. d | }
-    {d4. d | d2. | }
+    {d4. d | d4. d8 r4 | }
+    {d4. \> d | d2. \! | }
   }
 }
 baritone = {
@@ -297,39 +297,93 @@ baritone = {
 
 %%%%%%%%% It All Goes Together Here %%%%%%%%%%%%%%%%%%%%%%
 
-\score {
-  <<
-    \new StaffGroup = "melody" <<
-      \new ChordNames { \vocalHarmony }
-      \new Staff \with { instrumentName = "Vocals" }
-      \new Voice = "Vocals" <<
-        \Timeline
-        \vocal
+%%% Concert %%%
+\book {
+  \bookOutputName "pacific-salmon-concert"
+
+  \header { 
+    piece = \markup { C parts (concert pitch) }
+  }
+
+  \score {
+    <<
+      \new StaffGroup = "melody" <<
+        \new ChordNames { \vocalHarmony }
+        \new Staff \with { instrumentName = "Vocals" }
+        \new Voice = "Vocals" <<
+          \Timeline
+          \vocal
+        >>
+        \new Lyrics \lyricsto Vocals { \aOne \bOne  }
+        \new Lyrics \lyricsto Vocals { \aTwo \bTwo \cOne }
       >>
-      \new Lyrics \lyricsto Vocals { \aOne \bOne  }
-      \new Lyrics \lyricsto Vocals { \aTwo \bTwo \cOne }
+
+      \new StaffGroup = "horns" <<
+        \new Staff = "trumpet" \with { instrumentName = "Top" }
+        \trumpet
+
+        \new Staff = "clarinet" \with { instrumentName = "Middle" }
+        \clarinet
+
+        \new Staff = "baritone" \with { instrumentName = "Bottom" }
+        \baritone
+      >>
     >>
 
-    \new StaffGroup = "horns" <<
-      \new Staff = "trumpet" \with { instrumentName = "Trumpet" }
-      \trumpet
-
-      \new Staff = "clarinet" \with { instrumentName = "Clarinet" }
-      \clarinet
-
-      \new Staff = "baritone" \with { instrumentName = "Baritone" }
-      \baritone
-    >>
-  >>
-
-  \layout {
-    % \context { \Staff \RemoveEmptyStaves }
-    \context {
-      \Score
-      \override BarNumber.padding = #3
-      \override RehearsalMark.padding = #2
-      skipBars = ##t
+    \layout {
+      % \context { \Staff \RemoveEmptyStaves }
+      \context {
+        \Score
+        \override BarNumber.padding = #3
+        \override RehearsalMark.padding = #2
+        skipBars = ##t
+      }
     }
   }
-  \midi { }
 }
+
+\book {
+  \bookOutputName "pacific-salmon-b-flat"
+
+  \header { 
+    piece = \markup { B \flat parts }
+  }
+
+  \score {
+    \transpose bes c'
+    <<
+      \new StaffGroup = "melody" <<
+        \new ChordNames { \vocalHarmony }
+        \new Staff \with { instrumentName = "Vocals" }
+        \new Voice = "Vocals" <<
+          \Timeline
+          \vocal
+        >>
+        \new Lyrics \lyricsto Vocals { \aOne \bOne  }
+        \new Lyrics \lyricsto Vocals { \aTwo \bTwo \cOne }
+      >>
+
+      \new StaffGroup = "horns" <<
+        \new Staff = "trumpet" \with { instrumentName = "Top" }
+        \trumpet
+
+        \new Staff = "clarinet" \with { instrumentName = "Middle" }
+        \clarinet
+
+        \new Staff = "baritone" \with { instrumentName = "Bottom" }
+        \baritone
+      >>
+    >>
+
+    \layout {
+      % \context { \Staff \RemoveEmptyStaves }
+      \context {
+        \Score
+        \override BarNumber.padding = #3
+        \override RehearsalMark.padding = #2
+        skipBars = ##t
+      }
+    }
+  }
+}
+
