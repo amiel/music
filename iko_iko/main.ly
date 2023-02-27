@@ -20,9 +20,17 @@ melody = \relative c' {
   ees4 r8  ges g bes c bes |
   ees8 ees4 ges8~ges4 r4 |
   <ges ees>8 <ges ees>4 ees8~ees2 |
-  r4 <ees, ges bes>4 <ees ges bes> r4 |
+  r4 ees4 ees r4 |
 }
 
+bass = \relative c {
+  \key f \major
+
+  ees4 r8 ees r4 ees |
+  r4 ees4 ees r4 |
+  ees4 r8 ees r4 ees |
+  r4 ees4 ees r4 |
+}
 
 \pointAndClickOff
 
@@ -65,6 +73,31 @@ melody = \relative c' {
     >>
   }
 }
+
+\book {
+  \header { 
+    subtitle = \markup { C bass part }
+  }
+
+  \layout { }
+
+  \bookOutputName "iko-iko-tag-c-bass-part"
+  \score { 
+    <<
+      \new ChordNames { \theChords }
+
+      \transpose c c,
+      \new Staff \new Voice = "bass"
+      {
+        \clef "bass"
+        \bass
+      }
+
+    >>
+  }
+}
+
+
 
 
 \book {
