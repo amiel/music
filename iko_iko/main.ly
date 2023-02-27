@@ -10,7 +10,7 @@
 theChords = \chordmode {
   \set noChordSymbol = ""
 
-  ees1:maj
+  ees1
 }
 
 
@@ -19,8 +19,8 @@ melody = \relative c' {
 
   ees4 r8  ges g bes c bes |
   ees8 ees4 ges8~ges4 r4 |
-  ges8 ges4 ees8~ees2 |
-  r4 ees,4 ees r4 |
+  <ges ees>8 <ges ees>4 ees8~ees2 |
+  r4 <ees, ges bes>4 <ees ges bes> r4 |
 }
 
 
@@ -55,7 +55,13 @@ melody = \relative c' {
     <<
       \new ChordNames { \theChords }
 
-      \new Staff \new Voice = "melody" \melody
+      \transpose c c,,
+      \new Staff \new Voice = "melody"
+      {
+        \clef "bass"
+        \melody
+      }
+
     >>
   }
 }
@@ -91,10 +97,10 @@ melody = \relative c' {
   \bookOutputName "iko-iko-tag-e-flat-treble"
   \score { 
     <<
-      \transpose ees c' 
+      \transpose ees c 
       \new ChordNames { \theChords }
 
-      \transpose ees c' 
+      \transpose ees c 
       \new Staff \new Voice = "melody" \melody
     >>
   }
