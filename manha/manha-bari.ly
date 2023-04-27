@@ -3,21 +3,17 @@
 
 \header { 
   title = "Manha de Carnaval"
+  % subtitle = "Bass"
   subtitle = "Bari Sax"
 }
 
-% theChords = \chordmode {
-%   \set noChordSymbol = ""
 
-%   \partial 8 r8 |
-%   c2 f2 | f2 c2 | f2 c2 | g1 |
-%   f1 | c2 a2:m | f2 g2 | c1 |
-% }
-
-
+% melody = \transpose c ees \relative c, {
 melody = \relative c' {
   \time 2/2
   \key a \major
+
+  % \clef bass
 
   % \override Glissando.style = #'zigzag
 
@@ -94,5 +90,7 @@ melody = \relative c' {
 \pointAndClickOff
 
 \score { 
-    \new Staff \new Voice = "melody" \melody
+  \new Staff {
+    \melody
+  }
 }
