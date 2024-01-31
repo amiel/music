@@ -94,19 +94,23 @@ KeyNotes = \drummode {
 }
 
 Maraca = \drummode {
-  cab16-> cab cab cab
-  cab16-> cab cab cab
-  cab16-> cab cab cab
-  cab16-> cab cab cab |
+  \repeat volta 2 {
+    cab16-> cab cab cab
+    cab16-> cab cab cab
+    cab16-> cab cab cab
+    cab16-> cab cab cab |
+  }
 }
 
 Barril = \drummode {
- ho8. ab16 r ab ab r
- ho8. ab16 r ab ab r |
+ \repeat volta 2 {
+   ho8. ab16 r ab ab r
+   ho8. ab16 r ab ab r |
+ }
 }
 
 Qua = \drummode {
-  ss8
+  r8 ss16
 }
 
 \markup { 
