@@ -2,6 +2,9 @@
 
 #(set-global-staff-size 38)
 
+\pointAndClickOff
+
+
 \header { 
   title = "I Love My Body"
   tagline = ""

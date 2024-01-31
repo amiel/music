@@ -1,5 +1,8 @@
 \version "2.24.0"
 
+\pointAndClickOff
+
+
 red = \relative c' {
   \override NoteHead.color = #red
   <c e g>4 <c e g> <c e g> <c e g> 
