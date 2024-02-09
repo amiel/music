@@ -1,20 +1,5 @@
 \version "2.24.3"
 
-% cgl  = abierto
-% cglo = hondo
-% cglm = seco
-% ssl  = campana
-
-% cgl  = abierto
-% cglo = hondo
-% cglm = seco
-% ssl  = campana
-
-
-
-
-% mus = \drummode { cgh cgho cghm ssh cgl cglo cglm ssl s16 }
-
 % \score {
 %   <<
 %   \new DrumStaff \with {
@@ -46,10 +31,10 @@ drumPitchNames.ca        = #'campana
 % List of note head options
 % List of articulation options: https://lilypond.org/doc/v2.23/Documentation/notation/list-of-articulations
 #(define barril-style
-  '((abierto  default  #f         0)
-    (seco     default  stopped 0)
-    (hondo    default  open        0)
-    (campana  cross    #f        0)
+  '((abierto  default  #f  -1)
+    (seco     default  #f   1)
+    (hondo    default  #f  -3)
+    (campana  default  #f   3)
     ))
 
 % midiDrumPitches.dbass     = g
@@ -67,17 +52,16 @@ drumPitchNames.ca        = #'campana
 KeyNotes = \drummode {
   \textLengthOn
 
-  ho^\markup \rotate #35 {hondo}
-  ab^\markup \rotate #35 {abierto}
-  se^\markup \rotate #35 {seco}
-  ca^\markup \rotate #35 {campana}
+  ho^\markup \rotate #45 {hondo}
+  ab^\markup \rotate #45 {abierto}
+  se^\markup \rotate #45 {seco}
+  ca^\markup \rotate #45 {campana}
 }
 
 
 \header { 
-  title = "Bomba"
+  title = "Bomba Rhythms"
 }
-
 
 \markup { 
   \bold "Key"
@@ -86,31 +70,50 @@ KeyNotes = \drummode {
 \score {
 
   \new DrumStaff \with {
-    \override StaffSymbol.line-count = #1
+    \override StaffSymbol.line-count = #4
     instrumentName = "Barril "
     drumStyleTable = #(alist->hash-table barril-style)
+
+   %  % TODO: Make this better
+   %  \override Clef.stencil = #
+			% (lambda (grob)(grob-interpret-markup grob
+			% 	#{ \markup\combine
+			% 		\musicglyph #"clefs.percussion"
+			% 		\translate #'(-2 . 1)
+			% 		\override #'(baseline-skip . 1) 
+			% 		\column {
+			% 		  "c"
+   %          "s"
+   %          "a"
+			% 		  "h"
+			% 		}
+			% 	#}
+			% ))
+
   } \KeyNotes
   \layout {}
 }
 
-Maraca = \drummode {
+Tren = \drummode {
+  r2 r
+
   \repeat volta 2 {
     cab16-> cab cab cab
-    cab16-> cab cab cab
+    cab16-> cab cab cab |
     cab16-> cab cab cab
     cab16-> cab cab cab |
   }
 }
 
-Barril = \drummode {
- \repeat volta 2 {
-   ho8. ab16 r ab ab r
-   ho8. ab16 r ab ab r |
- }
-}
+SicaBarril = \drummode {
+  seco8_"R" ^\markup {primo} se_"R" se_"R" se_"R" |
+  
+  ab8_"R" ^\markup {buleador} ab16_"R" ab_"L" r ab_"L" ab_"R" r |
 
-Qua = \drummode {
-  r8 ss16
+  \repeat volta 2 {
+   ho8._"R" ab16_"L" r ab_"L" ab_"R" r |
+   ho8._"R" ab16_"L" r ab_"L" ab_"R" r |
+ }
 }
 
 \markup { 
@@ -121,31 +124,21 @@ Qua = \drummode {
   <<
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Maraca "
+      instrumentName = "Maraca/Qua"
       drumStyleTable = #percussion-style
     } {
-      \time 4/4
-      \Maraca
+      \time 2/4
+      \Tren
     }
 
     \new DrumStaff \with {
-      \override StaffSymbol.line-count = #1
+      \override StaffSymbol.line-count = #4
       instrumentName = "Barril "
       drumStyleTable = #(alist->hash-table barril-style)
       % drumPitchTable = #(alist->hash-table midiDrumPitches)
     } {
-      \time 4/4
-      \Barril
-    }
-
-    \new DrumStaff \with {
-      \override StaffSymbol.line-count = #1
-      instrumentName = "Qua "
-      drumStyleTable = #percussion-style
-      % drumPitchTable = #(alist->hash-table midiDrumPitches)
-    } {
-      \time 4/4
-      \Qua
+      \time 2/4
+      \SicaBarril
     }
   >>
 
