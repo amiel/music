@@ -105,6 +105,11 @@ Tren = \drummode {
   }
 }
 
+
+\markup { 
+  \bold "Sicá"
+}
+
 SicaBarril = \drummode {
   seco8_"R" ^\markup {primo} se_"R" se_"R" se_"R" |
   
@@ -116,8 +121,12 @@ SicaBarril = \drummode {
  }
 }
 
-\markup { 
-  \bold "Sicá"
+SicaWords = \lyricmode {
+  % llamada
+  _ _ _ _ |
+  _ _ _ _ _ |
+
+  _ ca -- fe con pan 
 }
 
 \score {
@@ -138,9 +147,49 @@ SicaBarril = \drummode {
       % drumPitchTable = #(alist->hash-table midiDrumPitches)
     } {
       \time 2/4
-      \SicaBarril
+      \new DrumVoice = "sica" { \SicaBarril }
+    }
+
+    \new Lyrics {
+      \lyricsto "sica" {
+        \SicaWords
+      }
     }
   >>
 
   \layout {}
 }
+
+
+\markup { 
+  \bold "Yub́́á"
+}
+
+YubaBarril = \drummode {
+  seco8_"R"^\markup {primo} se_"L" se_"R" se_"L" se_"R" r |
+  ab8_"R"^\markup {buleador} ab_"L" ab_"R" ab_"L" ab_"R" r |
+
+  \repeat volta 2 {
+    ho8-"R" r ab_"R" ab_"L" ab_"R" r |
+    ho8_"R" r ab_"R" ab_"L" ab_"R" r |
+ }
+}
+
+\score {
+  <<
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #4
+      instrumentName = "Barril "
+      drumStyleTable = #(alist->hash-table barril-style)
+      % drumPitchTable = #(alist->hash-table midiDrumPitches)
+    } {
+      \time 6/8
+      \YubaBarril
+    }
+  >>
+
+  \layout {}
+}
+
+
+
