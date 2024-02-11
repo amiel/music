@@ -107,7 +107,7 @@ Tren = \drummode {
 
 
 \markup {
-  \bold "Sicá"
+  \bold "Sicá (Santurce)"
 }
 
 SicaBarril = \drummode {
@@ -161,8 +161,9 @@ SicaWords = \lyricmode {
 }
 
 
+
 \markup {
-  \bold "Yubá"
+  \bold "Yubá (Santurce)"
 }
 
 SixTren = \drummode {
@@ -209,6 +210,139 @@ YubaBarril = \drummode {
 
   \layout {}
 }
+
+
+
+\markup {
+  \bold "Cuembé (Cataño)"
+}
+
+CuembeBarril = \drummode {
+
+  seco16_"R" ^\markup {primo} se_"L" se_"R" se_"L" se_"R" se_"L" se8_"R" |
+  
+  ab16_"R" ^\markup {buleador} ab_"L" ab_"R" ab_"L" ab_"R" ab_"L" ab8_"R" | 
+
+  \repeat volta 2 {
+    ho8_"R" ca16_"R" ab_"L" ho16_"R" ab_"L" ca_"R" ab_"L" |
+    ho8_"R" ca16_"R" ab_"L" ho16_"R" ab_"L" ca_"R" ab_"L" |
+ }
+}
+
+CuembeWords = \lyricmode {
+  % llamada
+  _ _ _ _ _ _ _ |
+  _ _ _ _ _ _ _ |
+
+  _ Pue -- rto Ri -- co tie -- ne qua
+}
+
+\score {
+  <<
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #4
+      instrumentName = "Barril "
+      drumStyleTable = #(alist->hash-table barril-style)
+      % drumPitchTable = #(alist->hash-table midiDrumPitches)
+    } {
+      \time 2/4
+      \new DrumVoice = "sica" { \CuembeBarril }
+    }
+
+    \new Lyrics {
+      \lyricsto "sica" {
+        \CuembeWords
+      }
+    }
+  >>
+
+  \layout {}
+}
+
+
+
+\markup {
+  \bold "Holandé (Mayagüez)"
+}
+
+HolandeTren = \drummode {
+  r1 |
+
+  \repeat volta 2 {
+    cab16-> cab cab cab
+    cab16-> cab cab cab
+    cab16-> cab cab cab
+    cab16-> cab cab cab |
+
+    cab16-> cab cab cab
+    cab16-> cab cab cab
+    cab16-> cab cab cab
+    cab16-> cab cab cab |
+  }
+}
+
+
+HolandeQua = \drummode {
+  r1 |
+  cab16-> cab cab cab 
+  cab16-> cab cab cab 
+  cab16-> cab cab cab 
+  cab16-> cab cab cab^" or" |
+
+  cab8-> cab16 cab 
+  cab8-> cab16 cab 
+  cab16-> cab8 cab16
+  cab8-> cab16 cab |
+}
+
+HolandeBarril = \drummode {
+  \afterGrace s2 { seco32 se se se }
+  seco8._"R" ^\markup {primo} se16_"R" 
+  r 8 ab8_"R" ^\markup {buleador} |
+
+  \repeat volta 2 {
+    ho8_"L" ab_"R" ho8_"L" ab_"R"
+    ho16_"L" ab8_"R" ab16_"R"
+    ho8_"L" ab_"R" |
+
+    ho8_"L" ab_"R" ho8_"L" ab_"R"
+    ho16_"L" ab8_"R" ab16_"R"
+    ho8_"L" ab_"R" |
+ }
+}
+
+\score {
+  <<
+    \time 4/4
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #1
+      instrumentName = "Maraca"
+      drumStyleTable = #percussion-style
+    } {
+      \HolandeTren
+    }
+
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #1
+      instrumentName = "Qua"
+      drumStyleTable = #percussion-style
+    } {
+      \HolandeQua
+    }
+
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #4
+      instrumentName = "Barril "
+      drumStyleTable = #(alist->hash-table barril-style)
+      % drumPitchTable = #(alist->hash-table midiDrumPitches)
+    } {
+      \new DrumVoice = "sica" { \HolandeBarril }
+    }
+  >>
+
+  \layout {}
+}
+
 
 
 
