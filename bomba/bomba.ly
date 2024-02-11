@@ -106,7 +106,7 @@ Tren = \drummode {
 }
 
 
-\markup { 
+\markup {
   \bold "Sicá"
 }
 
@@ -161,9 +161,19 @@ SicaWords = \lyricmode {
 }
 
 
-\markup { 
-  \bold "Yub́́á"
+\markup {
+  \bold "Yubá"
 }
+
+SixTren = \drummode {
+  r2. r
+
+  \repeat volta 2 {
+    cab8-> cab cab cab8 cab cab |
+    cab8-> cab cab cab8 cab cab |
+  }
+}
+
 
 YubaBarril = \drummode {
   seco8_"R"^\markup {primo} se_"L" se_"R" se_"L" se_"R" r |
@@ -177,6 +187,15 @@ YubaBarril = \drummode {
 
 \score {
   <<
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #1
+      instrumentName = "Maraca/Qua"
+      drumStyleTable = #percussion-style
+    } {
+      \time 6/8
+      \SixTren
+    }
+
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #4
       instrumentName = "Barril "
