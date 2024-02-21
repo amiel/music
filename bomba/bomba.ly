@@ -46,7 +46,7 @@ drumPitchNames.ca        = #'campana
 
 
 
-% Qua = \drummode {
+% Cua = \drummode {
 % }
 
 KeyNotes = \drummode {
@@ -131,7 +131,7 @@ SicaWords = \lyricmode {
   <<
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Maraca/Qua"
+      instrumentName = "Maraca/Cua"
       drumStyleTable = #percussion-style
     } {
       \time 2/4
@@ -189,7 +189,7 @@ YubaBarril = \drummode {
   <<
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Maraca/Qua"
+      instrumentName = "Maraca/Cua"
       drumStyleTable = #percussion-style
     } {
       \time 6/8
@@ -240,7 +240,7 @@ CuembeWords = \lyricmode {
   <<
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Maraca/Qua"
+      instrumentName = "Maraca/Cua"
       drumStyleTable = #percussion-style
     } {
       \time 2/4
@@ -291,7 +291,7 @@ HolandeTren = \drummode {
 }
 
 
-HolandeQua = \drummode {
+HolandeCua = \drummode {
   r1 |
   cab16-> cab cab cab 
   cab16-> cab cab cab 
@@ -333,10 +333,10 @@ HolandeBarril = \drummode {
 
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Qua"
+      instrumentName = "Cua"
       drumStyleTable = #percussion-style
     } {
-      \HolandeQua
+      \HolandeCua
     }
 
     \new DrumStaff \with {
@@ -358,7 +358,7 @@ HolandeBarril = \drummode {
   \bold "Hoyomula (norte)"
 }
 
-HoyomulaQua = \drummode {
+HoyomulaCua = \drummode {
   r2 |
   \repeat volta 2 {
     cab8-> cab16 cab cab8 cab |
@@ -390,10 +390,10 @@ HoyomulaBarril = \drummode {
 
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Qua"
+      instrumentName = "Cua"
       drumStyleTable = #percussion-style
     } {
-      \HoyomulaQua
+      \HoyomulaCua
     }
 
     \new DrumStaff \with {
@@ -442,7 +442,7 @@ CunyaBarril = \drummode {
 
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #1
-      instrumentName = "Qua"
+      instrumentName = "Cua"
       drumStyleTable = #percussion-style
     } {
       \CunyaCua
