@@ -95,8 +95,6 @@ KeyNotes = \drummode {
 }
 
 Tren = \drummode {
-  r2 r
-
   \repeat volta 2 {
     cab16-> cab cab cab
     cab16-> cab cab cab |
@@ -137,6 +135,7 @@ SicaWords = \lyricmode {
       drumStyleTable = #percussion-style
     } {
       \time 2/4
+      r2 r
       \Tren
     }
 
@@ -240,6 +239,16 @@ CuembeWords = \lyricmode {
 \score {
   <<
     \new DrumStaff \with {
+      \override StaffSymbol.line-count = #1
+      instrumentName = "Maraca/Qua"
+      drumStyleTable = #percussion-style
+    } {
+      \time 2/4
+      r2 r
+      \Tren
+    }
+
+    \new DrumStaff \with {
       \override StaffSymbol.line-count = #4
       instrumentName = "Barril "
       drumStyleTable = #(alist->hash-table barril-style)
@@ -298,7 +307,7 @@ HolandeQua = \drummode {
 HolandeBarril = \drummode {
   \afterGrace s2 { seco32 se se se }
   seco8._"R" ^\markup {primo} se16_"R" 
-  r 8 ab8_"R" ^\markup {buleador} |
+  r8 ab8_"R" ^\markup {buleador} |
 
   \repeat volta 2 {
     ho8_"L" ab_"R" ho8_"L" ab_"R"
@@ -344,5 +353,61 @@ HolandeBarril = \drummode {
 }
 
 
+
+\markup {
+  \bold "Hoyomula (norte)"
+}
+
+HoyomulaQua = \drummode {
+  r2 |
+  \repeat volta 2 {
+    cab8-> cab16 cab cab8 cab |
+    cab8-> cab16 cab cab8 cab |
+  }
+}
+
+HoyomulaBarril = \drummode {
+  seco16_"R" ^\markup {primo} seco8_"L" seco16_"L" seco16_"R" seco16_"L" seco8_"R"
+  
+  \repeat volta 2 {
+    ho8_"R"^\markup {buleador} ca16_"R" se16_"L" se8_"L" ca8_"R" |
+
+    ca8_"R"^\markup {variación} ca16_"R" se16_"L" se8_"L" ho8_"R" |
+ }
+}
+
+\score {
+  <<
+    \time 2/4
+
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #1
+      instrumentName = "Maraca"
+      drumStyleTable = #percussion-style
+    } {
+      r2
+      \Tren
+    }
+
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #1
+      instrumentName = "Qua"
+      drumStyleTable = #percussion-style
+    } {
+      \HoyomulaQua
+    }
+
+    \new DrumStaff \with {
+      \override StaffSymbol.line-count = #4
+      instrumentName = "Barril "
+      drumStyleTable = #(alist->hash-table barril-style)
+      % drumPitchTable = #(alist->hash-table midiDrumPitches)
+    } {
+      \new DrumVoice = "sica" { \HoyomulaBarril }
+    }
+  >>
+
+  \layout {}
+}
 
 
