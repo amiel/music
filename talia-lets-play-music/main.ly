@@ -1,8 +1,11 @@
 \version "2.24.3"
 
+
 \header {
-  title = "Talia's Let's Play Music Composition"
+  title = "Talia's Composition"
 }
+
+#(set-global-staff-size 26)
 
 aMelody = \relative c' {
   e4 e16 d c g~ g4. g8 |
@@ -20,13 +23,11 @@ bMelody = \relative c'' {
   <a cis>2~ <a cis e>|
 }
 
-bBass = \relative c {
-  a4 a a a |
-  a4 a a a |
-  a4 a a a |
-  a4 a a a |
-  a4 a a2~ |
-  <a cis>2~ <a cis e>|
+cMelody = \relative c'' {
+  b4. a8 fis4. c8 |
+  f?1 |
+  b4. a8 fis4. c8 |
+  f?1 |
 }
 
 aBass = \relative c {
@@ -36,19 +37,51 @@ aBass = \relative c {
   <c e g>1 |
 }
 
+bBass = \relative c {
+  a4 a a a |
+  a4 a a a |
+  a4 a a a |
+  a4 a a a |
+  a4 a a2~ |
+  <a cis>2~ <a cis e>|
+}
+
+cBass = \relative {
+  <d fis a>2 <d fis a> |
+  <d f?  a>2 <d f   a> |
+  <d fis a>2 <d fis a> |
+  <d f?  a>1           |
+}
+
+
 \score {
   \new PianoStaff <<
     \new Staff {
+
+
       \key c \major
       \time 4/4
-
+      \mark "A"
       \aMelody
 
       \bar "||"
 
       \key a \minor
-
+      \mark "B"
       \bMelody
+
+      \bar "||"
+
+      \mark "C"
+      \cMelody
+
+      \bar "||"
+
+      \key c \major
+      \mark "A"
+      \aMelody
+
+      \bar "|."
     }
     \new Staff { % Left hand chords
       \clef "bass"
@@ -62,6 +95,15 @@ aBass = \relative c {
       \key a \minor
 
       \bBass
+
+      \bar "||"
+
+      \cBass
+
+      \bar "||"
+
+      \key c \major
+      \aBass
     }
   >>
   \layout { }
