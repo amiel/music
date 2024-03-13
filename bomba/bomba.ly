@@ -3,11 +3,11 @@
 % TODO:
 % [ ] staff stencil (see barril-key)
 % [ ] add the rest of the rhythms
-%   [ ] corve
-%   [ ] seis corrido
-%   [ ] rule
+%   * corve
+%   * seis corrido
+%   * rule
 % [x] split up in to different files
-% [ ] Add sica improvisations
+% [x] Add sica improvisations
 
 \include "barril.ly"
 
@@ -17,7 +17,6 @@
 
 \include "barril-key.ly"
 \include "shared.ly"
-
 \include "sica.ly"
 \include "yuba.ly"
 \include "cuembe.ly"
@@ -27,3 +26,4 @@
 \include "calinda.ly"
 \include "guembe.ly"
 
+\include "sica-improvisations.ly"
