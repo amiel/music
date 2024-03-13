@@ -2,9 +2,9 @@
 
 .PHONY: watch
 
-bomba.pdf: bomba.ly
+bomba.pdf: *.ly
 	lilypond bomba.ly
 
 watch:
-	find . -name '*.ly' | entr make 
+	find . -name '*.ly' | entr make bomba.pdf
 

@@ -6,7 +6,6 @@
 %   [ ] corve
 %   [ ] seis corrido
 %   [ ] rule
-%   [ ] calinda
 % [x] split up in to different files
 % [ ] Add sica improvisations
 
@@ -25,5 +24,6 @@
 \include "holande.ly"
 \include "hoyomula.ly"
 \include "cunya.ly"
+\include "calinda.ly"
 \include "guembe.ly"
 
