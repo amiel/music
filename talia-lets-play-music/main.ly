@@ -15,6 +15,7 @@ aMelody = \relative c' {
 }
 
 bMelody = \relative c'' {
+  \tempo \markup { \smaller \italic faster }
   a4   a     a   a  |
   a8 b c  d  e4  e  |
   e8 d e4 e8 c   e4 |
@@ -24,6 +25,7 @@ bMelody = \relative c'' {
 }
 
 cMelody = \relative c'' {
+  \tempo \markup { \smaller \italic slowly }
   b4. a8 fis4. c8 |
   f?1 |
   b4. a8 fis4. c8 |
