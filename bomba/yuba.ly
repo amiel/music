@@ -8,8 +8,8 @@ YubaBarril = \drummode {
   ab8_"R"^\markup {buleador} ab_"L" ab_"R" ab_"L" ab_"R" r |
 
   \repeat volta 2 {
-    ho8-"R" r ab_"R" ab_"L" ab_"R" r |
-    ho8_"R" r ab_"R" ab_"L" ab_"R" r |
+    [ho8-"R" r ab_"R"] ab_"L" ab_"R" r |
+    [ho8_"R" r ab_"R"] ab_"L" ab_"R" r |
  }
 }
 
