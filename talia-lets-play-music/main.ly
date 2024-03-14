@@ -2,7 +2,8 @@
 
 
 \header {
-  title = "Talia's Composition"
+  title = "Frog Holes"
+  composer = "Talia Martin"
 }
 
 #(set-global-staff-size 26)
