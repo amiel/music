@@ -16,20 +16,28 @@ aMelody = \relative c' {
 
 bMelody = \relative c'' {
   \tempo \markup { \smaller \italic faster }
-  a4   a     a   a  |
-  a8 b c  d  e4  e  |
-  e8 d e4 e8 c   e4 |
-  e8 d c  b  a b a4 |
-  a8 c a4 a2~       |
-  <a cis>2~ <a cis e>|
+
+  a8   a     a   a  
+  a16 b c  d  e8  e  |
+  e16 d e8 e16 c   e8 
+  e16 d c  b  a b a8 |
+  a16 c a8 a4~        
+  <a cis>4~ <a cis e>|
+  <a cis e>1|
 }
 
 cMelody = \relative c'' {
   \tempo \markup { \smaller \italic slowly }
-  b4. a8 fis4. c8 |
-  f?1 |
-  b4. a8 fis4. c8 |
-  f?1 |
+
+  b8 a fis c 
+  f2 |
+  b8 a fis c 
+  f2 |
+
+  b8 a fis c 
+  f2 |
+  b8 a fis c 
+  f2 |
 }
 
 aBass = \relative c {
@@ -40,19 +48,25 @@ aBass = \relative c {
 }
 
 bBass = \relative c {
-  a4 a a a |
-  a4 a a a |
-  a4 a a a |
-  a4 a a a |
-  a4 a a2~ |
-  <a cis>2~ <a cis e>|
+  a8 a a a |
+  a8 a a a |
+  a8 a a a |
+  a8 a a a |
+  a8 a a4~ |
+  <a cis>4~ <a cis e>|
+  <a cis e>1|
 }
 
 cBass = \relative {
-  <d fis a>2 <d fis a> |
-  <d f?  a>2 <d f   a> |
-  <d fis a>2 <d fis a> |
-  <d f?  a>1           |
+  <d fis a>4 <d fis a> 
+  <d f  a>4 <d f   a> |
+  <d fis a>4 <d fis a> 
+  <d f  a>4 <d f   a> |
+  <d fis a>4 <d fis a> 
+  <d f  a>4 <d f   a> |
+  <d fis a>4 <d fis a> 
+  <d f  a>2           |
+
 }
 
 
@@ -60,23 +74,29 @@ cBass = \relative {
   \new PianoStaff <<
     \new Staff {
 
+      \override BreathingSign.text = \markup {
+        \musicglyph "scripts.caesura.straight"
+      }
 
       \key c \major
       \time 4/4
       \mark "A"
       \aMelody
 
+      \breathe
       \bar "||"
 
       \key a \minor
       \mark "B"
       \bMelody
 
+      \breathe
       \bar "||"
 
       \mark "C"
       \cMelody
 
+      \breathe
       \bar "||"
 
       \key c \major
