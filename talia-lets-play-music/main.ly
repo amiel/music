@@ -22,8 +22,8 @@ bMelody = \relative c'' {
   e16 d e8 e16 c   e8 
   e16 d c  b  a b a8 |
   a16 c a8 a4~        
-  <a cis>4~ <a cis e>|
-  <a cis e>1|
+  <a cis>4~ <a cis e> |
+  <a cis e>1 |
 }
 
 cMelody = \relative c'' {
@@ -48,13 +48,13 @@ aBass = \relative c {
 }
 
 bBass = \relative c {
+  a8 a a a
   a8 a a a |
+  a8 a a a
   a8 a a a |
-  a8 a a a |
-  a8 a a a |
-  a8 a a4~ |
-  <a cis>4~ <a cis e>|
-  <a cis e>1|
+  a8 a a4~ 
+  <a cis>4~ <a cis e> |
+  <a cis e>1
 }
 
 cBass = \relative {
