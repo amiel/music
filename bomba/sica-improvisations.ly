@@ -6,7 +6,15 @@
 SicaBarril = \drummode {
   \repeat volta 2 { ho8._"R" ab16_"L" r ab_"L" ab_"R" r | }
 
-  \repeat volta 2 { se8.->_"R" ab16_"L" r ab_"L" ab_"R" r | }
+  \repeat volta 2 {
+    se8.->_"R" ab16_"L" r ab_"L" ab_"R" r | 
+    ho8._"R" ab16_"L" r ab_"L" ab_"R" r |
+  }
+
+  \repeat volta 2 {
+    se8.->_"R" ab16_"L" r ab_"L" ab_"R" r | 
+  }
+
   \repeat volta 2 { se8.->_"R" ab16_"L" se8.->_"R" ab16_"L" | }
   \repeat volta 2 { se8->_"R" se16->_"R" ab16_"L" r ab_"L" ab_"R" r | }
 
