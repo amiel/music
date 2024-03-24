@@ -4,8 +4,6 @@
 % [ ] staff stencil (see barril-key)
 % [ ] add the rest of the rhythms
 %   * corve
-%   * seis corrido
-%   * rule
 % [x] split up in to different files
 % [x] Add sica improvisations
 
@@ -19,6 +17,7 @@
 \include "shared.ly"
 \include "sica.ly"
 \include "yuba.ly"
+\include "seiscorrido.ly"
 \include "cuembe.ly"
 \include "holande.ly"
 \include "hoyomula.ly"
