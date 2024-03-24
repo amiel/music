@@ -2,8 +2,7 @@
 
 % TODO:
 % [ ] staff stencil (see barril-key)
-% [ ] add the rest of the rhythms
-%   * corve
+% [x] add the rest of the rhythms
 % [x] split up in to different files
 % [x] Add sica improvisations
 
@@ -24,5 +23,6 @@
 \include "cunya.ly"
 \include "calinda.ly"
 \include "guembe.ly"
+\include "corve.ly"
 
 \include "sica-improvisations.ly"
