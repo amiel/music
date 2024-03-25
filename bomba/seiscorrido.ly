@@ -46,7 +46,7 @@ SeisCorridoBarril = \drummode {
 
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #4
-      instrumentName = "Barril "
+      instrumentName = \barrilInstrument
       drumStyleTable = #(alist->hash-table barril-style)
       % drumPitchTable = #(alist->hash-table midiDrumPitches)
     } {

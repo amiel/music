@@ -45,7 +45,7 @@ SicaBarril = \drummode {
   <<
     \new DrumStaff \with {
       \override StaffSymbol.line-count = #4
-      instrumentName = "Barril "
+      instrumentName = \barrilInstrument
       drumStyleTable = #(alist->hash-table barril-style)
     } {
       \time 2/4

@@ -28,3 +28,20 @@ drumPitchNames.ca        = #'campana
 % midiDrumPitches.dslap     = b
 % midiDrumPitches.dslapmute = ais
 
+barrilInstrument = \markup { 
+  \translate #'(0 . -0.8)
+  "Barril"
+
+  \override #'(baseline-skip . 1) 
+  \translate #'(-2 . 1.2)
+  \column {
+    \teeny {
+      \line { "c" }
+      \line { "s" }
+      \line { "a" }
+      \line { "h" }
+    }
+  }
+}
+
+

@@ -14,37 +14,49 @@ KeyNotes = \drummode {
 
   \textLengthOn
 
-  ho^\markup \rotate #45 {hondo}
-  ab^\markup \rotate #45 {abierto}
+  ca^\markup \rotate #45 {campana}
   se^\markup \rotate #45 {seco}
   se->^\markup \rotate #45 {slap}
-  ca^\markup \rotate #45 {campana}
+  ab^\markup \rotate #45 {abierto}
+  ho^\markup \rotate #45 {hondo}
 }
 
 \score {
 
   \new DrumStaff \with {
     \override StaffSymbol.line-count = #4
-    instrumentName = "Barril "
+    % instrumentName = "Barril "
+
+    instrumentName = \barrilInstrument
+
     drumStyleTable = #(alist->hash-table barril-style)
 
-   %  % TODO: Make this better
+      % \override TextScript.outside-staff-priority = ##f  % Ensures that text appears inside the staff
+
+
+   % %  % TODO: Make this better
    %  \override Clef.stencil = #
 			% (lambda (grob)(grob-interpret-markup grob
-			% 	#{ \markup\combine
+			% 	#{ \markup \combine
 			% 		\musicglyph #"clefs.percussion"
-			% 		\translate #'(-2 . 1)
+
 			% 		\override #'(baseline-skip . 1) 
+			% 		\translate #'(-2 . 1.2)
 			% 		\column {
-			% 		  "c"
-   %          "s"
-   %          "a"
-			% 		  "h"
+   %          \teeny {
+   %            \line { "C" }
+   %            \line { "S" }
+   %            \line { "A" }
+   %            \line { "H" }
+   %          }
 			% 		}
 			% 	#}
 			% ))
+  }
 
-  } \KeyNotes
+
+ \KeyNotes
+
   \layout {}
 }
 
