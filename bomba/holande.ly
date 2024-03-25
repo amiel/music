@@ -39,13 +39,11 @@ HolandeBarril = \drummode {
   r8 ab8_"R" ^\markup {buleador} |
 
   \repeat volta 2 {
-    ho8_"L" ab_"R" ho8_"L" ab_"R"
-    ho16_"L" ab8_"R" ab16_"R"
-    ho8_"L" ab_"R" |
+    ho8_"L" se_"R" ho8_"L" ab_"R"
+    ho16_"L" se8_"R" se16_"R" ho8_"L" ab_"R" |
 
-    ho8_"L" ab_"R" ho8_"L" ab_"R"
-    ho16_"L" ab8_"R" ab16_"R"
-    ho8_"L" ab_"R" |
+    ho8_"L" se_"R" ho8_"L" ab_"R"
+    ho16_"L" se8_"R" se16_"R" ho8_"L" ab_"R" |
  }
 }
 
