@@ -1,11 +1,5 @@
 \version "2.24.3"
 
-% TODO:
-% [ ] staff stencil (see barril-key)
-% [x] add the rest of the rhythms
-% [x] split up in to different files
-% [x] Add sica improvisations
-
 \include "barril.ly"
 
 \header { 
