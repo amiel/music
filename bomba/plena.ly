@@ -15,17 +15,17 @@ drumPitchNames.po      = #'punteadoropen
 drumPitchNames.ps      = #'punteadorslap
 
 drumPitchNames.so      = #'seguidoropen
-drumPitchNames.ssla      = #'seguidorslap
+drumPitchNames.ssla    = #'seguidorslap
 
 
 #(define plena-style '(
-         (clave           diamond   #f   3)
-         (requintoopen    default   #f   1)
-         (requintoslap    cross     #f   1)
-         (punteadoropen   default   #f  -1)
-         (punteadorslap   cross     #f  -1)
-         (seguidoropen    default   #f  -3)
-         (seguidorslap    cross     #f  -3)
+         (clave           diamond   #f   0)
+         (requintoopen    default   #f   0)
+         (requintoslap    cross     #f   0)
+         (punteadoropen   default   #f   0)
+         (punteadorslap   cross     #f   0)
+         (seguidoropen    default   #f   0)
+         (seguidorslap    cross     #f   0)
          ))
 
 clave = \drummode {
@@ -49,11 +49,30 @@ seguidor = \drummode {
   so ssla so ssla so ssla so ssla |
 }
 
+% drumStyleTable = #percussion-style
 
-\new DrumStaff \with { drumStyleTable = #(alist->hash-table plena-style) }
-  <<
-    \new DrumVoice { \voiceOne \clave }
-    \new DrumVoice { \voiceTwo \requinto }
-    \new DrumVoice { \voiceThree \punteador }
-    \new DrumVoice { \voiceFour \seguidor }
-  >>
+ 	
+\new StaffGroup <<
+  \new DrumStaff \with {
+    drumStyleTable = #(alist->hash-table plena-style)
+    \override StaffSymbol.line-count = #1
+  } \clave 
+
+  \new DrumStaff \with {
+    drumStyleTable = #(alist->hash-table plena-style)
+    \override StaffSymbol.line-count = #1
+  } \requinto
+
+
+  \new DrumStaff \with {
+    drumStyleTable = #(alist->hash-table plena-style)
+    \override StaffSymbol.line-count = #1
+  } \punteador
+
+  \new DrumStaff \with {
+    drumStyleTable = #(alist->hash-table plena-style)
+    \override StaffSymbol.line-count = #1
+  } \seguidor
+
+>>
+
