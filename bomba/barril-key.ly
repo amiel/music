@@ -16,7 +16,6 @@ KeyNotes = \drummode {
 
   ca^\markup \rotate #45 {campana}
   se^\markup \rotate #45 {seco}
-  se->^\markup \rotate #45 {slap}
   ab^\markup \rotate #45 {abierto}
   ho^\markup \rotate #45 {hondo}
 }
