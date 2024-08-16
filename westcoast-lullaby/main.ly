@@ -1,22 +1,5 @@
 \version "2.24.4"
 
-\header {
-  title = "Westcoast Lullaby"
-  composer = "Roger Holdstock"
-  % Remove default LilyPond tagline
-  tagline = ##f
-}
-
-\layout {
-  indent = 0.0
-
-  \context {
-    \Score
-    \remove "Bar_number_engraver"
-  }
-}
-
-
 chorus = \lyricmode {
   ""4 Go8 to sleep4 now | don't4 you cry2 | \break
 
@@ -74,24 +57,65 @@ verseChords = \chordmode {
   a a | b b | b b |  \break
 }
 
+\layout {
+  indent = 0.0
 
-{
-  <<
-    \new ChordNames
-    % \with {
-    %   \override BarLine.bar-extent = #'(-2 . 2)
-    %   \consists "Bar_engraver"
-    % }
-    {
-      \chorusChords
-      \verseChords
+  \context {
+    \Score
+    \remove "Bar_number_engraver"
+  }
+}
+
+\book {
+  \paper {
+    system-system-spacing.basic-distance = #12
+  }
+
+  \header {
+    title = "Westcoast Lullaby"
+    composer = "Roger Holdstock"
+    tagline = ##f
+  }
+
+  \markup \vspace #2
+
+  \score {
+    \header { piece = "CHORUS" }
+
+    <<
+      \new ChordNames \chorusChords
+      \new Lyrics \chorus
+    >>
+  }
+
+  \markup \vspace #2
+
+  \score {
+    \header { piece = "VERSES" }
+   
+    <<
+      \new ChordNames \verseChords
+      \new Lyrics = "lyrics" \verseI
+    >>
+  }
+
+  \markup \vspace #2
+
+  \markup {
+    \fill-line {
+      \huge \column {
+        "Halyards humming in the breeze"
+        "Sailboats resting from the seas"
+        "City sailors home once more"
+        "To sleep in bed safe on the shore"
+      }
+
+      \huge \column {
+        "Moon is rising on the bay"
+        "Ski run lights shine far away"
+        "Between the clouds a star breaks through"
+        "All are watching over you"
+      }
     }
-
-    \new Lyrics = "lyrics" {
-      \chorus
-
-      \verseI
-    }
-
-  >>
+  }
 }
