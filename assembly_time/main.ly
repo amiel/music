@@ -168,3 +168,40 @@ bottom = \relative c' {
   }
 }
 
+
+\book {
+
+  \header { 
+    subtitle = \markup { Chorus for E \flat parts }
+  }
+
+  \layout{}
+  \bookOutputName "assembly-time-e-flat"
+  \score { 
+    <<
+        \transpose ees c' 
+      \new ChordNames { \theChords }
+
+        \transpose ees c' 
+      \new Staff \new Voice = "melody" \melody
+   
+      \new Lyrics \lyricsto melody { \melodyLyrics }
+
+        \transpose ees c' 
+       \new Staff \with {
+         instrumentName = \markup { middle parts }
+       }
+        \partCombine #'(2 . 3) \top \middle
+
+        \transpose ees c'
+       \new Staff \with {
+         instrumentName = \markup { low part }
+      }
+      {
+        \bottom
+      }
+
+    >>
+  }
+}
+
