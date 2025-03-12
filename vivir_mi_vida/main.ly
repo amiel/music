@@ -1,5 +1,27 @@
 \version "2.24.4"
 
+
+% NOTES about arrangement
+%
+% Intro:
+% 
+%   1. voice (part 2) + piano (part 3)
+%   2. "
+%   3. percussion, voice (part 2), piano (part 4)
+%   4. " + trombone
+%
+% Verse:
+%
+%   1. piano, percussion, vocal
+%   2. "
+%   3. " + trombone
+%   4. " + trumpet
+%
+% Chorus:
+%
+% ??
+
+
 %%%%%%%%%%%%%%%%%
 % modules
 %
@@ -64,10 +86,12 @@ partOne = \relative c' {
   r4 \vivirMiVida
 
   c4 r4 r2
-  R1*5
 
-  % \firstClap
-  % \repeat unfold 4 { \theClap }
+  R1*2
+  r4 \vivirMiVida
+
+  c4 r4 r2
+
   r4 \vivirMiVida
 }
 
@@ -85,6 +109,7 @@ partThree = \relative c' {
   \clef bass
   \montuno
   \montuno
+  R1*8 % TODO: Trombone thing
 }
 
 partFour = \relative c {
@@ -94,11 +119,13 @@ partFour = \relative c {
   % Move the center-line clap for treble clef to center-line for bass clef
   \transpose bes d, {
     \firstClap
-    \repeat unfold 7 { \theClap }
-
-    \repeat unfold 7 { \theClap }
+    \repeat unfold 6 { \theClap }
     R1
   }
+
+  \montuno
+  \montuno
+
 }
 
 bassPart = \relative c {
