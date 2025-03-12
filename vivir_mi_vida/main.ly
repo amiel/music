@@ -62,6 +62,13 @@ bassIntro = \relative c {
   c4 r r2 | aes4 r r2 | ees'4 r r2 | bes4 r4 r2 |
 }
 
+bassSomething = \relative c {
+  c8. ees16~ees8 g8~g4 r4 |
+  aes,8. c16~c8 ees8~ees4 r4 |
+  ees,8. g16~g8 bes8~bes4 r4 |
+  bes8. d16~d8 f8~f4 r4 |
+}
+
 bassChorus = \relative c {
   c8. g16 g8 c8~ c8.
 }
@@ -71,6 +78,12 @@ montuno = \relative c' {
   aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
   g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
   f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8. g16~ |
+}
+
+trombone = \relative c' {
+  \repeat unfold 2 { r8. c16 r bes c8~ c4 r4 | } 
+  r8. ees16 r d ees8~ ees4 r4 | 
+  r8. d16 r c d8~d4 bes |
 }
 
 %%%%%%%%%%%%%%%%
@@ -109,7 +122,8 @@ partThree = \relative c' {
   \clef bass
   \montuno
   \montuno
-  R1*8 % TODO: Trombone thing
+  R1*4
+  \trombone
 }
 
 partFour = \relative c {
@@ -133,6 +147,8 @@ bassPart = \relative c {
   \clef bass
   \bassIntro
   \bassIntro
+  \bassSomething
+  \bassSomething
 }
 
 
