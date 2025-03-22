@@ -148,16 +148,23 @@ partOne = \relative c' {
   \transpose c c' {
     r4 \vivirMiVida
 
+    \mark \markup \italic salsa
     % TODO: High c with fall
-    <c'' c'>4 r4 r2
+    <<
+      { c''4\bendAfter -4 } \\ 
+      { c'4 }
+    >>
+    r4 r2  |
 
-    R1*2
-    r4 \vivirMiVida
-
-    c4 r4 r2
-
-    r4 \vivirMiVida
+    R1 |
+    r4 \vivirMiVida |
+    c'4 r4 r2 |
+    
+    R1 |
+    r4 \vivirMiVida |
   }
+
+  \mark \markup \box "Verse"
 
   \verse
 
@@ -170,6 +177,9 @@ partTwo = \relative c' {
 
   r4 \voyAReir
   c4 \voyAReir
+
+  \mark \markup \italic salsa
+
   c4 \voyAReir
   c4 \voyAReir
 
@@ -184,7 +194,10 @@ pianoPart = \relative c' {
   \mark \markup \box "Intro"
 
   \versePiano g16~ |
-  \versePiano g16 |
+  \versePiano g16~ |
+
+  \mark \markup \italic salsa
+
   \chorusPiano
   \chorusPiano
 
@@ -201,8 +214,12 @@ partThree = \relative c' {
   \mark \markup \box "Intro"
 
   \versePiano g16~ |
-  \versePiano r16 |
-  R1*4
+  \versePiano g16 |
+
+  \mark \markup \italic salsa
+
+  g8 \bendAfter -4 r8 r4 r2 | R1*3
+
   \trombone
 
   \mark \markup \box "Verse"
@@ -224,6 +241,7 @@ partFour = \relative c {
     R1
   }
 
+  \mark \markup \italic salsa
   \chorusPiano
   \chorusPiano
 
@@ -243,6 +261,9 @@ bassPart = \relative c {
 
   \bassIntro
   \bassIntro
+
+  \mark \markup \italic salsa
+
   \bassChorus
   \bassChorus
 
@@ -253,9 +274,11 @@ bassPart = \relative c {
 }
 
 
+pianoPartC = \new Staff \transpose c c' \pianoPart
+
 % Individual parts for printing
 leadPartC = \new Staff \partOne
-leadPartBb = \new Staff \transpose c bes \partOne
+leadPartBb = \new Staff \transpose bes c' \partOne
 leadPartEb = \new Staff \transpose c ees \partOne
 
 middlePartC = \new Staff \partTwo
@@ -292,10 +315,11 @@ bassEb = \new Staff \transpose c ees \bassPart
   }
 }
 
-\book { \bookOutputName "piano" \header { title = "Piano (C)" } \score { \compressMMRests { \pianoPart } \layout {} } }
+\book { \bookOutputName "piano" \header { title = "Piano (C)" } \score { \compressMMRests { \pianoPartC } \layout {} } }
 
 % Individual part books with filenames
 \book { \bookOutputName "lead_C" \header { title = "Lead Part (C)" } \score { \compressMMRests { \leadPartC } \layout {} } }
+\book { \bookOutputName "lead_Bb" \header { title = "Lead Part (B-flat)" } \score { \compressMMRests { \leadPartBb } \layout {} } }
 
 %\book { \bookOutputName "lead_Bb" \header { title = "Lead Part (B-flat)" } \score { \compressMMRests { \leadPartBb } \layout {} } }
 %\book { \bookOutputName "lead_Eb" \header { title = "Lead Part (E-flat)" } \score { \leadPartEb \layout {} } }
