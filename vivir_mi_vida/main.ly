@@ -1,6 +1,5 @@
 \version "2.24.4"
 
-
 % NOTES about arrangement
 %
 % Intro:
@@ -73,11 +72,18 @@ bassChorus = \relative c {
   c8. g16 g8 c8~ c8.
 }
 
-montuno = \relative c' {
+versePiano = \relative c' {
   g8. <c ees>16~<c ees>8 g8~g16 <c ees>8. g8. aes16~ |
   aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
   g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
-  f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8. g16~ |
+  f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
+}
+
+chorusPiano = \relative c' {
+  g8. g16 <c ees>8 <c ees> g16 <c ees>8 g16 <c ees>8 <c ees> |
+  aes8. aes16 <c ees>8 <c ees> aes16 <c ees>8 aes16 <c ees>8 <c ees> |
+  g8. g16 <bes ees>8 <bes ees> g16 <bes ees>8 g16 <bes ees>8 <bes ees> |
+  f8. f16 <bes d>8 <bes d> f16 <bes d>8 f16 <bes d>8 <bes d> |
 }
 
 trombone = \relative c' {
@@ -91,25 +97,35 @@ trombone = \relative c' {
 %
 
 % Define each part
+
+% trumpets
 partOne = \relative c' {
   \key c \minor
 
+  \mark \markup \box "Intro"
+
   \firstClap
   \repeat unfold 5 { \theClap }
-  r4 \vivirMiVida
 
-  c4 r4 r2
+  \transpose c c' {
+    r4 \vivirMiVida
 
-  R1*2
-  r4 \vivirMiVida
+    % TODO: High c with fall
+    <c'' c'>4 r4 r2
 
-  c4 r4 r2
+    R1*2
+    r4 \vivirMiVida
 
-  r4 \vivirMiVida
+    c4 r4 r2
+
+    r4 \vivirMiVida
+  }
 }
 
 partTwo = \relative c' {
   \key c \minor
+
+  \mark \markup \box "Intro"
 
   r4 \voyAReir
   c4 \voyAReir
@@ -118,17 +134,22 @@ partTwo = \relative c' {
 }
 
 partThree = \relative c' {
-  \key c \minor
   \clef bass
-  \montuno
-  \montuno
+  \key c \minor
+
+  \mark \markup \box "Intro"
+
+  \versePiano g16~ |
+  \versePiano r16 |
   R1*4
   \trombone
 }
 
 partFour = \relative c {
-  \key c \minor
   \clef bass
+  \key c \minor
+
+  \mark \markup \box "Intro"
 
   % Move the center-line clap for treble clef to center-line for bass clef
   \transpose bes d, {
@@ -137,14 +158,16 @@ partFour = \relative c {
     R1
   }
 
-  \montuno
-  \montuno
-
+  \chorusPiano
+  \chorusPiano
 }
 
 bassPart = \relative c {
-  \key c \minor
   \clef bass
+  \key c \minor
+
+  \mark \markup \box "Intro"
+
   \bassIntro
   \bassIntro
   \bassSomething
