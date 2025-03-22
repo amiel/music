@@ -25,6 +25,12 @@
 % modules
 %
 
+aClap = \relative c'' {
+  \xNotesOn
+  bes4
+  \xNotesOff
+}
+
 theClap = \relative c'' {
   \xNotesOn
 
@@ -43,6 +49,34 @@ firstClap = \relative c'' {
   \xNotesOff
 }
 
+verseClaps = \relative c'' {
+  \xNotesOn
+    R1
+    r2 bes4^\markup { \italic "clap" } bes4 |
+    bes4 r4 r2 |
+
+    \repeat unfold 2 {
+      r2 bes4 bes4 |
+      bes4 r4 r2 |
+    }
+
+  \xNotesOff
+}
+
+verse = \relative c' {
+  % a veces llega la lluvia
+  r8 c8 c d ees ees c ees~ | ees8 ees~ees4 r2 |
+
+  % para limpiar las herida
+  r8 ees ees c ees ees c ees~ | ees ees( d4) r2 |
+
+  % a veces solo una gota
+  r8 c c d ees d c c~ | c bes( c16 bes aes8~ aes4) r4 |
+
+  % puede vencer la sequia
+  r8 ees' ees ees ees ees c ees~ | ees ees( f4) r2 |
+}
+
 vivirMiVida = \relative c' {
   % one beat missing to allow for landing the melody on 1
     r8 ees8 ees4 g4 |
@@ -55,21 +89,6 @@ voyAReir = \relative c' {
     r8 c ees4 g |
   aes4 r8 c, ees4 aes |
   g4 \vivirMiVida
-}
-
-bassIntro = \relative c {
-  c4 r r2 | aes4 r r2 | ees'4 r r2 | bes4 r4 r2 |
-}
-
-bassSomething = \relative c {
-  c8. ees16~ees8 g8~g4 r4 |
-  aes,8. c16~c8 ees8~ees4 r4 |
-  ees,8. g16~g8 bes8~bes4 r4 |
-  bes8. d16~d8 f8~f4 r4 |
-}
-
-bassChorus = \relative c {
-  c8. g16 g8 c8~ c8.
 }
 
 versePiano = \relative c' {
@@ -91,6 +110,25 @@ trombone = \relative c' {
   r8. ees16 r d ees8~ ees4 r4 | 
   r8. d16 r c d8~d4 bes |
 }
+
+bassIntro = \relative c {
+  c4 r r2 | aes4 r r2 | ees'4 r r2 | bes4 r4 r2 |
+}
+
+bassVerse = \relative c {
+  c8. ees16~ees8 g8~g4 r4 |
+  aes,8. c16~c8 ees8~ees4 r4 |
+  ees,8. g16~g8 bes8~bes4 r4 |
+  bes8. d16~d8 f8~f4 r4 |
+}
+
+bassChorus = \relative c {
+  c8. g16 g8 c8 r8. c16 ees8 aes, |
+  r8. aes16 ees8 aes r8. aes16 aes8 ees |
+  r8. bes16 bes8 ees r8. ees16 ees8 bes |
+  r8. f'16 f8 bes r8. bes16 ees bes c8 |
+}
+
 
 %%%%%%%%%%%%%%%%
 % parts
@@ -120,6 +158,9 @@ partOne = \relative c' {
 
     r4 \vivirMiVida
   }
+
+  \verse
+
 }
 
 partTwo = \relative c' {
@@ -131,6 +172,26 @@ partTwo = \relative c' {
   c4 \voyAReir
   c4 \voyAReir
   c4 \voyAReir
+
+  \mark \markup \box "Verse"
+
+  \verseClaps
+}
+
+pianoPart = \relative c' {
+  \key c \minor
+
+  \mark \markup \box "Intro"
+
+  \versePiano g16~ |
+  \versePiano g16 |
+  \chorusPiano
+  \chorusPiano
+
+  \mark \markup \box "Verse"
+
+  \versePiano g16~ |
+  \versePiano r16 |
 }
 
 partThree = \relative c' {
@@ -143,6 +204,11 @@ partThree = \relative c' {
   \versePiano r16 |
   R1*4
   \trombone
+
+  \mark \markup \box "Verse"
+
+  \versePiano g16~ |
+  \versePiano r16 |
 }
 
 partFour = \relative c {
@@ -160,6 +226,13 @@ partFour = \relative c {
 
   \chorusPiano
   \chorusPiano
+
+  \mark \markup \box "Verse"
+
+  % Move the center-line clap for treble clef to center-line for bass clef
+  \transpose bes d, {
+    \verseClaps
+  }
 }
 
 bassPart = \relative c {
@@ -170,8 +243,13 @@ bassPart = \relative c {
 
   \bassIntro
   \bassIntro
-  \bassSomething
-  \bassSomething
+  \bassChorus
+  \bassChorus
+
+  \mark \markup \box "Verse"
+
+  \bassVerse
+  \bassVerse
 }
 
 
@@ -214,6 +292,8 @@ bassEb = \new Staff \transpose c ees \bassPart
   }
 }
 
+\book { \bookOutputName "piano" \header { title = "Piano (C)" } \score { \compressMMRests { \pianoPart } \layout {} } }
+
 % Individual part books with filenames
 \book { \bookOutputName "lead_C" \header { title = "Lead Part (C)" } \score { \compressMMRests { \leadPartC } \layout {} } }
 
@@ -229,7 +309,6 @@ bassEb = \new Staff \transpose c ees \bassPart
   \header { title = "Low Background Part 1 (C)" }
   \score { \compressMMRests { \lowPartC } \layout {} }
 }
-
 
 \book {
   \bookOutputName "low1_Bb"
