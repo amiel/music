@@ -91,12 +91,41 @@ voyAReir = \relative c' {
   g4 \vivirMiVida
 }
 
+highAccents = \relative c''' {
+  r4 c-^ \fff r c-^ | r c-^ r2 |
+}
+
+prechorusLastBarRoot = \relative c'' {
+  <f bes>8 r8 <f bes>8 r8
+  \tuplet 3/2 { <f bes>8 <f bes>8 <f bes>8 } <f bes>8 r8 |
+}
+
+
 versePiano = \relative c' {
   g8. <c ees>16~<c ees>8 g8~g16 <c ees>8. g8. aes16~ |
   aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
   g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
   f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
 }
+
+prechorusPiano = \relative c' {
+  \repeat unfold 4 { <g c ees>4-. }
+  \repeat unfold 4 { <aes c ees>-. }
+  \repeat unfold 4 { <g bes ees>-. }
+  \repeat unfold 4 { <f bes d>-. }
+}
+
+prechorusPianoWithAccents = \relative c' {
+  \repeat unfold 2 { <g c ees>4-. <g c ees>4-^ }
+
+   <g c ees>4-. <g c ees>4-^ <aes c ees>-. <aes c ees>-.
+
+  \repeat unfold 4 { <g bes ees>-. }
+
+  <f bes d>8 r8 <f bes d>8 r8
+  \tuplet 3/2 { <f bes d>8 <f bes d>8 <f bes d>8 } <f bes d>8 r8 |
+}
+
 
 chorusPiano = \relative c' {
   g8. g16 <c ees>8 <c ees> g16 <c ees>8 g16 <c ees>8 <c ees> |
@@ -168,6 +197,12 @@ partOne = \relative c' {
 
   \verse
 
+  \mark \markup \box "Prechorus"
+
+  R1*4
+
+  \highAccents
+  R1 \prechorusLastBarRoot
 }
 
 partTwo = \relative c' {
@@ -185,7 +220,14 @@ partTwo = \relative c' {
 
   \mark \markup \box "Verse"
 
-  \verseClaps
+  \verseClaps R1
+
+  \mark \markup \box "Prechorus"
+
+  \transpose c c' {
+    \prechorusPiano
+    \prechorusPianoWithAccents
+  }
 }
 
 pianoPart = \relative c' {
@@ -201,10 +243,15 @@ pianoPart = \relative c' {
   \chorusPiano
   \chorusPiano
 
-  \mark \markup \box "Verse"
+  \break \mark \markup \box "Verse"
 
   \versePiano g16~ |
   \versePiano r16 |
+
+  \break \mark \markup \box "Prechorus"
+
+  \prechorusPiano
+  \prechorusPianoWithAccents
 }
 
 partThree = \relative c' {
@@ -226,6 +273,13 @@ partThree = \relative c' {
 
   \versePiano g16~ |
   \versePiano r16 |
+
+  \mark \markup \box "Prechorus"
+
+  \trombone
+
+  % maybe para que
+  R1*4
 }
 
 partFour = \relative c {
@@ -249,8 +303,10 @@ partFour = \relative c {
 
   % Move the center-line clap for treble clef to center-line for bass clef
   \transpose bes d, {
-    \verseClaps
+    \verseClaps R1 
   }
+
+  \mark \markup \box "Prechorus"
 }
 
 bassPart = \relative c {
@@ -268,6 +324,11 @@ bassPart = \relative c {
   \bassChorus
 
   \mark \markup \box "Verse"
+
+  \bassVerse
+  \bassVerse
+
+  \mark \markup \box "Prechorus"
 
   \bassVerse
   \bassVerse
