@@ -91,6 +91,28 @@ voyAReir = \relative c' {
   g4 \vivirMiVida
 }
 
+prechorusMelodyPickup = \relative c {
+  % y para 
+  c8 ees d |
+}
+
+
+prechorusMelody = \relative c {
+  % [y para] que
+  ees4 r8 d ees4 r8 d |
+  ees4 r8 ees ees ees f g |
+  g8. f16 ees4 r4 f16 f8 f16 |
+}
+
+prechorusMelodyFirstEnding = \relative c {
+  f8. ees16 d4 r8 % r4. 
+}
+
+prechorusMelodySecondEnding = \relative c {
+  f2~ f8 ees~ees16 d8. |
+}
+
+
 highAccents = \relative c''' {
   r4 c-^ \fff r c-^ | r c-^ r2 |
 }
@@ -137,7 +159,7 @@ chorusPiano = \relative c' {
 trombone = \relative c' {
   \repeat unfold 2 { r8. c16 r bes c8~ c4 r4 | } 
   r8. ees16 r d ees8~ ees4 r4 | 
-  r8. d16 r c d8~d4 bes |
+  r8. d16 r c d8~d4 % missing last beat
 }
 
 bassIntro = \relative c {
@@ -267,7 +289,7 @@ partThree = \relative c' {
 
   g8 \bendAfter -4 r8 r4 r2 | R1*3
 
-  \trombone
+  \trombone bes4 |
 
   \mark \markup \box "Verse"
 
@@ -278,8 +300,11 @@ partThree = \relative c' {
 
   \trombone
 
-  % maybe para que
-  R1*4
+  % pickup 
+  c8 d |
+
+  \prechorusMelody
+  \prechorusMelodySecondEnding
 }
 
 partFour = \relative c {
@@ -303,10 +328,18 @@ partFour = \relative c {
 
   % Move the center-line clap for treble clef to center-line for bass clef
   \transpose bes d, {
-    \verseClaps R1 
+    \verseClaps r2 r8 
   }
 
+  \prechorusMelodyPickup
+
   \mark \markup \box "Prechorus"
+
+  \prechorusMelody
+  \prechorusMelodyFirstEnding
+  \prechorusMelodyPickup
+  \prechorusMelody
+  \prechorusMelodySecondEnding
 }
 
 bassPart = \relative c {
