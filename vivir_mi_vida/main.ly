@@ -2,27 +2,6 @@
 
 \pointAndClickOff
 
-% NOTES about arrangement
-%
-% Intro:
-% 
-%   1. voice (part 2) + piano (part 3)
-%   2. "
-%   3. percussion, voice (part 2), piano (part 4)
-%   4. " + trombone
-%
-% Verse:
-%
-%   1. piano, percussion, vocal
-%   2. "
-%   3. " + trombone
-%   4. " + trumpet
-%
-% Chorus:
-%
-% ??
-
-
 %%%%%%%%%%%%%%%%%
 % modules
 %
@@ -52,8 +31,11 @@ firstClap = \relative c'' {
 }
 
 verseClaps = \relative c'' {
+
+  \tag #'full { R1 }
+  \tag #'withoutFirstBeat { r4 r2 }
+
   \xNotesOn
-    R1
     r2 bes4^\markup { \italic "clap" } bes4 |
     bes4 r4 r2 |
 
@@ -65,7 +47,7 @@ verseClaps = \relative c'' {
   \xNotesOff
 }
 
-verse = \relative c' {
+verse = \relative c'' {
   % a veces llega la lluvia
   r8 c8 c d ees ees c ees~ | ees8 ees~ees4 r2 |
 
@@ -189,7 +171,7 @@ bassChorus = \relative c {
 
 % Define each part
 
-% trumpets
+% higher woodwinds
 partOne = \relative c' {
   \key c \minor
 
@@ -202,7 +184,6 @@ partOne = \relative c' {
     r4 \vivirMiVida
 
     \mark \markup \italic salsa
-    % TODO: High c with fall
     <<
       { c''4\bendAfter -4 } \\ 
       { c'4 }
@@ -229,6 +210,7 @@ partOne = \relative c' {
   R1 \prechorusLastBarRoot
 }
 
+% lower woodwinds
 partTwo = \relative c' {
   \key c \minor
 
@@ -244,7 +226,8 @@ partTwo = \relative c' {
 
   \mark \markup \box "Verse"
 
-  \verseClaps R1
+  c4 
+  \keepWithTag #'withoutFirstBeat \verseClaps R1
 
   \mark \markup \box "Prechorus"
 
@@ -254,6 +237,7 @@ partTwo = \relative c' {
   }
 }
 
+% melodica
 pianoPart = \relative c' {
   \key c \minor
 
@@ -279,7 +263,6 @@ pianoPart = \relative c' {
 }
 
 partThree = \relative c' {
-  \clef bass
   \key c \minor
 
   \mark \markup \box "Intro"
@@ -310,7 +293,6 @@ partThree = \relative c' {
 }
 
 partFour = \relative c {
-  \clef bass
   \key c \minor
 
   \mark \markup \box "Intro"
@@ -323,14 +305,16 @@ partFour = \relative c {
   }
 
   \mark \markup \italic salsa
-  \chorusPiano
-  \chorusPiano
+  % \transpose c c, {
+    \chorusPiano
+    \chorusPiano
+  % }
 
   \mark \markup \box "Verse"
 
   % Move the center-line clap for treble clef to center-line for bass clef
   \transpose bes d, {
-    \verseClaps r2 r8 
+    \keepWithTag #'full \verseClaps r2 r8 
   }
 
   \prechorusMelodyPickup
@@ -374,20 +358,20 @@ pianoPartC = \new Staff \transpose c c' \pianoPart
 
 % Individual parts for printing
 leadPartC = \new Staff \partOne
-leadPartBb = \new Staff \transpose bes c' \partOne
+leadPartBb = \new Staff \transpose bes c \partOne
 leadPartEb = \new Staff \transpose ees c \partOne
 
 middlePartC = \new Staff \partTwo
 middlePartBb = \new Staff \transpose bes c' \partTwo
-middlePartEb = \new Staff \transpose ees c \partTwo
+% middlePartEb = \new Staff \transpose ees c \partTwo
 
-lowPartC = \new Staff \partThree
-lowPartBb = \new Staff \transpose bes c \partThree
-lowPartEb = \new Staff \transpose ees c \partThree
+lowPartC = \new Staff { \clef bass \partThree }
+lowPartBb = \new Staff { \clef treble \transpose bes c'' \partThree }
+% lowPartEb = \new Staff \transpose ees c \partThree
 
-otherLowPartC = \new Staff \partFour
-otherLowPartBb = \new Staff \transpose bes c \partFour
-otherlowPartEb = \new Staff \transpose ees c \partFour
+otherLowPartC = \new Staff { \clef bass \partFour }
+otherLowPartBb = \new Staff { \clef treble \transpose bes c'' \partFour }
+otherLowPartEb = \new Staff { \clef treble \transpose ees c'' \partFour }
 
 bassC = \new Staff \bassPart
 bassBb = \new Staff \transpose bes c \bassPart
@@ -395,7 +379,7 @@ bassEb = \new Staff \transpose ees c \bassPart
 
 % Full Score in C
 \book {
-  \bookOutputName "full_score_C"
+  \bookOutputName "score_C"
   \header { title = "Full Score (C)" }
   \score {
     <<
@@ -404,36 +388,54 @@ bassEb = \new Staff \transpose ees c \bassPart
         \middlePartC
         \lowPartC
         \otherLowPartC
+
         \bassC
       >>
     >>
     \layout {}
+    \midi {}
   }
 }
 
-\book { \bookOutputName "piano" \header { title = "Piano (C)" } \score { \compressMMRests { \pianoPartC } \layout {} } }
+\book { \bookOutputName "melodica" \header { title = "Melodica" } \score { \compressMMRests { \pianoPartC } \layout {} } }
 
 % Individual part books with filenames
-\book { \bookOutputName "lead_C" \header { title = "Lead Part (C)" } \score { \compressMMRests { \leadPartC } \layout {} } }
-\book { \bookOutputName "lead_Bb" \header { title = "Lead Part (B-flat)" } \score { \compressMMRests { \leadPartBb } \layout {} } }
-\book { \bookOutputName "lead_Eb" \header { title = "Lead Part (E-flat)" } \score { \leadPartEb \layout {} } }
+\book { \bookOutputName "flute_bells" \header { title = "Flute/Bells" } \score { \compressMMRests { \leadPartC } \layout {} } }
+\book { \bookOutputName "trumpet_1" \header { title = "Trumpet 1" } \score { \compressMMRests { \leadPartBb } \layout {} } }
+\book { \bookOutputName "soprano_sax" \header { title = "Soprano Sax" } \score { \compressMMRests { \transpose c c' \leadPartBb } \layout {} } }
+\book { \bookOutputName "alto_sax" \header { title = "Alto Sax" } \score { \compressMMRests { \leadPartEb } \layout {} } }
 
 
-\book { \bookOutputName "middle_C" \header { title = "Middle Part (C)" } \score { \middlePartC \layout {} } }
-\book { \bookOutputName "middle_Bb" \header { title = "Middle Part (B-flat)" } \score { \middlePartBb \layout {} } }
-\book { \bookOutputName "middle_Eb" \header { title = "Middle Part (E-flat)" } \score { \middlePartEb \layout {} } }
+% \book { \bookOutputName "middle_C" \header { title = "Middle Part (C)" } \score { \middlePartC \layout {} } }
+\book { \bookOutputName "trumpet_2" \header { title = "Trumpet 2" } \score { \middlePartBb \layout {} } }
+\book { \bookOutputName "clarinet" \header { title = "Clarinet" } \score { \middlePartBb \layout {} } }
+\book { \bookOutputName "tenor_sax" \header { title = "Tenor Sax" } \score { \middlePartBb \layout {} } }
+% \book { \bookOutputName "middle_Eb" \header { title = "Middle Part (E-flat)" } \score { \middlePartEb \layout {} } }
 
 \book {
-  \bookOutputName "low1_C"
-  \header { title = "Low Background Part 1 (C)" }
+  \bookOutputName "trombone"
+  \header { title = "Trombone" }
   \score { \compressMMRests { \lowPartC } \layout {} }
 }
 
 \book {
-  \bookOutputName "low1_Bb"
-  \header { title = "Low Background Part 1 (B-flat)" }
+  \bookOutputName "baritone"
+  \header { title = "Baritone (B-flat)" }
   \score { \compressMMRests { \lowPartBb } \layout {} }
 }
+
+\book {
+  \bookOutputName "bari_sax"
+  \header { title = "Bari Sax" }
+  \score { \compressMMRests { \otherLowPartEb } \layout {} }
+}
+
+\book {
+  \bookOutputName "tenor_sax_alternate"
+  \header { title = "Tenor Sax (alternate)" }
+  \score { \compressMMRests { \otherLowPartBb } \layout {} }
+}
+
 
 %\book { \bookOutputName "low1_Eb" \header { title = "Low Background Part 1 (E-flat)" } \score { \lowPartEb \layout {} } }
 %
