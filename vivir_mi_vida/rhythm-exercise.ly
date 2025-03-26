@@ -57,4 +57,8 @@ rhythmPractice = \relative c {
   \xNotesOff
 }
 
-\book { \bookOutputName "rhythm-practice" \header { title = "Rhythm Practice" } \score { \compressMMRests { \new Staff \rhythmPractice } \layout {} } }
+
+\book { \bookOutputName "rhythm-exercise" \header { title = "Vivir Mi Vida Rhythm Exercises" } \score { \compressMMRests { \new Staff \rhythmPractice } \layout {
+
+#(layout-set-staff-size 36)
+} } }

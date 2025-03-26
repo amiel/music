@@ -1,5 +1,7 @@
 \version "2.24.4"
 
+\pointAndClickOff
+
 % NOTES about arrangement
 %
 % Intro:
@@ -373,23 +375,23 @@ pianoPartC = \new Staff \transpose c c' \pianoPart
 % Individual parts for printing
 leadPartC = \new Staff \partOne
 leadPartBb = \new Staff \transpose bes c' \partOne
-leadPartEb = \new Staff \transpose c ees \partOne
+leadPartEb = \new Staff \transpose ees c \partOne
 
 middlePartC = \new Staff \partTwo
-middlePartBb = \new Staff \transpose c bes \partTwo
-middlePartEb = \new Staff \transpose c ees \partTwo
+middlePartBb = \new Staff \transpose bes c' \partTwo
+middlePartEb = \new Staff \transpose ees c \partTwo
 
 lowPartC = \new Staff \partThree
-lowPartBb = \new Staff \transpose c bes \partThree
-lowPartEb = \new Staff \transpose c ees \partThree
+lowPartBb = \new Staff \transpose bes c \partThree
+lowPartEb = \new Staff \transpose ees c \partThree
 
 otherLowPartC = \new Staff \partFour
-otherLowPartBb = \new Staff \transpose c bes \partFour
-otherlowPartEb = \new Staff \transpose c ees \partFour
+otherLowPartBb = \new Staff \transpose bes c \partFour
+otherlowPartEb = \new Staff \transpose ees c \partFour
 
 bassC = \new Staff \bassPart
-bassBb = \new Staff \transpose c bes \bassPart
-bassEb = \new Staff \transpose c ees \bassPart
+bassBb = \new Staff \transpose bes c \bassPart
+bassEb = \new Staff \transpose ees c \bassPart
 
 % Full Score in C
 \book {
@@ -414,13 +416,12 @@ bassEb = \new Staff \transpose c ees \bassPart
 % Individual part books with filenames
 \book { \bookOutputName "lead_C" \header { title = "Lead Part (C)" } \score { \compressMMRests { \leadPartC } \layout {} } }
 \book { \bookOutputName "lead_Bb" \header { title = "Lead Part (B-flat)" } \score { \compressMMRests { \leadPartBb } \layout {} } }
+\book { \bookOutputName "lead_Eb" \header { title = "Lead Part (E-flat)" } \score { \leadPartEb \layout {} } }
 
-%\book { \bookOutputName "lead_Bb" \header { title = "Lead Part (B-flat)" } \score { \compressMMRests { \leadPartBb } \layout {} } }
-%\book { \bookOutputName "lead_Eb" \header { title = "Lead Part (E-flat)" } \score { \leadPartEb \layout {} } }
-%
-%\book { \bookOutputName "middle_C" \header { title = "Middle Part (C)" } \score { \middlePartC \layout {} } }
-%\book { \bookOutputName "middle_Bb" \header { title = "Middle Part (B-flat)" } \score { \middlePartBb \layout {} } }
-%\book { \bookOutputName "middle_Eb" \header { title = "Middle Part (E-flat)" } \score { \middlePartEb \layout {} } }
+
+\book { \bookOutputName "middle_C" \header { title = "Middle Part (C)" } \score { \middlePartC \layout {} } }
+\book { \bookOutputName "middle_Bb" \header { title = "Middle Part (B-flat)" } \score { \middlePartBb \layout {} } }
+\book { \bookOutputName "middle_Eb" \header { title = "Middle Part (E-flat)" } \score { \middlePartEb \layout {} } }
 
 \book {
   \bookOutputName "low1_C"
