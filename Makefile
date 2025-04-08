@@ -1,6 +1,7 @@
 .PHONY: watch
 
 
+
 watch:
-	find . -name '*.ly' | entr make /_
+	find . -name '*.ly' | entr lilypond /_
 

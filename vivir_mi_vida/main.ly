@@ -385,6 +385,8 @@ bassC = \new Staff \bassPart
 % bassBb = \new Staff \transpose bes c \bassPart
 % bassEb = \new Staff \transpose ees c \bassPart
 
+#(set-global-staff-size 24)
+
 % Full Score in C
 \book {
   \bookOutputName "vivir mi vida - score"
