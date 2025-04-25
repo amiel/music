@@ -12,15 +12,34 @@ composer = \markup "by Bob Marley"
 %%%%%%%%%%%%%%%%%
 % modules
 %
+explanationText = \markup {
+  \wordwrap {
+    Only play verse if someone wants to sing the verse.
+
+    To get really fancy, some people can pick a note from the c minor chord and play offbeats.
+  }
+
+}
 
 melodyPart = {
   \transpose c bes {
     \key c \minor
     \relative c' {
+
+      \break \mark \markup \box "Chorus"
       \repeat volta 2 {
-        bes16 c r8  d16 ees r8 r2 |
-        bes16 c8 ees16~ees16 bes c8 r2 |
+        \repeat unfold 2 {
+          bes16 c r8  d16 ees r8 r2 |
+          bes16 c8 ees16~ees16 bes c8 r2 |
+        }
       }
+
+
+      \break \mark \markup \box "Verse"
+      \repeat volta 4 {
+        R1*2
+      }
+
     }
   }
 }
@@ -29,10 +48,22 @@ bassPart = \relative c {
   \transpose c bes {
     \key c \minor
     \relative c' {
+
+      \break \mark \markup \box "Chorus"
       \repeat volta 2 {
         c4 r r16 g' ees8~ees16 d ees d |
         c4 r8. c16 g8 g4 bes8 |
+
+        c4 r r16 g' ees8~ees16 d ees d |
+        c4 c16 c8 c16 g8 g4 bes8 |
       }
+
+      \break \mark \markup \box "Verse"
+      \repeat volta 4 {
+        \tuplet 3/2 { ees8 f g } ees2 r8. c16 |
+        \tuplet 3/2 { ees8 f g } bes,8 c8~c4 r8. c16 |
+      }
+
     }
   }
 }
@@ -64,8 +95,9 @@ bassEb = \new Staff { \clef treble \transpose ees c \bassPart }
       >>
     >>
     \layout {}
-    % \midi {}
   }
+
+  \explanationText
 }
 
 \book {
@@ -84,8 +116,9 @@ bassEb = \new Staff { \clef treble \transpose ees c \bassPart }
       >>
     >>
     \layout {}
-    % \midi {}
   }
+
+  \explanationText
 }
 
 \book {
@@ -104,6 +137,7 @@ bassEb = \new Staff { \clef treble \transpose ees c \bassPart }
       >>
     >>
     \layout {}
-    % \midi {}
   }
+
+  \explanationText
 }
