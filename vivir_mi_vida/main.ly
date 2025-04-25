@@ -141,9 +141,10 @@ prechorusPianoWithAccents = \relative c' {
 }
 
 
-chorusPiano = \relative c' {
+chorusPianoA = \relative c' {
   g8. g16 <c ees>8 <c ees> g16 <c ees>8 g16 <c ees>8 <c ees> |
   aes8. aes16 <c ees>8 <c ees> aes16 <c ees>8 aes16 <c ees>8 <c ees> |
+
   g8. g16 <bes ees>8 <bes ees> g16 <bes ees>8 g16 <bes ees>8 <bes ees> |
   f8. f16 <bes d>8 <bes d> f16 <bes d>8 f16 <bes d>8 <bes d> |
 }
@@ -161,6 +162,16 @@ chorusPianoC = \relative c' {
 
   <bes ees>8. g16  <bes ees>8 <bes ees>  g16 <bes ees>8 g16    <bes ees>8 <bes ees> |
   <bes d>8. f16    <bes d>8 <bes d>      f16 <bes d>8 f16      <bes d>8 <bes d> |
+}
+
+chorusPiano = \relative c' {
+  % this is close, but it needs to land on the high note
+
+  g16 <ees c>8 g16~ g16 <ees c>16 g8            g16 <ees c>8 g16~      g8 g |
+
+  <ees c>8. aes16~aes16 <ees c>16 aes8            <ees c>16 aes8 <ees c>16      aes8 aes |
+  <ees bes>8. g16~g16 <ees bes>16 g8            <ees bes>16 g8 <ees bes>16      g8 g |
+  <d bes>8. f16~f16 <d bes>16 f8            <d bes>16 f8 <d bes>16      f8 f |
 }
 
 
@@ -272,8 +283,8 @@ pianoPart = \relative c' {
 
   \break \mark \markup \box "Intro Chorus"
 
-  \chorusPianoC
-  \chorusPianoC
+  \chorusPiano
+  \chorusPiano
 
   \break \mark \markup \box "Verse"
 
@@ -330,8 +341,8 @@ partFour = \relative c {
 
   \break \mark \markup \box "Intro Chorus"
   % \transpose c c, {
-    \chorusPianoC
-    \chorusPianoC
+    \chorusPiano
+    \chorusPiano
   % }
 
   \break \mark \markup \box "Verse"
