@@ -106,7 +106,7 @@ prechorusMelodySecondEnding = \relative c {
 
 
 highAccents = \relative c''' {
-  r4 c-^ \fff r c-^ | r c-^ r2 |
+  r4 c-^\sfz r c-^\sfz | r c-^\sfz r2 |
 }
 
 prechorusLastBarRoot = \relative c'' {
@@ -123,16 +123,17 @@ versePiano = \relative c' {
 }
 
 prechorusPiano = \relative c' {
-  \repeat unfold 4 { <g c ees>4-. }
+  <g c ees>4-. \mp \repeat unfold 3 { <g c ees>4-. }
   \repeat unfold 4 { <aes c ees>-. }
   \repeat unfold 4 { <g bes ees>-. }
   \repeat unfold 4 { <f bes d>-. }
 }
 
 prechorusPianoWithAccents = \relative c' {
-  \repeat unfold 2 { <g c ees>4-. <g c ees>4-^ }
-
-   <g c ees>4-. <g c ees>4-^ <aes c ees>-. <aes c ees>-.
+  <g c ees>4-. <g c ees>4-^ \sfz
+  <g c ees>-. \mp <g c ees>-^ \sfz
+  <aes c ees>-. \mp <aes c ees>-^ \sfz
+  <aes c ees>-. \mp <aes c ees>-.
 
   \repeat unfold 4 { <g bes ees>-. }
 
