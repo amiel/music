@@ -155,6 +155,15 @@ chorusPianoB = \relative c' {
   <bes d>16 f8 <bes d>16 f8 <bes d> f16 <bes d>8 f16 <bes d>8 <bes d> |
 }
 
+chorusPianoC = \relative c' {
+  <c ees>8. g16    <c ees>8 <c ees>      g16 <c ees>8 g16      <c ees>8 <c ees> |
+  <c ees>8. aes16  <c ees>8 <c ees>      aes16 <c ees>8 aes16  <c ees>8 <c ees> |
+
+  <bes ees>8. g16  <bes ees>8 <bes ees>  g16 <bes ees>8 g16    <bes ees>8 <bes ees> |
+  <bes d>8. f16    <bes d>8 <bes d>      f16 <bes d>8 f16      <bes d>8 <bes d> |
+}
+
+
 trombone = \relative c' {
   \repeat unfold 2 { r8. c16 r bes c8~ c4 r4 | } 
   r8. ees16 r d ees8~ ees4 r4 | 
@@ -263,8 +272,8 @@ pianoPart = \relative c' {
 
   \break \mark \markup \box "Intro Chorus"
 
-  \chorusPiano
-  \chorusPiano
+  \chorusPianoC
+  \chorusPianoC
 
   \break \mark \markup \box "Verse"
 
@@ -321,8 +330,8 @@ partFour = \relative c {
 
   \break \mark \markup \box "Intro Chorus"
   % \transpose c c, {
-    \chorusPiano
-    \chorusPiano
+    \chorusPianoC
+    \chorusPianoC
   % }
 
   \break \mark \markup \box "Verse"
