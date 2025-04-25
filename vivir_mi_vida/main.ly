@@ -234,16 +234,29 @@ partOne = \relative c' {
     r4 \vivirMiVida |
   }
 
-  \break \mark \markup \box "Verse"
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
 
-  \verse
+    \verse
 
-  \break \mark \markup \box "Prechorus"
+    \break \mark \markup \box "Prechorus"
 
-  R1*4
+    R1*4
 
-  \highAccents
-  R1 \prechorusLastBarRoot
+    \highAccents
+    R1 \prechorusLastBarRoot
+
+
+    \transpose c c' {
+      \break \mark \markup \box "Chorus"
+      R1*2 |
+      r4 \vivirMiVida |
+      c'4 r4 r2 |
+      
+      R1 |
+      r4 \vivirMiVida |
+    }
+  }
 }
 
 % lower woodwinds
@@ -260,16 +273,23 @@ partTwo = \relative c' {
   c4 \voyAReir
   c4 \voyAReir
 
-  \break \mark \markup \box "Verse"
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
 
-  c4 
-  \keepWithTag #'withoutFirstBeat \verseClaps R1
+    c4 
+    \keepWithTag #'withoutFirstBeat \verseClaps R1
 
-  \break \mark \markup \box "Prechorus"
+    \break \mark \markup \box "Prechorus"
 
-  \transpose c c' {
-    \prechorusPiano
-    \prechorusPianoWithAccents
+    \transpose c c' {
+      \prechorusPiano
+      \prechorusPianoWithAccents
+    }
+
+    \break \mark \markup \box "Chorus"
+
+    r4 \voyAReir
+    c4 \voyAReir
   }
 }
 
@@ -287,15 +307,22 @@ pianoPart = \relative c' {
   \chorusPiano
   \chorusPiano
 
-  \break \mark \markup \box "Verse"
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
 
-  \versePiano g16~ |
-  \versePiano r16 |
+    \versePiano g16~ |
+    \versePiano r16 |
 
-  \break \mark \markup \box "Prechorus"
+    \break \mark \markup \box "Prechorus"
 
-  \prechorusPiano
-  \prechorusPianoWithAccents
+    \prechorusPiano
+    \prechorusPianoWithAccents
+
+    \break \mark \markup \box "Chorus"
+
+    \chorusPiano
+    \chorusPiano
+  }
 }
 
 partThree = \relative c' {
@@ -312,20 +339,30 @@ partThree = \relative c' {
 
   \trombone bes4 |
 
-  \break \mark \markup \box "Verse"
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
 
-  \versePiano g16~ |
-  \versePiano r16 |
+    \versePiano g16~ |
+    \versePiano r16 |
 
-  \break \mark \markup \box "Prechorus"
+    \break \mark \markup \box "Prechorus"
 
-  \trombone
+    \trombone
 
-  % pickup 
-  ees8 d |
+    % pickup 
+    ees8 d |
 
-  \prechorusMelody
-  \prechorusMelodySecondEnding
+    \prechorusMelody
+    \prechorusMelodySecondEnding
+
+
+    \break \mark \markup \box "Chorus"
+
+    | R1*4
+
+    % TODO: Maybe another counter melody here
+    \trombone bes4 |
+  }
 }
 
 partFour = \relative c {
@@ -346,22 +383,29 @@ partFour = \relative c {
     \chorusPiano
   % }
 
-  \break \mark \markup \box "Verse"
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
 
-  % Move the center-line clap for treble clef to center-line for bass clef
-  \transpose bes d, {
-    \keepWithTag #'full \verseClaps r2 r8 
+    % Move the center-line clap for treble clef to center-line for bass clef
+    \transpose bes d, {
+      \keepWithTag #'full \verseClaps r2 r8 
+    }
+
+    \prechorusMelodyPickup
+
+    \break \mark \markup \box "Prechorus"
+
+    \prechorusMelody
+    \prechorusMelodyFirstEnding
+    \prechorusMelodyPickup
+    \prechorusMelody
+    \prechorusMelodySecondEnding
+
+
+    \break \mark \markup \box "Chorus"
+    \chorusPiano
+    \chorusPiano
   }
-
-  \prechorusMelodyPickup
-
-  \break \mark \markup \box "Prechorus"
-
-  \prechorusMelody
-  \prechorusMelodyFirstEnding
-  \prechorusMelodyPickup
-  \prechorusMelody
-  \prechorusMelodySecondEnding
 }
 
 bassPart = \relative c {
@@ -378,15 +422,22 @@ bassPart = \relative c {
   \bassChorus
   \bassChorus
 
-  \break \mark \markup \box "Verse"
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
 
-  \bassVerse
-  \bassVerse
+    \bassVerse
+    \bassVerse
 
-  \break \mark \markup \box "Prechorus"
+    \break \mark \markup \box "Prechorus"
 
-  \bassVerse
-  \bassVerse
+    \bassVerse
+    \bassVerse % Prechorus ending
+
+    \break \mark \markup \box "Chorus"
+
+    \bassChorus
+    \bassChorus 
+  }
 }
 
 
@@ -413,7 +464,7 @@ bassC = \new Staff \bassPart
 % bassBb = \new Staff \transpose bes c \bassPart
 % bassEb = \new Staff \transpose ees c \bassPart
 
-#(set-global-staff-size 24)
+#(set-global-staff-size 22)
 
 % Full Score in C
 \book {
