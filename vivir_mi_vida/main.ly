@@ -167,10 +167,10 @@ chorusPianoC = \relative c' {
 chorusPiano = \relative c' {
   % this is close, but it needs to land on the high note
 
-  g16 <ees c>8 g16~ g16 <ees c>16 g8            g16 <ees c>8 g16~      g8 g |
+  g16 <ees c>8 g16~ g16 <ees c>16 g8            g16 <ees c>8 g16~      g8 bes |
+  aes16 <ees c>8 aes16~ aes16 <ees c>16 aes8            aes16 <ees c>8 aes16~      aes8 aes |
 
-  <ees c>8. aes16~aes16 <ees c>16 aes8            <ees c>16 aes8 <ees c>16      aes8 aes |
-  <ees bes>8. g16~g16 <ees bes>16 g8            <ees bes>16 g8 <ees bes>16      g8 g |
+  g16 <ees bes>8 g16~ g16 <ees bes>16 g8            g16 <ees bes>8 g16~      g8 g |
   <d bes>8. f16~f16 <d bes>16 f8            <d bes>16 f8 <d bes>16      f8 f |
 }
 
