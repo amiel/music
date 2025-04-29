@@ -473,7 +473,6 @@ partFour = \relative c {
 }
 
 bassPart = \relative c {
-  \clef bass
   \key c \minor
 
   \mark \markup \box "Intro"
@@ -531,8 +530,8 @@ otherLowPartC = \new Staff { \clef bass \partFour }
 otherLowPartBb = \new Staff { \clef treble \transpose bes c'' \partFour }
 otherLowPartEb = \new Staff { \clef treble \transpose ees c'' \partFour }
 
-bassC = \new Staff \bassPart
-% bassBb = \new Staff \transpose bes c \bassPart
+bassC = \new Staff { \clef bass \bassPart }
+bassBb = \new Staff { \clef treble \transpose bes c''' \bassPart }
 % bassEb = \new Staff \transpose ees c \bassPart
 
 #(set-global-staff-size 22)
@@ -745,5 +744,17 @@ bassC = \new Staff \bassPart
     instrument = "Tuba" 
   }
   \score { \compressMMRests { \bassC } \layout {} }
+}
+
+\book {
+  \bookOutputName "vivir mi vida - bass sax"
+  \header {
+    title = \title
+    composer = \composer
+    arranger = \arranger
+    tagline = \revisionInfo
+    instrument = "Bass Sax" 
+  }
+  \score { \compressMMRests { \bassBb } \layout {} }
 }
 
