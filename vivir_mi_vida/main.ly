@@ -273,6 +273,16 @@ partOne = \relative c' {
       r4 \vivirMiVida |
     }
   }
+
+
+  \mark \markup \box "Outro"
+
+  \transpose c c' {
+    r4 \voyAReir
+    c'4 \voyAReir
+
+    c'2 r2 |
+  }
 }
 
 % lower woodwinds
@@ -307,6 +317,13 @@ partTwo = \relative c' {
     r4 \voyAReir
     c4 \voyAReir
   }
+
+  \break \mark \markup \box "Outro"
+
+  r4 \voyAReir
+  c4 \voyAReir
+
+  c2 r2 |
 }
 
 % melodica
@@ -316,7 +333,7 @@ pianoPart = \relative c' {
   \break \mark \markup \box "Intro"
 
   \versePiano g16~ |
-  \versePiano g16~ |
+  \versePiano r16 |
 
   \break \mark \markup \box "Intro Chorus"
 
@@ -339,6 +356,14 @@ pianoPart = \relative c' {
     \chorusPiano
     \chorusPiano
   }
+
+
+  \break \mark \markup \box "Outro"
+
+  \versePiano g16~ |
+  \versePiano r16 |
+
+  <g c ees>2 r2 |
 }
 
 partThree = \relative c' {
@@ -347,7 +372,7 @@ partThree = \relative c' {
   \mark \markup \box "Intro"
 
   \versePiano g16~ |
-  \versePiano g16 |
+  \versePiano r16 |
 
   \break \mark \markup \box "Intro Chorus"
 
@@ -379,6 +404,13 @@ partThree = \relative c' {
     % TODO: Maybe another counter melody here
     \trombone bes4 |
   }
+
+  \mark \markup \box "Outro"
+
+  \versePiano g16~ |
+  \versePiano r16 |
+
+  <ees' g>2 r2 |
 }
 
 partFour = \relative c {
@@ -422,6 +454,16 @@ partFour = \relative c {
     \chorusPiano
     \chorusPiano
   }
+
+  \break \mark \markup \box "Outro"
+
+  % Move the center-line clap for treble clef to center-line for bass clef
+  \transpose bes d, {
+    \firstClap
+    \repeat unfold 7 { \theClap }
+  }
+
+  R1
 }
 
 bassPart = \relative c {
@@ -454,6 +496,12 @@ bassPart = \relative c {
     \bassChorus
     \bassChorus 
   }
+
+  \break \mark \markup \box "Outro"
+  \bassIntro
+  \bassIntro
+
+  R1 |
 }
 
 
@@ -660,7 +708,10 @@ bassC = \new Staff \bassPart
     tagline = \revisionInfo
     instrument = "Bari Sax" 
   }
-  \score { \compressMMRests { \otherLowPartEb } \layout {} }
+  \score {
+    \compressMMRests { \otherLowPartEb }
+    \layout { }
+  }
 }
 
 \book {
