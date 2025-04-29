@@ -732,6 +732,19 @@ bassBb = \new Staff { \clef treble \transpose bes c''' \bassPart }
   \score { \compressMMRests { \otherLowPartBb } \layout {} }
 }
 
+% meh, just play the tenor part
+% \book {
+  % \bookOutputName "vivir mi vida - bass sax alternative"
+  % \header {
+    % title = \title
+    % composer = \composer
+    % arranger = \arranger
+    % tagline = \revisionInfo
+    % instrument = "Bass Sax (alternate)"
+  % }
+  % \score { \compressMMRests { \otherLowPartBb } \layout {} }
+% }
+
 %% bass
 
 \book {
