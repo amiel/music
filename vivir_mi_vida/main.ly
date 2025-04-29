@@ -206,7 +206,13 @@ bassVerse = \relative c {
   c8. ees16~ees8 g8~g4 r4 |
   aes,8. c16~c8 ees8~ees4 r4 |
   ees,8. g16~g8 bes8~bes4 r4 |
-  bes8. d16~d8 f8~f4 r4 |
+  \tag #'lastMeasure { bes8. d16~d8 f8~f4 r4 | }
+}
+
+bassPrechorusLastMeasure = \relative c {
+  bes8 r8 bes8 r8
+  \tuplet 3/2 { bes8 bes8 bes8 } bes8 r8 |
+
 }
 
 bassChorus = \relative c {
@@ -489,7 +495,8 @@ bassPart = \relative c {
     \break \mark \markup \box "Prechorus"
 
     \bassVerse
-    \bassVerse % Prechorus ending
+    \removeWithTag #'lastMeasure \bassVerse
+    \bassPrechorusLastMeasure
 
     \break \mark \markup \box "Chorus"
 
