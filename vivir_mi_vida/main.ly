@@ -281,13 +281,13 @@ partOne = \relative c' {
   }
 
 
-  \mark \markup \box "Outro"
+  \break \mark \markup \box "Outro"
 
   \transpose c c' {
     r4 \voyAReir
     c'4 \voyAReir
 
-    c'2 r2 |
+    c'2 r2 \bar "|."
   }
 }
 
@@ -329,7 +329,7 @@ partTwo = \relative c' {
   r4 \voyAReir
   c4 \voyAReir
 
-  c2 r2 |
+  c2 r2 \bar "|."
 }
 
 % melodica
@@ -369,7 +369,7 @@ pianoPart = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  <g c ees>2 r2 |
+  <g c ees>2 r2 \bar "|."
 }
 
 partThree = \relative c' {
@@ -411,12 +411,12 @@ partThree = \relative c' {
     \trombone bes4 |
   }
 
-  \mark \markup \box "Outro"
+  \break \mark \markup \box "Outro"
 
   \versePiano g16~ |
   \versePiano r16 |
 
-  <ees' g>2 r2 |
+  <ees' g>2 r2 \bar "|."
 }
 
 partFour = \relative c {
@@ -469,7 +469,7 @@ partFour = \relative c {
     \repeat unfold 7 { \theClap }
   }
 
-  R1
+  R1 \bar "|."
 }
 
 bassPart = \relative c {
@@ -507,7 +507,7 @@ bassPart = \relative c {
   \bassIntro
   \bassIntro
 
-  R1 |
+  R1 \bar "|."
 }
 
 
