@@ -382,7 +382,9 @@ partThree = \relative c' {
 
   \break \mark \markup \box "Intro Chorus"
 
-  g8 \bendAfter -4 r8 r4 r2 | R1*3
+  % g8 \bendAfter -4 r8 r4 r2 | R1*3
+
+  R1*4 |
 
   \trombone bes4 |
 
@@ -408,7 +410,7 @@ partThree = \relative c' {
     | R1*4
 
     % TODO: Maybe another counter melody here
-    \trombone bes4 |
+    \trombone bes'4 |
   }
 
   \break \mark \markup \box "Outro"
