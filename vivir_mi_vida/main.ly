@@ -290,7 +290,7 @@ partOne = \relative c' {
     r4 \voyAReir
     c'4 \voyAReir
 
-    c'2 r2 \bar "|."
+    c'4-- r4 r2 \bar "|."
   }
 }
 
@@ -332,7 +332,7 @@ partTwo = \relative c' {
   r4 \voyAReir
   c4 \voyAReir
 
-  c2 r2 \bar "|."
+  c4-- r4 r2 \bar "|."
 }
 
 % melodica
@@ -372,7 +372,7 @@ pianoPart = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  <g c ees>2 r2 \bar "|."
+  <g c ees>4-- r4 r2 \bar "|."
 }
 
 partThree = \relative c' {
@@ -424,7 +424,7 @@ partThree = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  <ees g>2 r2 \bar "|."
+  <ees g>4-- r4 r2 \bar "|."
 }
 
 partFour = \relative c {
