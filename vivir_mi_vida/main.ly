@@ -119,7 +119,10 @@ versePiano = \relative c' {
   g8. <c ees>16~<c ees>8 g8~g16 <c ees>8. g8. aes16~ |
   aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
   g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
-  f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
+
+  \tag #'lastMeasure {
+    f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
+  }
 }
 
 prechorusPiano = \relative c' {
@@ -392,14 +395,18 @@ partThree = \relative c' {
     \break \mark \markup \box "Verse"
 
     \versePiano g16~ |
-    \versePiano r16 |
+
+    \removeWithTag #'lastMeasure \versePiano
+
+    f8. <bes d>16~<bes d>8 f8 r8
+
+    \prechorusMelodyPickup |
 
     \break \mark \markup \box "Prechorus"
 
-    \trombone
-
-    % pickup 
-    ees8 d |
+    \prechorusMelody
+    \prechorusMelodyFirstEnding
+    \prechorusMelodyPickup
 
     \prechorusMelody
     \prechorusMelodySecondEnding
@@ -409,8 +416,7 @@ partThree = \relative c' {
 
     | R1*4
 
-    % TODO: Maybe another counter melody here
-    \trombone bes'4 |
+    \trombone bes4 |
   }
 
   \break \mark \markup \box "Outro"
@@ -418,7 +424,7 @@ partThree = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  <ees' g>2 r2 \bar "|."
+  <ees g>2 r2 \bar "|."
 }
 
 partFour = \relative c {
