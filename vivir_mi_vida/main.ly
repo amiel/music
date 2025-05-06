@@ -236,7 +236,7 @@ bassChorus = \relative c {
 partOne = \relative c' {
   \key c \minor
 
-  \mark \markup \box "Intro"
+  \break \mark \markup \box "Intro"
 
   \firstClap
   \repeat unfold 5 { \theClap }
@@ -244,7 +244,7 @@ partOne = \relative c' {
   \transpose c c' {
     r4 \vivirMiVida
 
-    \break \mark \markup \box "Intro Chorus"
+    \break \mark \markup \box "Chorus"
     <<
       { c''4\bendAfter -4 } \\ 
       { c'4 }
@@ -285,14 +285,67 @@ partOne = \relative c' {
 
 
   \break \mark \markup \box "Outro"
+ 
+%   \transpose c c' {
+%     r4 \voyAReir
+%     c'4 \voyAReir
+% 
+%     c'4-- r4 r2 \bar "|."
+%   }
 
-  \transpose c c' {
-    r4 \voyAReir
-    c'4 \voyAReir
+  \firstClap
+  \repeat unfold 6 { \theClap }
 
-    c'4-- r4 r2 \bar "|."
-  }
+  R1 \bar "|."
 }
+
+partOnePianoChorus = \relative c' {
+  \key c \minor
+
+  \break \mark \markup \box "Intro"
+
+  \firstClap
+  \repeat unfold 6 { \theClap }
+  R1
+
+  \transpose c c'' {
+    \break \mark \markup \box "Chorus"
+
+    \chorusPiano
+    \chorusPiano
+  }
+
+  \repeat volta 2 {
+    \break \mark \markup \box "Verse"
+
+    \verse
+
+    \break \mark \markup \box "Prechorus"
+
+    R1*4
+
+    \highAccents
+    R1 \prechorusLastBarRoot
+
+
+    \transpose c c'' {
+      \break \mark \markup \box "Chorus"
+
+      \chorusPiano
+      \chorusPiano
+    }
+  }
+
+
+  \mark \markup \box "Outro"
+ 
+  \firstClap
+  \repeat unfold 6 { \theClap }
+
+  R1 \bar "|."
+}
+
+
 
 % lower woodwinds
 partTwo = \relative c' {
@@ -303,7 +356,7 @@ partTwo = \relative c' {
   r4 \voyAReir
   c4 \voyAReir
 
-  \break \mark \markup \box "Intro Chorus"
+  \break \mark \markup \box "Chorus"
 
   c4 \voyAReir
   c4 \voyAReir
@@ -344,7 +397,7 @@ pianoPart = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  \break \mark \markup \box "Intro Chorus"
+  \break \mark \markup \box "Chorus"
 
   \chorusPiano
   \chorusPiano
@@ -383,7 +436,7 @@ partThree = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  \break \mark \markup \box "Intro Chorus"
+  \break \mark \markup \box "Chorus"
 
   g4 \bendAfter -4 r2. | R1*3
 
@@ -439,7 +492,7 @@ partFour = \relative c {
     R1
   }
 
-  \break \mark \markup \box "Intro Chorus"
+  \break \mark \markup \box "Chorus"
   % \transpose c c, {
     \chorusPiano
     \chorusPiano
@@ -488,7 +541,7 @@ bassPart = \relative c {
   \bassIntro
   \bassIntro
 
-  \break \mark \markup \box "Intro Chorus"
+  \break \mark \markup \box "Chorus"
 
   \bassChorus
   \bassChorus
@@ -523,6 +576,7 @@ pianoPartC = \new Staff \transpose c c' \pianoPart
 
 % Individual parts for printing
 leadPartC = \new Staff \partOne
+leadPartCPianoChorus = \new Staff \partOnePianoChorus
 leadPartBb = \new Staff \transpose bes c \partOne
 leadPartEb = \new Staff \transpose ees c \partOne
 
@@ -596,7 +650,10 @@ bassBb = \new Staff { \clef treble \transpose bes c''' \bassPart }
     tagline = \revisionInfo
     instrument = "Flute" 
   }
-  \score { \compressMMRests { \leadPartC } \layout {} }
+  \score {
+    \compressMMRests { \leadPartCPianoChorus }
+    \layout { }
+  }
 }
 
 \book {
