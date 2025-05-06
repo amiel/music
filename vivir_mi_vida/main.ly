@@ -385,9 +385,9 @@ partThree = \relative c' {
 
   \break \mark \markup \box "Intro Chorus"
 
-  % g8 \bendAfter -4 r8 r4 r2 | R1*3
+  g4 \bendAfter -4 r2. | R1*3
 
-  R1*4 |
+  % R1*4 |
 
   \trombone bes4 |
 
@@ -414,7 +414,7 @@ partThree = \relative c' {
 
     \break \mark \markup \box "Chorus"
 
-    | R1*4
+    c4 r2. | R1*3
 
     \trombone bes4 |
   }
@@ -424,7 +424,7 @@ partThree = \relative c' {
   \versePiano g16~ |
   \versePiano r16 |
 
-  <ees g>4-- r4 r2 \bar "|."
+  <ees g>4-- r2. \bar "|."
 }
 
 partFour = \relative c {
