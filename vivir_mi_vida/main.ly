@@ -234,6 +234,7 @@ bassChorus = \relative c {
 
 % higher woodwinds
 partOne = \relative c' {
+  \tempo 4 = 100
   \key c \minor
 
   \break \mark \markup \box "Intro"
@@ -349,6 +350,7 @@ partOnePianoChorus = \relative c' {
 
 % lower woodwinds
 partTwo = \relative c' {
+  \tempo 4 = 100
   \key c \minor
 
   \break \mark \markup \box "Intro"
@@ -390,6 +392,7 @@ partTwo = \relative c' {
 
 % melodica
 pianoPart = \relative c' {
+  \tempo 4 = 100
   \key c \minor
 
   \break \mark \markup \box "Intro"
@@ -429,6 +432,7 @@ pianoPart = \relative c' {
 }
 
 partThree = \relative c' {
+  \tempo 4 = 100
   \key c \minor
 
   \mark \markup \box "Intro"
@@ -469,7 +473,7 @@ partThree = \relative c' {
 
     c4 r2. | R1*3
 
-    \trombone bes4 |
+    \trombone bes'4 |
   }
 
   \break \mark \markup \box "Outro"
@@ -481,6 +485,7 @@ partThree = \relative c' {
 }
 
 partFour = \relative c {
+  \tempo 4 = 100
   \key c \minor
 
   \mark \markup \box "Intro"
@@ -534,6 +539,7 @@ partFour = \relative c {
 }
 
 bassPart = \relative c {
+  \tempo 4 = 100
   \key c \minor
 
   \mark \markup \box "Intro"
