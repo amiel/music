@@ -295,7 +295,7 @@ partOne = \relative c' {
 %   }
 
   \firstClap
-  \repeat unfold 6 { \theClap }
+  \repeat unfold 7 { \theClap }
 
   R1 \bar "|."
 }
