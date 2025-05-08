@@ -91,17 +91,17 @@ prechorusMelodyPickup = \relative c {
 
 prechorusMelody = \relative c {
   % [y para] que
-  ees4 r8 d ees4 r8 d |
-  ees4 r8 ees ees ees f g |
-  g8. f16 ees4 r4 f16 f8 f16 |
+  ees4-> r8 d ees4-> r8 d |
+  ees4-> r8 ees( ees ees f g |
+  g8. f16 ees4) r4 f16 f8 f16 |
 }
 
 prechorusMelodyFirstEnding = \relative c {
-  f8. ees16 d4 r8 % r4. 
+  f8.( ees16 d4) r8 % r4.
 }
 
 prechorusMelodySecondEnding = \relative c {
-  f2~ f8 ees~ees16 d8. |
+  f2~f8 ees~ees16 d8. |
 }
 
 
@@ -134,9 +134,9 @@ prechorusPiano = \relative c' {
 
 prechorusPianoWithAccents = \relative c' {
   <g c ees>4-. <g c ees>4-^ \sfz
-  <g c ees>-. \mp <g c ees>-^ \sfz
-  <aes c ees>-. \mp <aes c ees>-^ \sfz
-  <aes c ees>-. \mp <aes c ees>-.
+  <g c ees>-. <g c ees>-^ \sfz
+  <aes c ees>-. <aes c ees>-^ \sfz
+  <aes c ees>-. <aes c ees>-.
 
   \repeat unfold 4 { <g bes ees>-. }
 
