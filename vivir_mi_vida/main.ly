@@ -14,6 +14,13 @@ arranger = \markup "arr. Amiel Martin"
 % modules
 %
 
+introLyrics = \lyricmode {
+  Voy a re -- ir
+  voy a go -- zar
+  Vi -- vir mi vi -- da
+  la la la la
+}
+
 aClap = \relative c'' {
   \xNotesOn
   bes4
@@ -68,6 +75,7 @@ verse = \relative c'' {
   % puede vencer la sequia
   r8 ees' ees ees ees ees c ees~ | ees ees( f4) r2 |
 }
+
 
 vivirMiVida = \relative c' {
   % one beat missing to allow for landing the melody on 1
@@ -215,7 +223,6 @@ bassVerse = \relative c {
 bassPrechorusLastMeasure = \relative c {
   bes8 r8 bes8 r8
   \tuplet 3/2 { bes8 bes8 bes8 } bes8 r8 |
-
 }
 
 bassChorus = \relative c {
@@ -578,28 +585,28 @@ bassPart = \relative c {
 }
 
 
-pianoPartC = \new Staff \transpose c c' \pianoPart
+pianoPartC = \transpose c c' \pianoPart
 
 % Individual parts for printing
-leadPartC = \new Staff \partOne
-leadPartCPianoChorus = \new Staff \partOnePianoChorus
-leadPartBb = \new Staff \transpose bes c \partOne
-leadPartEb = \new Staff \transpose ees c \partOne
+leadPartC = \partOne
+leadPartCPianoChorus = \partOnePianoChorus
+leadPartBb = \transpose bes c \partOne
+leadPartEb = \transpose ees c \partOne
 
-middlePartC = \new Staff \partTwo
-middlePartBb = \new Staff \transpose bes c' \partTwo
+middlePartC = \partTwo
+middlePartBb = \transpose bes c' \partTwo
 % middlePartEb = \new Staff \transpose ees c \partTwo
 
-lowPartC = \new Staff { \clef bass \partThree }
-lowPartBb = \new Staff { \clef treble \transpose bes c'' \partThree }
+lowPartC = { \clef bass \partThree }
+lowPartBb = { \clef treble \transpose bes c'' \partThree }
 % lowPartEb = \new Staff \transpose ees c \partThree
 
-otherLowPartC = \new Staff { \clef bass \partFour }
-otherLowPartBb = \new Staff { \clef treble \transpose bes c'' \partFour }
-otherLowPartEb = \new Staff { \clef treble \transpose ees c'' \partFour }
+otherLowPartC = { \clef bass \partFour }
+otherLowPartBb = { \clef treble \transpose bes c'' \partFour }
+otherLowPartEb = { \clef treble \transpose ees c'' \partFour }
 
-bassC = \new Staff { \clef bass \bassPart }
-bassBb = \new Staff { \clef treble \transpose bes c''' \bassPart }
+bassC = { \clef bass \bassPart }
+bassBb = { \clef treble \transpose bes c''' \bassPart }
 % bassEb = \new Staff \transpose ees c \bassPart
 
 #(set-global-staff-size 22)
@@ -617,12 +624,12 @@ bassBb = \new Staff { \clef treble \transpose bes c''' \bassPart }
   \score {
     <<
       \new StaffGroup <<
-        \leadPartC
-        \middlePartC
-        \lowPartC
-        \otherLowPartC
+        \new Staff \leadPartC
+        \new Staff \middlePartC
+        \new Staff \lowPartC
+        \new Staff \otherLowPartC
 
-        \bassC
+        \new Staff \bassC
       >>
     >>
     \layout {}
@@ -745,7 +752,14 @@ bassBb = \new Staff { \clef treble \transpose bes c''' \bassPart }
     tagline = \revisionInfo
     instrument = "Tenor Sax" 
   }
-  \score { \middlePartBb \layout {} }
+  \score {
+    <<
+      \new Voice = "tenorSax" { \middlePartBb }
+      \new Lyrics \lyricsto "tenorSax" \introLyrics
+    >>
+
+    \layout {}
+  }
 }
 
 %% trombone
