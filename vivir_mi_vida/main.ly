@@ -25,35 +25,10 @@ introLyrics = \lyricmode {
   la la la \tag theLastLa { la }
 }
 
-
-aClap = \relative c'' {
-  \xNotesOn
-  bes4
-  \xNotesOff
-}
-
-theClap = \relative c'' {
-  \xNotesOn
-
-  \repeat unfold 4 { bes4 } |
-
-  \xNotesOff
-}
-
-firstClap = \relative c'' {
-  \xNotesOn
-
-  bes4^\markup { \italic "clap" }
-
-  \repeat unfold 3 { bes4 } |
-
-  \xNotesOff
-}
-
 verseClaps = \relative c'' {
 
-  \tag #'full { R1 }
-  \tag #'withoutFirstBeat { r4 r2 }
+  \tag full { R1 }
+  \tag withoutFirstBeat { r4 r2 }
 
   \xNotesOn
     r2 bes4^\markup { \italic "clap" } bes4 |
@@ -162,7 +137,7 @@ versePiano = \relative c' {
   aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
   g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
 
-  \tag #'lastMeasure {
+  \tag lastMeasure {
     f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
   }
 }
@@ -186,54 +161,12 @@ prechorusPianoWithAccents = \relative c' {
   \tuplet 3/2 { <f bes d>8 <f bes d>8 <f bes d>8 } <f bes d>8 r8 |
 }
 
-
-chorusPianoA = \relative c' {
-  g8. g16 <c ees>8 <c ees> g16 <c ees>8 g16 <c ees>8 <c ees> |
-  aes8. aes16 <c ees>8 <c ees> aes16 <c ees>8 aes16 <c ees>8 <c ees> |
-
-  g8. g16 <bes ees>8 <bes ees> g16 <bes ees>8 g16 <bes ees>8 <bes ees> |
-  f8. f16 <bes d>8 <bes d> f16 <bes d>8 f16 <bes d>8 <bes d> |
-}
-
-chorusPianoB = \relative c' {
-  <c ees>16 g8 <c ees>16 g8 <c ees> g16 <c ees>8 g16 <c ees>8 <c ees> |
-  <c ees>16 aes8 <c ees>16 aes8 <c ees> aes16 <c ees>8 aes16 <c ees>8 <c ees> |
-  <bes ees>16 g8 <bes ees>16 g8 <bes ees> g16 <bes ees>8 g16 <bes ees>8 <bes ees> |
-  <bes d>16 f8 <bes d>16 f8 <bes d> f16 <bes d>8 f16 <bes d>8 <bes d> |
-}
-
-chorusPianoC = \relative c' {
-  <c ees>8. g16    <c ees>8 <c ees>      g16 <c ees>8 g16      <c ees>8 <c ees> |
-  <c ees>8. aes16  <c ees>8 <c ees>      aes16 <c ees>8 aes16  <c ees>8 <c ees> |
-
-  <bes ees>8. g16  <bes ees>8 <bes ees>  g16 <bes ees>8 g16    <bes ees>8 <bes ees> |
-  <bes d>8. f16    <bes d>8 <bes d>      f16 <bes d>8 f16      <bes d>8 <bes d> |
-}
-
-% chorusPiano = \relative c' {
-  % % this is close, but it needs to land on the high note
-% 
-  % g8. g16~ g16 <ees c>16 g8            g16 <ees c>8 g16~      g8 bes |
-  % aes16 <ees c>8 aes16~ aes16 <ees c>16 aes8            aes16 <ees c>8 aes16~      aes8 aes |
-
-  % g16 <ees bes>8 g16~ g16 <ees bes>16 g8            g16 <ees bes>8 g16~      g8 g |
-  % <d bes>8. f16~f16 <d bes>16 f8            <d bes>16 f8 <d bes>16      f8 f |
-
-
-  % g8. g16~ g16 <ees c>16 g8            g16 <ees c>8 g16~      g8 bes |
-  % aes8. aes16~ aes16 <ees c>16 aes8            aes16 <ees c>8 aes16~      aes8 aes |
-
-  % g8. g16~ g16 <ees bes>16 g8            g16 <ees bes>8 g16~      g8 g |
-  % <d bes>8. f16~f16 <d bes>16 f8            f16 <d bes>8 f16    f8 f |
-% }
-
-
 chorusPiano = \relative c' {
-  g8. g16~ g16 <ees c>16 g8            g16 <ees c>8 g16~      g8 bes |
-  aes8. aes16~ aes16 <ees c>16 aes8            aes16 <ees c>8 <ees c>16      aes8 aes |
+ g8. g16~ g16 <ees c>16 g8 g16 <ees c>8 g16~ g8 bes |
+ aes8. aes16~ aes16 <ees c>16 aes8 aes16 <ees c>8 <ees c>16 aes8 aes |
 
-  g8. g16~ g16 <ees bes>16 g8            g16 <ees bes>8 g16~ g8 g |
-  f8. f16~f16 <d bes>16 f8            f16 <d bes>8 <d bes>16   f8 f |
+ g8. g16~ g16 <ees bes>16 g8 g16 <ees bes>8 g16~ g8 g |
+ f8. f16~f16 <d bes>16 f8 f16 <d bes>8 <d bes>16 f8 f |
 }
 
 
@@ -251,7 +184,7 @@ bassVerse = \relative c {
   c8. ees16~ees8 g8~g4 r4 |
   aes,8. c16~c8 ees8~ees4 r4 |
   ees,8. g16~g8 bes8~bes4 r4 |
-  \tag #'lastMeasure { bes8. d16~d8 f8~f4 r4 | }
+  \tag lastMeasure { bes8. d16~d8 f8~f4 r4 | }
 }
 
 bassPrechorusLastMeasure = \relative c {
@@ -394,7 +327,7 @@ partTwo = \relative c' {
     \break \mark \markup \box "Verse"
 
     c4 
-    \keepWithTag #'withoutFirstBeat \verseClaps R1
+    \keepWithTag withoutFirstBeat \verseClaps R1
 
     \break \mark \markup \box "Prechorus"
 
@@ -478,7 +411,7 @@ partThree = \relative c' {
 
     \versePiano g16~ |
 
-    \removeWithTag #'lastMeasure \versePiano
+    \removeWithTag lastMeasure \versePiano
 
     f8. <bes d>16~<bes d>8 f8 r8
 
@@ -528,7 +461,7 @@ partFour = \relative c {
 
     % Move the center-line clap for treble clef to center-line for bass clef
     \transpose bes d, {
-      \keepWithTag #'full \verseClaps r2 r8 
+      \keepWithTag full \verseClaps r2 r8 
     }
 
     \prechorusMelodyPickup
@@ -578,7 +511,7 @@ bassPart = \relative c {
     \break \mark \markup \box "Prechorus"
 
     \bassVerse
-    \removeWithTag #'lastMeasure \bassVerse
+    \removeWithTag lastMeasure \bassVerse
     \bassPrechorusLastMeasure
 
     \break \mark \markup \box "Chorus"
@@ -588,7 +521,7 @@ bassPart = \relative c {
   }
 
   \break \mark \markup \box "Outro"
-  \bassIntro
+  \bassIntro \break
   \bassIntro
 
   R1 \bar "|."
