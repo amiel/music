@@ -14,17 +14,15 @@ arranger = \markup "arr. Amiel Martin"
 % modules
 %
 
-introLyrics = \lyricmode {
-  Voy a re -- ir
-  voy a go -- zar
-  Vi -- vir mi vi -- da
-  la la la la
-}
-
-
 voyAReirLyrics = \lyricmode {
   Voy a re -- ir
   voy a go -- zar
+}
+
+introLyrics = \lyricmode {
+  \voyAReirLyrics
+  Vi -- vir mi vi -- da
+  la la la \tag theLastLa { la }
 }
 
 
@@ -109,6 +107,7 @@ introSingPlay = \relative c' {
   f4 r8 f8 \tuplet 3/2 { f4 ees d } |
 }
 
+
 outroSing = \relative c' {
   % one beat missing to allow for landing the melody on 1
    r8 ^\markup { \italic "sing and clap the beat" } c8 ees4 g4 |
@@ -116,6 +115,14 @@ outroSing = \relative c' {
   g4 \vivirMiVida
 
   c,4 \voyAReir \vivirMiVida
+}
+
+lastBar = \relative c' {
+  c4-- r4 r2 \bar "|."
+}
+
+introSing = \relative c' {
+  r4 \outroSing
 }
 
 prechorusMelodyPickup = \relative c {
@@ -319,20 +326,7 @@ partOne = \relative c' {
   \break \mark \markup \box "Outro"
  
    \transpose c c' {
-     %% r4 \voyAReir
-     %% c'4 \voyAReir
-     %%
-     %% c'4-- r4 r2 \bar "|."
-
-    %% r4 \keepWithTag #'clapAndSing { \voyAReir }
-    %%   \keepWithTag #'noMarkup { \vivirMiVida }
-    %%
-    %% c'4 \keepWithTag #'noMarkup { \voyAReir }
-    %%   \keepWithTag #'noMarkup { \vivirMiVida }
-
-    c'4 \outroSing
-
-    c'4-- r4 r2 \bar "|."
+    c'4 \outroSing \lastBar
   }
 }
 
@@ -341,9 +335,9 @@ partOnePianoChorus = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  \firstClap
-  \repeat unfold 6 { \theClap }
-  R1
+  \transpose c c' {
+    \introSing
+  }
 
   \transpose c c'' {
     \break \mark \markup \box "Chorus"
@@ -373,13 +367,11 @@ partOnePianoChorus = \relative c' {
     }
   }
 
-
-  \mark \markup \box "Outro"
- 
-  \firstClap
-  \repeat unfold 6 { \theClap }
-
-  R1 \bar "|."
+  \transpose c c' {
+    \mark \markup \box "Outro"
+    r4 \outroSing
+    \lastBar
+  }
 }
 
 
@@ -391,8 +383,7 @@ partTwo = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  r4 \voyAReir  \vivirMiVida
-  c4 \voyAReir \vivirMiVida
+  \introSing
 
   \break \mark \markup \box "Chorus"
 
@@ -420,10 +411,8 @@ partTwo = \relative c' {
 
   \break \mark \markup \box "Outro"
 
-  r4 \voyAReir \vivirMiVida
-  c4 \voyAReir \vivirMiVida
-
-  c4-- r4 r2 \bar "|."
+  c4 \outroSing
+  \lastBar
 }
 
 % melodica
@@ -693,7 +682,18 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     instrument = "Flute" 
   }
   \score {
-    \compressMMRests { \leadPartCPianoChorus }
+    <<
+      \new Voice = "flute" { \compressMMRests { \leadPartCPianoChorus } }
+      \new Lyrics \lyricsto "flute" {
+        \introLyrics \removeWithTag theLastLa \introLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 177 { \skip 4 }
+
+        \introLyrics \introLyrics
+      }
+    >>
+
     \layout { }
   }
 }
@@ -714,7 +714,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         \introLyrics \voyAReirLyrics
 
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 83 {  \skip 4 }
+        \repeat unfold 84 {  \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -819,7 +819,22 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     tagline = \revisionInfo
     instrument = "Trumpet 2" 
   }
-  \score { \middlePartBb \layout {} }
+  \score {
+    <<
+      \new Voice = "trumpet" { \compressMMRests { \middlePartBb } }
+      \new Lyrics \lyricsto "trumpet" {
+        \introLyrics \introLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 111 { \skip 4 }
+
+        \introLyrics \introLyrics
+      }
+    >>
+
+    \layout {}
+  }
+
 }
 
 \book {
@@ -831,7 +846,22 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     tagline = \revisionInfo
     instrument = "Clarinet" 
   }
-  \score { \middlePartBb \layout {} }
+
+  \score {
+    <<
+      \new Voice = "clarinet" { \compressMMRests { \middlePartBb } }
+      \new Lyrics \lyricsto "clarinet" {
+        \introLyrics \introLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 111 { \skip 4 }
+
+        \introLyrics \introLyrics
+      }
+    >>
+
+    \layout {}
+  }
 }
 
 \book {
@@ -845,8 +875,15 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
   }
   \score {
     <<
-      \new Voice = "tenorSax" { \middlePartBb }
-      \new Lyrics \lyricsto "tenorSax" \introLyrics
+      \new Voice = "sax" { \middlePartBb }
+      \new Lyrics \lyricsto "sax" {
+        \introLyrics \introLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 111 { \skip 4 }
+
+        \introLyrics \introLyrics
+      }
     >>
 
     \layout {}
