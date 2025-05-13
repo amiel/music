@@ -58,7 +58,7 @@ verseClaps = \relative c'' {
   \tag #'withoutFirstBeat { r4 r2 }
 
   \xNotesOn
-    r2 bes4^\markup { \italic "clap and sing" } bes4 |
+    r2 bes4^\markup { \italic "clap" } bes4 |
     bes4 r4 r2 |
 
     \repeat unfold 2 {
@@ -83,16 +83,9 @@ verse = \relative c'' {
   r8 ees' ees ees ees ees c ees~ | ees ees( f4) r2 |
 }
 
-
 vivirMiVida = \relative c' {
   % one beat missing to allow for landing the melody on 1
-    r8 
-
-    \tag #'noMarkup { ees8 }
-    \tag #'play { ees8 ^\markup { \italic "play" } }
-    \tag #'clapAndSing { ees8 ^\markup { \italic "clap and sing" } }
-
-    ees4 g4 |
+    r8 ees8 ees4 g4 |
 
   f4 r8 f8 \tuplet 3/2 { f4 ees d } |
 }
@@ -100,15 +93,29 @@ vivirMiVida = \relative c' {
 % Define common musical phrases for reuse
 voyAReir = \relative c' {
   % one beat missing to allow for landing the melody on 1
-    r8
-
-    \tag #'noMarkup { c8 }
-    \tag #'play { c8 ^\markup { \italic "play" } }
-    \tag #'clapAndSing { c8 ^\markup { \italic "clap and sing" } }
-
-    ees4 g4 |
+    r8 c8 ees4 g4 |
   aes4 r8 c, ees4 aes |
   g4
+}
+
+introSingPlay = \relative c' {
+  r4 r8 ^\markup { \italic "sing and clap the beat" } c8 ees4 g4 |
+  aes4 r8 c, ees4 aes |
+  g4 \vivirMiVida
+
+  c,4 \voyAReir
+
+    r8 ees8 ^\markup { \italic "play" } ees4 g4 |
+  f4 r8 f8 \tuplet 3/2 { f4 ees d } |
+}
+
+outroSing = \relative c' {
+  % one beat missing to allow for landing the melody on 1
+   r8 ^\markup { \italic "sing and clap the beat" } c8 ees4 g4 |
+  aes4 r8 c, ees4 aes |
+  g4 \vivirMiVida
+
+  c,4 \voyAReir \vivirMiVida
 }
 
 prechorusMelodyPickup = \relative c {
@@ -267,11 +274,7 @@ partOne = \relative c' {
   \break \mark \markup \box "Intro"
 
   \transpose c c' {
-    r4 \keepWithTag #'clapAndSing { \voyAReir }
-      \keepWithTag #'noMarkup { \vivirMiVida }
-
-    c'4 \keepWithTag #'noMarkup { \voyAReir }
-      \keepWithTag #'play { \vivirMiVida }
+    \introSingPlay
 
     \break \mark \markup \box "Chorus"
     <<
@@ -281,11 +284,11 @@ partOne = \relative c' {
     r4 r2  |
 
     R1 |
-    r4 \keepWithTag #'noMarkup \vivirMiVida |
+    r4 \vivirMiVida |
     c'4 r4 r2 |
     
     R1 |
-    r4 \keepWithTag #'noMarkup \vivirMiVida |
+    r4 \vivirMiVida |
   }
 
   \repeat volta 2 {
@@ -304,11 +307,11 @@ partOne = \relative c' {
     \transpose c c' {
       \break \mark \markup \box "Chorus"
       R1*2 |
-      r4 \keepWithTag #'noMarkup \vivirMiVida |
+      r4 \vivirMiVida |
       c'4 r4 r2 |
       
       R1 |
-      r4 \keepWithTag #'noMarkup \vivirMiVida |
+      r4 \vivirMiVida |
     }
   }
 
@@ -321,12 +324,13 @@ partOne = \relative c' {
      %%
      %% c'4-- r4 r2 \bar "|."
 
-    r4 \keepWithTag #'clapAndSing { \voyAReir }
-      \keepWithTag #'noMarkup { \vivirMiVida }
+    %% r4 \keepWithTag #'clapAndSing { \voyAReir }
+    %%   \keepWithTag #'noMarkup { \vivirMiVida }
+    %%
+    %% c'4 \keepWithTag #'noMarkup { \voyAReir }
+    %%   \keepWithTag #'noMarkup { \vivirMiVida }
 
-    c'4 \keepWithTag #'noMarkup { \voyAReir }
-      \keepWithTag #'noMarkup { \vivirMiVida }
-
+    c'4 \outroSing
 
     c'4-- r4 r2 \bar "|."
   }
@@ -736,7 +740,21 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     tagline = \revisionInfo
     instrument = "Trumpet 1" 
   }
-  \score { \compressMMRests { \leadPartBb } \layout {} }
+  \score { 
+    <<
+      \new Voice = "trumpet" { \compressMMRests { \leadPartBb } }
+      \new Lyrics \lyricsto "trumpet" {
+        \introLyrics \voyAReirLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 84 {  \skip 4 }
+
+        \introLyrics \introLyrics
+      }
+
+    >>
+    \layout {}
+  }
 }
 
 \book {
@@ -755,7 +773,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         \introLyrics \voyAReirLyrics
 
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 83 {  \skip 4 }
+        \repeat unfold 84 {  \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -781,7 +799,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         \introLyrics \voyAReirLyrics
 
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 83 {  \skip 4 }
+        \repeat unfold 84 { \skip 4 }
 
         \introLyrics \introLyrics
       }
