@@ -515,18 +515,13 @@ partFour = \relative c {
 
   \mark \markup \box "Intro"
 
-  % Move the center-line clap for treble clef to center-line for bass clef
-  \transpose bes d, {
-    \firstClap
-    \repeat unfold 6 { \theClap }
-    R1
+  \transpose c c, {
+    \introSing
   }
 
   \break \mark \markup \box "Chorus"
-  % \transpose c c, {
-    \chorusPiano
-    \chorusPiano
-  % }
+  \chorusPiano
+  \chorusPiano
 
   \repeat volta 2 {
     \break \mark \markup \box "Verse"
@@ -554,13 +549,10 @@ partFour = \relative c {
 
   \break \mark \markup \box "Outro"
 
-  % Move the center-line clap for treble clef to center-line for bass clef
-  \transpose bes d, {
-    \firstClap
-    \repeat unfold 7 { \theClap }
+  \transpose c c, {
+    r4 \outroSing
+    \lastBar
   }
-
-  R1 \bar "|."
 }
 
 bassPart = \relative c {
@@ -928,7 +920,17 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     instrument = "Bari Sax" 
   }
   \score {
-    \compressMMRests { \otherLowPartEb }
+    <<
+      \new Voice = "sax" { \compressMMRests { \otherLowPartEb } }
+      \new Lyrics \lyricsto "sax" {
+        \introLyrics \removeWithTag theLastLa \introLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 173 { \skip 4 }
+
+        \introLyrics \introLyrics
+      }
+    >>
     \layout { }
   }
 }
@@ -942,7 +944,20 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     tagline = \revisionInfo
     instrument = "Tenor Sax (alternate)" 
   }
-  \score { \compressMMRests { \otherLowPartBb } \layout {} }
+  \score {
+    <<
+      \new Voice = "sax" { \compressMMRests { \otherLowPartBb } }
+      \new Lyrics \lyricsto "sax" {
+        \introLyrics \removeWithTag theLastLa \introLyrics
+
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 173 { \skip 4 }
+
+        \introLyrics \introLyrics
+      }
+    >>
+    \layout {}
+  }
 }
 
 % meh, just play the tenor part
