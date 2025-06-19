@@ -12,10 +12,12 @@ title = \markup "Perez 2"
 % modules
 %
 
+% \caesura is the drum break
+
 melodyPart = {
   \key c \major
   \relative c' {
-    \break \mark \markup \box "Intro"
+    %% \break \mark \markup \box "Intro"
 
     e8 g r2. |
     e8 <g a> r <g a> r <g a> r <g a> |
@@ -40,11 +42,12 @@ melodyPart = {
 
     f8 g r2. |
     f8 g f g d' b g f |
-    e4 r \tiny <c'' e>2 |
+    e4 \caesura r4 \tiny <c'' e>2 |
     <c d>4 \normalsize r2.^\markup { trumpet } |
     
+    
     \break
-    \break \mark \markup \box "Horns"
+    \break \mark \markup \small "Horns"
 
     e,,8 g r2. |
     e8 g e g e g e g |
@@ -55,10 +58,11 @@ melodyPart = {
 
     f8 g r2. |
     f8 g f g d' b g f |
-    e4 r2. |
+    e4 \caesura r2. |
     r8 \tiny <dis' e>8 <dis e>4 \normalsize r2 |
 
-    \break \mark \markup \box "No Horns"
+    \break
+    \break \mark \markup \small "No Horns"
 
     e,8 g r2. |
     e8 g r g r g r g |
@@ -72,7 +76,8 @@ melodyPart = {
     e8 g r4 r8 \tiny <ees'' d> \normalsize r4 |
     R1 |
 
-    \break \mark \markup \box "Bridge"
+    \break
+    %% \break \mark \markup "Bridge"
 
     c,1~ |
     c8 d c b d c b a |
@@ -90,14 +95,14 @@ melodyPart = {
 
     e,8 e e e g g g g |
     a8 a a a c4 c |
-    b4 r <g b ees>2 |
+    b4 \caesura r <g b ees>2 |
     g,,2.-> r4 |
 
     \break
 
     f''8 f f f g g g g |
     a8 a a a b4 b |
-    a4 r8 b,8 r4 a4 |
+    a4 \caesura r8. b,16 r4 r8. a16 |
     r4 \tiny <ees' d> <ees d> \normalsize r4 |
 
     \break
@@ -117,19 +122,19 @@ melodyPart = {
     \break
 
     <d d'>1 |
-    b''8-^ b,8 c b d c b a |
+    b''8-^ \caesura b,8 c b d c b a |
     g2. c4 |
     e2 f2 |
 
+    \break
+
     e1 |
     d1 |
-    <c e'>4-^ r4 \tiny \grace {e32(d c)} b4 r4 | 
+    <c e'>4-^ \caesura r4 \tiny \grace {e32(d c)} b4 r4 | 
     \grace {e32(d c)} a4 <d ees> <d ees> \normalsize r4 |
 
     \break
 
-
-    \break \mark \markup \box "Chorus"
 
     e,8 g r4 \tiny <d ees>8 <d ees> <d ees>4 \normalsize |
     e8 g e g e g e g |
@@ -145,10 +150,9 @@ melodyPart = {
     ^\markup { trumpet } 
     r8 <d ees>8 \normalsize |
 
-
     
     \break
-    \break \mark \markup \box "Horns"
+    \break \mark \markup \small "Horns"
 
     e,8 g r2. |
     e8 g e g e g e g |
