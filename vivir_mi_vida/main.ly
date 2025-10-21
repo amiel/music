@@ -132,15 +132,26 @@ prechorusLastBarRoot = \relative c'' {
 }
 
 
-versePiano = \relative c' {
-  g8. <c ees>16~<c ees>8 g8~g16 <c ees>8. g8. aes16~ |
-  aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
-  g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
+%% versePiano = \relative c' {
+%%   g8. <c ees>16~<c ees>8 g8~g16 <c ees>8. g8. aes16~ |
+%%   aes8. <c ees>16~<c ees>8 aes8~aes16 <c ees>8. aes8. g16~ |
+%%   g8. <bes ees>16~<bes ees>8 g8~g16 <bes ees>8. g8. f16~ |
+%%
+%%   \tag lastMeasure {
+%%     f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
+%%   }
+%% }
+
+versePianoSimplified = \relative c' {
+  g8. <c ees>16~<c ees>8 g8 g16 <c ees>8. g8. aes16 |
+  aes8. <c ees>16~<c ees>8 aes8 aes16 <c ees>8. aes8. g16 |
+  g8. <bes ees>16~<bes ees>8 g8 g16 <bes ees>8. g8. f16 |
 
   \tag lastMeasure {
-    f8. <bes d>16~<bes d>8 f8~f16 <bes d>8. f8.  % last 16th left out
+    f8. <bes d>16~<bes d>8 f8 f16 <bes d>8. f8.  % last 16th left out
   }
 }
+
 
 prechorusPiano = \relative c' {
   <g c ees>4-. \mp \repeat unfold 3 { <g c ees>4-. }
@@ -168,7 +179,6 @@ chorusPiano = \relative c' {
  g8. g16~ g16 <ees bes>16 g8 g16 <ees bes>8 g16~ g8 g |
  f8. f16~f16 <d bes>16 f8 f16 <d bes>8 <d bes>16 f8 f |
 }
-
 
 trombone = \relative c' {
   \repeat unfold 2 { r8. c16 r bes c8~ c4 r4 | } 
@@ -355,8 +365,8 @@ pianoPart = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  \versePiano g16~ |
-  \versePiano r16 |
+  \versePianoSimplified g16~ |
+  \versePianoSimplified r16 |
 
   \break \mark \markup \box "Chorus"
 
@@ -366,8 +376,8 @@ pianoPart = \relative c' {
   \repeat volta 2 {
     \break \mark \markup \box "Verse"
 
-    \versePiano g16~ |
-    \versePiano r16 |
+    \versePianoSimplified g16~ |
+    \versePianoSimplified r16 |
 
     \break \mark \markup \box "Prechorus"
 
@@ -383,8 +393,8 @@ pianoPart = \relative c' {
 
   \break \mark \markup \box "Outro"
 
-  \versePiano g16~ |
-  \versePiano r16 |
+  \versePianoSimplified g16~ |
+  \versePianoSimplified r16 |
 
   <g c ees>4-- r4 r2 \bar "|."
 }
@@ -395,8 +405,8 @@ partThree = \relative c' {
 
   \mark \markup \box "Intro"
 
-  \versePiano g16~ |
-  \versePiano r16 |
+  \versePianoSimplified g16~ |
+  \versePianoSimplified r16 |
 
   \break \mark \markup \box "Chorus"
 
@@ -409,9 +419,9 @@ partThree = \relative c' {
   \repeat volta 2 {
     \break \mark \markup \box "Verse"
 
-    \versePiano g16~ |
+    \versePianoSimplified g16~ |
 
-    \removeWithTag lastMeasure \versePiano
+    \removeWithTag lastMeasure \versePianoSimplified
 
     f8. <bes d>16~<bes d>8 f8 r8
 
@@ -436,8 +446,8 @@ partThree = \relative c' {
 
   \break \mark \markup \box "Outro"
 
-  \versePiano g16~ |
-  \versePiano r16 |
+  \versePianoSimplified g16~ |
+  \versePianoSimplified r16 |
 
   <ees g>4-- r2. \bar "|."
 }
