@@ -173,11 +173,11 @@ prechorusPianoWithAccents = \relative c' {
 }
 
 chorusPiano = \relative c' {
- g8. g16~ g16 <ees c>16 g8 g16 <ees c>8 g16~ g8 bes |
- aes8. aes16~ aes16 <ees c>16 aes8 aes16 <ees c>8 <ees c>16 aes8 aes |
+ g8. g16~g16 <ees c>16 g8 g16 <ees c>8 g16~g8 bes |
+ aes8. aes16~ aes16 <ees c>16 aes8 r8. <ees c>16 aes8 aes |
 
- g8. g16~ g16 <ees bes>16 g8 g16 <ees bes>8 g16~ g8 g |
- f8. f16~f16 <d bes>16 f8 f16 <d bes>8 <d bes>16 f8 f |
+ g8. g16~ g16 <ees bes>16 g16 aes16 r8. <ees bes>16 g8 g |
+ f8. f16~f16 <d bes>16 f8 r f g aes |
 }
 
 trombone = \relative c' {
