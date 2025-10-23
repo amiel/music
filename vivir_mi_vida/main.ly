@@ -92,6 +92,11 @@ outroSing = \relative c' {
   c,4 \voyAReir \vivirMiVida
 }
 
+justSingLaLaLa = \relative c' {
+  % first beat missing
+    r4^\markup { \italic "sing" } \tuplet 3/2 { f4 ees d } | c4
+}
+
 lastBar = \relative c' {
   c4-- r4 r2 \bar "|."
 }
@@ -394,9 +399,9 @@ pianoPart = \relative c' {
   \break \mark \markup \box "Outro"
 
   \versePianoSimplified g16~ |
-  \versePianoSimplified r16 |
+  \removeWithTag lastMeasure \versePianoSimplified |
 
-  <g c ees>4-- r4 r2 \bar "|."
+  f4 \justSingLaLaLa r2. \bar "|."
 }
 
 partThree = \relative c' {
@@ -447,9 +452,9 @@ partThree = \relative c' {
   \break \mark \markup \box "Outro"
 
   \versePianoSimplified g16~ |
-  \versePianoSimplified r16 |
+  \removeWithTag lastMeasure \versePianoSimplified |
 
-  <ees g>4-- r2. \bar "|."
+  f4 \justSingLaLaLa r2. \bar "|."
 }
 
 partFour = \relative c {
