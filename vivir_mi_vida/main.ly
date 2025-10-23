@@ -628,7 +628,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         \introLyrics \removeWithTag theLastLa \introLyrics
 
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 177 { \skip 4 }
+        \repeat unfold 161 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -874,7 +874,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         \introLyrics \removeWithTag theLastLa \introLyrics
 
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 173 { \skip 4 }
+        \repeat unfold 157 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -899,7 +899,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         \introLyrics \removeWithTag theLastLa \introLyrics
 
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 173 { \skip 4 }
+        \repeat unfold 157 { \skip 4 }
 
         \introLyrics \introLyrics
       }
