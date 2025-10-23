@@ -198,8 +198,8 @@ bassIntro = \relative c {
 bassVerse = \relative c {
   c8. ees16~ees8 g8~g4 r4 |
   aes,8. c16~c8 ees8~ees4 r4 |
-  ees,8. g16~g8 bes8~bes4 r4 |
-  \tag lastMeasure { bes8. d16~d8 f8~f4 r4 | }
+  ees8. g16~g8 bes8~bes4 r4 |
+  \tag lastMeasure { bes,8. d16~d8 f8~f4 r4 | }
 }
 
 bassPrechorusLastMeasure = \relative c {
@@ -207,7 +207,7 @@ bassPrechorusLastMeasure = \relative c {
   \tuplet 3/2 { bes8 bes8 bes8 } bes8 r8 |
 }
 
-bassChorus = \relative c {
+bassChorus = \relative c' {
   c8. g16 g8 c8 r8. c16 ees8 aes, |
   r8. aes16 ees8 aes r8. aes16 aes8 ees |
   r8. bes16 bes8 ees r8. ees16 ees8 bes |
