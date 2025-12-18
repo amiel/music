@@ -6,7 +6,7 @@
 \include "bass.ly"
 
 \header {
-  instrument = \markup { "B" \flat " Instruments" }
+  instrument = \markup { "B" \flat "Brass Instruments" }
 }
 
 \score {
@@ -28,8 +28,7 @@
     }
 
     \new Staff {
-      \clef bass
-      \transpose bes c'
+      \transpose bes c'''
       \bass
     }
   >>

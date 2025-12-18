@@ -1,5 +1,5 @@
 
-\version "2.8.6"
+\version "2.24.4"
 
 #(set-global-staff-size 17)
 
@@ -14,25 +14,23 @@
      \hspace #2
      A\super{2}
      \hspace #2
-     B*4
+     B
      \hspace #2
      A\super{3}
      \hspace #2
-     C*2
+     C
      \hspace #2
      A\super 2
      \hspace #2
-     B*8
+     B 
      \hspace #2
-     A\super{3}
-     \hspace #2
-     C*2
+     B
      \hspace #2
      A\super{1}
   }
 
   maintainer        = "Amiel Martin"
-  lastupdated       = "2012/05/20"
+  lastupdated       = "2025-12-17"
 }
 
 % It don't work...
