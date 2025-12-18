@@ -16,7 +16,7 @@ chordnames = \chordmode {
   }
 
   \alternative {
-    { f2:m7 g2 | }
+    { f2:m7 g2:m | }
     {
       \set chordChanges = ##f
       f1:m7 |
