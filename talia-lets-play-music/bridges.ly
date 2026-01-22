@@ -6,7 +6,13 @@
   tagline = ""
 }
 
-#(set-global-staff-size 32)
+\paper {
+  left-margin = 1\in
+  right-margin = 1\in
+  indent = 0
+}
+
+#(set-global-staff-size 29)
 
 aMelody = \relative c' {
   \repeat unfold 4 { e8 g } |
