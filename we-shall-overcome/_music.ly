@@ -1,3 +1,11 @@
+Chords = \chordmode {
+  \repeat unfold 2 { c2 f | c1 | }
+  c2 f4 g | a2:m d | g2 d/g | g2
+  d4 g:7 | c2 f | c1 |
+  f2 g4 \parenthesize gis:dim7 | a1:m |
+  c4 \parenthesize c:7 f2 | c2 g:7 | c1 |
+
+}
 
 SopranoMusic = \relative c'' {
   \key c \major

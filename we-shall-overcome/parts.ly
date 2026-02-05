@@ -20,6 +20,7 @@
 
   \score { 
     \new StaffGroup <<
+      \new ChordNames \Chords
       \new Staff \with { instrumentName = \markup \center-column {  "Flute" "Bells" } } {  \SopranoMusic }
       \new Staff \with { instrumentName = \markup \center-column { "Trombone" } } { \clef bass \AltoMusic }
       \new Staff \with { instrumentName = "Trombone" } { \clef bass \TenorMusic }
@@ -39,6 +40,7 @@
   \score { 
     \transpose bes c' {
       \new StaffGroup <<
+        \new ChordNames \Chords
         \new Staff \with { instrumentName = \markup \center-column {  "Trumpet" "S. Sax" } } \SopranoMusic
         \new Staff \with { instrumentName = \markup \center-column { "Trumpet" "T. Sax" "Clarinet" } } \AltoMusic
         \new Staff \with { instrumentName = \markup \center-column { "Baritone" "T. Sax" } } \transpose c c' \TenorMusic
@@ -59,6 +61,7 @@
   \score { 
     \transpose ees c' {
       \new StaffGroup <<
+        \new ChordNames \Chords
         \new Staff \with { instrumentName = "A. Sax" } \SopranoMusic
         \new Staff \with { instrumentName =  "A. Sax" } \AltoMusic
         \new Staff \with { instrumentName = "Bari Sax" } \TenorMusic
