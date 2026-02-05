@@ -29,6 +29,8 @@
 
     \layout { }
   }
+
+  \markup { \italic "Start at * for intro." }
 }
 
 \book {
@@ -49,6 +51,8 @@
     }
     \layout { }
   }
+
+  \markup { \italic "Start at * for intro." }
 }
 
 \book {
@@ -71,6 +75,6 @@
 
     \layout { }
   }
+
+  \markup { \italic "Start at * for intro." }
 }
-
-

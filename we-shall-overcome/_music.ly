@@ -3,8 +3,7 @@ Chords = \chordmode {
   c2 f4 g | a2:m d | g2 d/g | g2
   d4 g:7 | c2 f | c1 |
   f2 g4 \parenthesize gis:dim7 | a1:m |
-  c4 \parenthesize c:7 f2 | c2 g:7 | c1 |
-
+  c2:7 f2 | c2 g:7 | c1 |
 }
 
 SopranoMusic = \relative c'' {
@@ -14,7 +13,7 @@ SopranoMusic = \relative c'' {
   g4 g a b | c2 d | b2 a | g2
   a4 b | c2 b4 a | g1 |
   a2 g4 f | e1 |
-  g4 g c, f | e2 d | c1 | \bar "|."
+  g4^\markup { "*" } g c, f | e2 d | c1 | \bar "|."
 }
 
 AltoMusic = \relative c' {
@@ -24,7 +23,7 @@ AltoMusic = \relative c' {
   e4 e f f e2 fis | g fis | g2
   fis4 g | g2 f4 f | e1 |
   f2 d4 d | c1 |
-  e4 e c c | c2 b | c1 | \bar "|."
+  e4^\markup { "*" } e c c | c2 b | c1 | \bar "|."
 }
 
 TenorMusic = \relative c' {
@@ -35,7 +34,7 @@ TenorMusic = \relative c' {
  
   d4 d | c2 c4 c | c1 |
   c2 b4 b | c1 |
-  c4 bes a a | g2 f |
+  c4^\markup { "*" } bes a a | g2 f |
   e1  \bar "|."
 }
 
@@ -46,7 +45,7 @@ BassMusic = \relative {
   c2 f4 g | a2 d,2 | g g | g2 
   d4 f | e2 f | c1 |
   f2 g4 gis | a1 |
-  g2 f | c g' | c,1 \bar "|."
+  g2^\markup { "*" } f | c g' | c,1 \bar "|."
 }
 
 
