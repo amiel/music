@@ -42,6 +42,13 @@ verseClaps = \relative c'' {
   \xNotesOff
 }
 
+introClaps = \relative c'' {
+  \xNotesOn
+  bes4^\markup { \italic "clap" }
+  \repeat unfold 31 { bes4 }
+  \xNotesOff
+}
+
 verse = \relative c'' {
   % a veces llega la lluvia
   r8 c8 c d ees ees c ees~ | ees8 ees~ees4 r2 |
@@ -228,9 +235,9 @@ partOne = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  \transpose c c' {
-    \introSingPlay
+  \introClaps
 
+  \transpose c c' {
     \break \mark \markup \box "Chorus"
     <<
       { c''4\bendAfter -4 } \\ 
@@ -283,9 +290,7 @@ partOnePianoChorus = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  \transpose c c' {
-    \introSing
-  }
+  \introClaps
 
   \transpose c c'' {
     \break \mark \markup \box "Chorus"
@@ -331,7 +336,8 @@ partTwo = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  \introSing
+  c4 \voyAReir \vivirMiVida
+  c4 \voyAReir \vivirMiVida
 
   \break \mark \markup \box "Chorus"
 
@@ -463,8 +469,8 @@ partFour = \relative c {
 
   \mark \markup \box "Intro"
 
-  \transpose c c, {
-    \introSing
+  \transpose bes d, {
+    \introClaps
   }
 
   \break \mark \markup \box "Chorus"
@@ -625,10 +631,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "flute" { \compressMMRests { \leadPartCPianoChorus } }
       \new Lyrics \lyricsto "flute" {
-        \introLyrics \removeWithTag theLastLa \introLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 161 { \skip 4 }
+        \repeat unfold 193 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -651,10 +655,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "bells" { \compressMMRests { \leadPartC } }
       \new Lyrics \lyricsto "bells" {
-        \introLyrics \voyAReirLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 84 {  \skip 4 }
+        \repeat unfold 108 {  \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -684,10 +686,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "trumpet" { \compressMMRests { \leadPartBb } }
       \new Lyrics \lyricsto "trumpet" {
-        \introLyrics \voyAReirLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 84 {  \skip 4 }
+        \repeat unfold 108 {  \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -710,10 +710,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "sax" { \compressMMRests { \transpose c c' { \leadPartBb } } }
       \new Lyrics \lyricsto "sax" {
-        \introLyrics \voyAReirLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 84 {  \skip 4 }
+        \repeat unfold 108 {  \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -736,10 +734,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "sax" { \compressMMRests { \leadPartEb } }
       \new Lyrics \lyricsto "sax" {
-        \introLyrics \voyAReirLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 84 { \skip 4 }
+        \repeat unfold 108 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -763,10 +759,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "trumpet" { \compressMMRests { \middlePartBb } }
       \new Lyrics \lyricsto "trumpet" {
-        \introLyrics \introLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 111 { \skip 4 }
+        \repeat unfold 146 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -791,10 +785,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "clarinet" { \compressMMRests { \middlePartBb } }
       \new Lyrics \lyricsto "clarinet" {
-        \introLyrics \introLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 111 { \skip 4 }
+        \repeat unfold 146 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -817,10 +809,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "sax" { \middlePartBb }
       \new Lyrics \lyricsto "sax" {
-        \introLyrics \introLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 111 { \skip 4 }
+        \repeat unfold 146 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -871,10 +861,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "sax" { \compressMMRests { \otherLowPartEb } }
       \new Lyrics \lyricsto "sax" {
-        \introLyrics \removeWithTag theLastLa \introLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 157 { \skip 4 }
+        \repeat unfold 189 { \skip 4 }
 
         \introLyrics \introLyrics
       }
@@ -896,10 +884,8 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "sax" { \compressMMRests { \otherLowPartBb } }
       \new Lyrics \lyricsto "sax" {
-        \introLyrics \removeWithTag theLastLa \introLyrics
-
         % this is literally just the number of notes between the intro and the outro
-        \repeat unfold 157 { \skip 4 }
+        \repeat unfold 189 { \skip 4 }
 
         \introLyrics \introLyrics
       }
