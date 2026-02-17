@@ -336,7 +336,7 @@ partTwo = \relative c' {
 
   \break \mark \markup \box "Intro"
 
-  c4 \voyAReir \vivirMiVida
+  r4 \voyAReir \vivirMiVida
   c4 \voyAReir \vivirMiVida
 
   \break \mark \markup \box "Chorus"
