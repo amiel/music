@@ -1,5 +1,5 @@
 .PHONY: watch
 
 watch:
-	ls score.ly parts.ly | entr lilypond /_
+	ls *.ly | entr lilypond score.ly parts.ly
 

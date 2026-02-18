@@ -37,8 +37,10 @@ SopranoSecondLine = \relative c'' {
 }
 
 SopranoMusic = {
+  \sectionLabel "for singers"
   \repeat volta 2 \SopranoChoral
   \break
+  \sectionLabel "dixieland"
   \SopranoSecondLine
 }
 
@@ -86,8 +88,6 @@ TenorSecondLine = \transpose c c, {
 
 TenorMusic = {
   \repeat volta 2 \TenorChoral
-  \break
-  \TenorSecondLine
 }
 
 

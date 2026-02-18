@@ -4,11 +4,15 @@
 
 \include "_music.ly"
 
+date = #(strftime "%Y-%m-%d" (localtime (current-time)))
+revisionInfo = \markup { \concat { "Revision " \date } }
+
 \header {
   title = "We Shall Overcome"
   subtitle = "For Artesian Rumble Arkestra"
   subsubtitle = "To accompany the Olympia Resistance Singers"
   arranger = "arr Amiel Martin"
+  tagline = \revisionInfo
 }
 
 \book {
@@ -23,7 +27,7 @@
       \new ChordNames \Chords
       \new Staff \with { instrumentName = \markup \center-column {  "Flute" "Bells" } } {  \SopranoMusic }
       \new Staff \with { instrumentName = \markup \center-column { "Trombone" } } { \clef bass \AltoMusic }
-      \new Staff \with { instrumentName = "Trombone" } { \clef bass \TenorMusic }
+      \new Staff \with { instrumentName = "Trombone" } { \clef bass \TenorMusic \TenorSecondLine }
       \new Staff \with { instrumentName = "Sousaphone" } { \clef bass \BassMusic }
     >>
 
