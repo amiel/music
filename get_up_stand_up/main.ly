@@ -72,10 +72,12 @@ bassPart = \relative c {
 melodyPartC = \new Staff \melodyPart
 melodyPartBb = \new Staff \transpose bes c' \melodyPart
 melodyPartEb = \new Staff \transpose ees c \melodyPart
+melodyPartF = \new Staff \transpose f c \melodyPart
 
 bassC = \new Staff { \clef bass \transpose c c,, \bassPart }
 bassBb = \new Staff { \clef treble \transpose bes c' \bassPart }
 bassEb = \new Staff { \clef treble \transpose ees c \bassPart }
+bassF = \new Staff { \clef treble \transpose f c \bassPart }
 
 #(set-global-staff-size 24)
 
@@ -141,3 +143,26 @@ bassEb = \new Staff { \clef treble \transpose ees c \bassPart }
 
   \explanationText
 }
+
+\book {
+  \bookOutputName "get-up-stand-up-f"
+  \header {
+    title = \title
+    composer = \composer
+    tagline = \revisionInfo
+    instrument = \markup { F }
+  }
+  \score {
+    <<
+      \new StaffGroup <<
+        \melodyPartF
+        \bassF
+      >>
+    >>
+    \layout {}
+  }
+
+  \explanationText
+}
+
+

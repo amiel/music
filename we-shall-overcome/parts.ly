@@ -82,3 +82,26 @@ revisionInfo = \markup { \concat { "Revision " \date } }
 
   \markup { \italic "Start at * for intro." }
 }
+
+\book {
+  \bookOutputName "We Shall Overcome - F"
+
+  \header { 
+    subtitle = \markup { F instruments }
+  }
+
+  \score { 
+    \transpose ees c' {
+      \new StaffGroup <<
+        \new ChordNames \Chords
+        \new Staff \SopranoMusic
+        \new Staff \AltoMusic
+        \new Staff \TenorMusic
+      >>
+    }
+
+    \layout { }
+  }
+
+  \markup { \italic "Start at * for intro." }
+}
