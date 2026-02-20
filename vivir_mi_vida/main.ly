@@ -14,15 +14,26 @@ arranger = \markup "arr. Amiel Martin"
 % modules
 %
 
-voyAReirLyrics = \lyricmode {
+voyABailarLyrics = \lyricmode {
+  Voy a re -- ir
+  voy a bai -- lar
+}
+
+voyAGozarLyrics = \lyricmode {
   Voy a re -- ir
   voy a go -- zar
 }
 
-introLyrics = \lyricmode {
-  \voyAReirLyrics
+vivirMiVidaLyrics = \lyricmode {
   Vi -- vir mi vi -- da
-  la la la \tag theLastLa { la }
+  la la la  la
+}
+
+outroLyrics = \lyricmode {
+  \voyABailarLyrics
+  \vivirMiVidaLyrics
+  \voyAGozarLyrics
+  \vivirMiVidaLyrics
 }
 
 verseClaps = \relative c'' {
@@ -99,9 +110,9 @@ outroSing = \relative c' {
   c,4 \voyAReir \vivirMiVida
 }
 
-justSingLaLaLa = \relative c' {
+justSingLaLa = \relative c' {
   % first beat missing
-    r4^\markup { \italic "sing" } \tuplet 3/2 { f4 ees d } | c4
+    r4^\markup { \italic "last time sing" } \tuplet 3/2 { f4 ees d } 
 }
 
 lastBar = \relative c' {
@@ -281,7 +292,7 @@ partOne = \relative c' {
   \break \mark \markup \box "Outro"
  
    \transpose c c' {
-    c'4 \outroSing \lastBar
+     \repeat volta 2 { c'4 \outroSing } \lastBar
   }
 }
 
@@ -322,7 +333,7 @@ partOnePianoChorus = \relative c' {
 
   \transpose c c' {
     \mark \markup \box "Outro"
-    r4 \outroSing
+    \repeat volta 2 { r4 \outroSing }
     \lastBar
   }
 }
@@ -365,7 +376,7 @@ partTwo = \relative c' {
 
   \break \mark \markup \box "Outro"
 
-  c4 \outroSing
+  \repeat volta 2 { c4 \outroSing }
   \lastBar
 }
 
@@ -407,7 +418,7 @@ pianoPart = \relative c' {
   \versePianoSimplified g16~ |
   \removeWithTag lastMeasure \versePianoSimplified |
 
-  f4 \justSingLaLaLa r2. \bar "|."
+  f4 \justSingLaLa | c4 r2. \bar "|."
 }
 
 partThree = \relative c' {
@@ -457,10 +468,13 @@ partThree = \relative c' {
 
   \break \mark \markup \box "Outro"
 
-  \versePianoSimplified g16~ |
-  \removeWithTag lastMeasure \versePianoSimplified |
+  \repeat volta 2 {
+    \versePianoSimplified g16~ |
+    \removeWithTag lastMeasure \versePianoSimplified |
 
-  f4 \justSingLaLaLa r2. \bar "|."
+    f4 \justSingLaLa |
+  }
+  c4 r2. \bar "|."
 }
 
 partFour = \relative c {
@@ -504,7 +518,7 @@ partFour = \relative c {
   \break \mark \markup \box "Outro"
 
   \transpose c c, {
-    r4 \outroSing
+    \repeat volta 2 { r4 \outroSing }
     \lastBar
   }
 }
@@ -542,8 +556,10 @@ bassPart = \relative c {
   }
 
   \break \mark \markup \box "Outro"
-  \bassIntro \break
-  \bassIntro
+  \repeat volta 2 {
+    \bassIntro \break
+    \bassIntro
+  }
 
   R1 \bar "|."
 }
@@ -634,7 +650,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 193 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
 
@@ -658,7 +674,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 108 {  \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
 
       % \new RhythmicStaff { 
@@ -689,7 +705,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 108 {  \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
 
     >>
@@ -713,7 +729,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 108 {  \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
 
     >>
@@ -737,7 +753,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 108 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
     \layout {}
@@ -762,7 +778,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 146 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
 
@@ -788,7 +804,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 146 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
 
@@ -812,7 +828,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 146 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
 
@@ -864,7 +880,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 189 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
     \layout { }
@@ -887,7 +903,7 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 189 { \skip 4 }
 
-        \introLyrics \introLyrics
+        \outroLyrics
       }
     >>
     \layout {}
