@@ -575,6 +575,7 @@ leadPartEb = \transpose ees c \partOne
 
 middlePartC = \partTwo
 middlePartBb = \transpose bes c' \partTwo
+middlePartF = \transpose f c' \partTwo
 % middlePartEb = \new Staff \transpose ees c \partTwo
 
 lowPartC = { \clef bass \partThree }
@@ -825,6 +826,31 @@ bassBb = { \clef treble \transpose bes c''' \bassPart }
     <<
       \new Voice = "sax" { \middlePartBb }
       \new Lyrics \lyricsto "sax" {
+        % this is literally just the number of notes between the intro and the outro
+        \repeat unfold 146 { \skip 4 }
+
+        \outroLyrics
+      }
+    >>
+
+    \layout {}
+  }
+}
+
+\book {
+  \bookOutputName "vivir mi vida - french horn"
+  \header {
+    title = \title
+    composer = \composer
+    arranger = \arranger
+    tagline = \revisionInfo
+    instrument = "French Horn"
+  }
+
+  \score {
+    <<
+      \new Voice = "horn" { \compressMMRests { \middlePartF } }
+      \new Lyrics \lyricsto "horn" {
         % this is literally just the number of notes between the intro and the outro
         \repeat unfold 146 { \skip 4 }
 
