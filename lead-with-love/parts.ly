@@ -20,12 +20,13 @@
   \score {
     \new StaffGroup <<
       \new ChordNames \Chords
-      \new Staff \with { instrumentName = \markup \center-column {  "Flute" "Bells" } } {  \MelodyMusic }
+      \new Staff \with { instrumentName = \markup \center-column {  "Flute" "Bells" } } { \transpose c c' \MelodyMusic }
       \new Staff \with { instrumentName = \markup \center-column { "Trombone" } } { \clef bass \CounterMelodyMusic }
       \new Staff \with { instrumentName = "Sousaphone" } { \clef bass \BassMusic }
     >>
 
     \layout { }
+    \midi { }
   }
 }
 

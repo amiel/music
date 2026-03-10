@@ -1,7 +1,7 @@
 Chords = \chordmode {
 }
 
-MelodyMusic = \relative c'' {
+MelodyMusic = \relative c' {
   \key c \minor
 
   \partial 8*5 c8 c c ees4 |
