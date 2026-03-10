@@ -7,7 +7,8 @@
 \header {
   title = "Lead With Love"
   subtitle = "For Artesian Rumble Arkestra"
-  arranger = "arr Amiel Martin"
+  composer = "Melanie DeMore"
+  arranger = "arr Amiel Martin/Becky Liebman"
 }
 
 \book {
@@ -26,7 +27,7 @@
     >>
 
     \layout { }
-    \midi { }
+    % \midi { }
   }
 }
 

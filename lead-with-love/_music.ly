@@ -4,6 +4,12 @@ Chords = \chordmode {
 MelodyMusic = \relative c' {
   \key c \minor
 
+  \tempo \markup {
+    Swing
+    \hspace #0.4
+    \rhythm { 8[ 8] } = \rhythm { \tuplet 3/2 { 4 8 } }
+  } 4 = 152
+
   \partial 8*5 c8 c c ees4 |
 
   g4 g8 g g g f g( | g) ees4. r8 c4. |
