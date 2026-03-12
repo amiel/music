@@ -14,7 +14,10 @@ ChordsSecondLine = \chordmode {
   c2:7 f2 | c2 g:7 | c1 |
 }
 
-Chords = { \ChordsChoral \ChordsSecondLine }
+Chords = {
+\ChordsChoral
+%% \ChordsSecondLine
+}
 
 
 SopranoChoral = \relative c'' {
@@ -37,11 +40,11 @@ SopranoSecondLine = \relative c'' {
 }
 
 SopranoMusic = {
-  \sectionLabel "for singers"
+  %% \sectionLabel "for singers"
   \repeat volta 2 \SopranoChoral
-  \break
-  \sectionLabel "dixieland"
-  \SopranoSecondLine
+  %% \break
+  %% \sectionLabel "dixieland"
+  %% \SopranoSecondLine
 }
 
 
@@ -67,7 +70,7 @@ AltoSecondLine = \relative c' {
 AltoMusic = {
   \repeat volta 2 \AltoChoral
   \break
-  \AltoSecondLine
+  %% \AltoSecondLine
 }
 
 
@@ -113,5 +116,5 @@ BassSecondLine = \relative {
 BassMusic = {
   \repeat volta 2 \BassChoral
   \break
-  \BassSecondLine
+  %% \BassSecondLine
 }

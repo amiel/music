@@ -27,7 +27,7 @@ revisionInfo = \markup { \concat { "Revision " \date } }
       \new ChordNames \Chords
       \new Staff \with { instrumentName = \markup \center-column {  "Flute" "Bells" } } {  \SopranoMusic }
       \new Staff \with { instrumentName = \markup \center-column { "Trombone" } } { \clef bass \AltoMusic }
-      \new Staff \with { instrumentName = "Trombone" } { \clef bass \TenorMusic \TenorSecondLine }
+      \new Staff \with { instrumentName = "Trombone" } { \clef bass \TenorMusic }
       \new Staff \with { instrumentName = "Sousaphone" } { \clef bass \BassMusic }
     >>
 
