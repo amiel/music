@@ -54,16 +54,19 @@ upperB = \relative c' {
   <<
     {
       \voiceOne
-      s2 s4 r8 c'8(| c1)
+      s2 s4 r8 c'8(| c1) |
+      s2 s4 r8 c8(| c4.) d8(d2) |
     }
     \\
     {
       \voiceThree
-      s2 r8 f,4.( | f1)
+      s2 r8 f,4.( | f1) |
+      s2 r8 g4.( | f1) |
     }
     \\
     {
       \voiceFour
+      r4 r8 d8(d2)( | d1) |
       r4 r8 d8(d2)( | d1) |
     }
   >>
@@ -74,14 +77,83 @@ lowerB = \relative c' {
     {
       \voiceOne
       r4 c2.( | c1)
+      s4 c2.( | c1)
     }
     \\
     {
       \voiceTwo
-      d,1( | d1)
+      s1 | s1 |
+      s8 g8( g2.)( | g1) |
+    }
+    \\
+    {
+      \voiceFour
+      d1( | d1) |
+      d1( | d1) |
     }
   >>
 }
+
+
+%%
+%% upperB = \relative c' {
+%%   <<
+%%     {
+%%       \voiceOne
+%%       s2 s4 s8 c'8(| c1) |
+%%       s2 s4 s8 c8(| c4.) d8(d2) |
+%%     }
+%%     \\
+%%     {
+%%       \voiceTwo
+%%       s2 s8 f,4.( | s1) |
+%%       s2 s8 g4.( | s1) |
+%%     }
+%%     \\
+%%     {
+%%       \voiceFour
+%%       s4 s8 d8(s2 | s1) |
+%%       s4 s8 d8(s2 | s1) |
+%%     }
+%%   >>
+%% }
+%%
+%% lowerB = \relative c' {
+%%   <<
+%%     {
+%%       \voiceOne
+%%       s4 c8( s4. | s1)
+%%       s4 s8( s4. | s1)
+%%     }
+%%     \\
+%%     {
+%%       \voiceTwo
+%%       s1 | s1 |
+%%       s8 g8( s2 | s1) |
+%%     }
+%%     \\
+%%     {
+%%       \voiceFour
+%%       d4( s2.| s1) |
+%%       d8( s2.. | s1) |
+%%     }
+%%   >>
+%%
+%%   %%
+%%   %% <<
+%%   %%   {
+%%   %%     \voiceOne
+%%   %%     d,4 c'8 s8 s2 | s1 |
+%%   %%   }
+%%   %%   \\
+%%   %%   {
+%%   %%     \voiceTwo
+%%   %%     d,8 g c8 s8 s2 | s1 |
+%%   %%   }
+%%   %% >>
+%% }
+%%
+
 
 \score {
   \new PianoStaff <<
