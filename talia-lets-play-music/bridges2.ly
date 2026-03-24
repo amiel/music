@@ -12,7 +12,7 @@
   indent = 0
 }
 
-#(set-global-staff-size 29)
+#(set-global-staff-size 24)
 
 upperA = \relative c'' {
   \clef treble
@@ -30,7 +30,7 @@ upperA = \relative c'' {
 
   e2 f | e2 d | d4..\fermata e16(e2 ) |
 
-  \bar "|."
+  \bar "||" \break
 }
 
 % Bass clef
@@ -47,7 +47,7 @@ lowerA = \relative c' {
 
   c'2 d | c b | c1 |
 
-  \bar "|."
+  \bar "||"
 }
 
 upperB = \relative c' {
@@ -70,6 +70,7 @@ upperB = \relative c' {
       r4 r8 d8(d2)( | d1) |
     }
   >>
+  \bar "||" \break
 }
 
 lowerB = \relative c' {
@@ -92,73 +93,44 @@ lowerB = \relative c' {
       d1( | d1) |
     }
   >>
+  \bar "||"
 }
 
+upperC = \relative c' {
+  R1*2 |
 
-%%
-%% upperB = \relative c' {
-%%   <<
-%%     {
-%%       \voiceOne
-%%       s2 s4 s8 c'8(| c1) |
-%%       s2 s4 s8 c8(| c4.) d8(d2) |
-%%     }
-%%     \\
-%%     {
-%%       \voiceTwo
-%%       s2 s8 f,4.( | s1) |
-%%       s2 s8 g4.( | s1) |
-%%     }
-%%     \\
-%%     {
-%%       \voiceFour
-%%       s4 s8 d8(s2 | s1) |
-%%       s4 s8 d8(s2 | s1) |
-%%     }
-%%   >>
-%% }
-%%
-%% lowerB = \relative c' {
-%%   <<
-%%     {
-%%       \voiceOne
-%%       s4 c8( s4. | s1)
-%%       s4 s8( s4. | s1)
-%%     }
-%%     \\
-%%     {
-%%       \voiceTwo
-%%       s1 | s1 |
-%%       s8 g8( s2 | s1) |
-%%     }
-%%     \\
-%%     {
-%%       \voiceFour
-%%       d4( s2.| s1) |
-%%       d8( s2.. | s1) |
-%%     }
-%%   >>
-%%
-%%   %%
-%%   %% <<
-%%   %%   {
-%%   %%     \voiceOne
-%%   %%     d,4 c'8 s8 s2 | s1 |
-%%   %%   }
-%%   %%   \\
-%%   %%   {
-%%   %%     \voiceTwo
-%%   %%     d,8 g c8 s8 s2 | s1 |
-%%   %%   }
-%%   %% >>
-%% }
-%%
+  \repeat volta 2 {
+    d2 a' |
+    a8 g f g a2 |
+    c,2 g' |
 
+  } \alternative {
+    { g8 f e f g2 | }
+    { g8 f e d c2 | }
+  }
+}
+
+lowerC = \relative c {
+  \repeat unfold 4 { d8 a' } |
+  \repeat unfold 4 { d,8 a' } |
+
+  \repeat volta 2 {
+    \repeat unfold 4 { d,8 a' } |
+    \repeat unfold 4 { d,8 a' } |
+
+    \repeat unfold 4 { c,8 g' } |
+  } \alternative {
+    { \repeat unfold 4 { c,8 g' } | }
+    { \repeat unfold 4 { c,8 g' } | }
+  }
+
+  \bar "|."
+}
 
 \score {
   \new PianoStaff <<
-    \new Staff = "upper" { \upperA \upperB }
-    \new Staff = "lower" { \lowerA \lowerB }
+    \new Staff = "upper" { \upperA \upperB \upperC }
+    \new Staff = "lower" { \lowerA \lowerB \lowerC }
   >>
   \layout { }
 }
