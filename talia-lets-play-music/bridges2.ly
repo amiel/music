@@ -10,9 +10,10 @@
   left-margin = 1\in
   right-margin = 1\in
   indent = 0
+  systems-per-page = 4
 }
 
-#(set-global-staff-size 29)
+#(set-global-staff-size 30)
 
 upperA = \relative c' {
   \clef treble
@@ -112,6 +113,10 @@ lowerC = \relative c {
   b, g' d g b, g' d g |
 
   \bar "||"
+}
+
+lowerEnd = \relative c {
+
 }
 
 
