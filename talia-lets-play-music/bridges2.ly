@@ -54,7 +54,8 @@ upperC = \relative c' {
   e8 g e d e4 d |
 
   \repeat unfold 4 { e8 g } |
-  e8 g a g e d c4 |
+  f8 a f a f e d c |
+
   \repeat unfold 4 { e8 g } |
   e8 d d c d e d4 |
 }
@@ -99,12 +100,9 @@ lowerC = \relative c {
   a,8 e' c e a, e' c e |
 
   c8 g' e g c, g' e g |
-  f,8 c' a c f, c' a c |
-  c8 g' e g c, g' e g |
-  % g, d' b d g, d' b d |
+  c,8 a' f a c, a' f a |
+  c,8 g' e g c, g' e g |
   b, g' d g b, g' d g |
-
-
 }
 
 
