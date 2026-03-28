@@ -16,6 +16,7 @@
 
 upperA = \relative c' {
   \clef treble
+  \mark \markup { \box "A" }
 
   R1 |
 
@@ -31,6 +32,7 @@ upperA = \relative c' {
 }
 
 upperB = \relative c'' {
+  \mark \markup { \box "B" }
 
   \repeat volta 2 {
     r4 b8-2 a b8. d16( d4) |
@@ -47,6 +49,7 @@ upperB = \relative c'' {
 }
 
 upperC = \relative c' {
+  \mark \markup { \box "C" }
 
   \bar "||"
 
