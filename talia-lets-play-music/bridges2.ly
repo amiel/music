@@ -16,7 +16,6 @@
 
 upperA = \relative c' {
   \clef treble
-  \time 4/4
 
   R1 |
 
@@ -48,6 +47,9 @@ upperB = \relative c'' {
 }
 
 upperC = \relative c' {
+
+  \bar "||"
+
   \repeat unfold 4 { e8 g } |
   e8 g e g e4 d |
   \repeat unfold 4 { e8 g } |
@@ -58,12 +60,13 @@ upperC = \relative c' {
 
   \repeat unfold 4 { e8 g } |
   e8 d d c d e d4 |
+
+  \bar "||"
 }
 
 
 lowerA = \relative c {
   \clef bass
-  \time 4/4
 
   \repeat unfold 4 { d8 a' } |
 
@@ -75,7 +78,6 @@ lowerA = \relative c {
     { \repeat unfold 4 { c,8 g' } | \repeat unfold 4 { c,8 g' } | }
     { \repeat unfold 4 { c,8 g' } | \repeat unfold 4 { c,8 g' } | }
   }
-
 }
 
 lowerB = \relative c' {
@@ -93,6 +95,8 @@ lowerB = \relative c' {
 }
 
 lowerC = \relative c {
+  \bar "||"
+
   c8 g' e g c, g' e g |
   a,8 e' c e a, e' c e |
 
@@ -103,13 +107,21 @@ lowerC = \relative c {
   c,8 a' f a c, a' f a |
   c,8 g' e g c, g' e g |
   b, g' d g b, g' d g |
+
+  \bar "||"
 }
 
 
 \score {
   \new PianoStaff <<
-    \new Staff = "upper" { \upperA \upperB \upperC }
-    \new Staff = "lower" { \lowerA \lowerB \lowerC }
+    \new Staff = "upper" {
+      \time 4/4
+      \upperA \upperB \upperA \upperC \upperA
+    }
+    \new Staff = "lower" {
+      \time 4/4
+      \lowerA \lowerB \lowerA \lowerC \lowerA
+    }
   >>
   \layout { }
 }
