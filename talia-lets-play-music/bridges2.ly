@@ -115,8 +115,14 @@ lowerC = \relative c {
   \bar "||"
 }
 
-lowerEnd = \relative c {
+upperEnding = \relative c' {
+  d1 |
+  \bar "|."
+}
 
+lowerEnding = \relative c {
+  <d a'>1 |
+  \bar "|."
 }
 
 
@@ -124,11 +130,11 @@ lowerEnd = \relative c {
   \new PianoStaff <<
     \new Staff = "upper" {
       \time 4/4
-      \upperA \upperB \upperA \upperC \upperA
+      \upperA \upperB \upperA \upperC \upperA \upperEnding
     }
     \new Staff = "lower" {
       \time 4/4
-      \lowerA \lowerB \lowerA \lowerC \lowerA
+      \lowerA \lowerB \lowerA \lowerC \lowerA \lowerEnding
     }
   >>
   \layout { }
