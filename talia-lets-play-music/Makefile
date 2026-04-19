@@ -5,9 +5,9 @@
 bridges.pdf: bridges.ly
 	lilypond bridges.ly
 
-bridges2.pdf: bridges2.ly
-	lilypond bridges2.ly
+pencil-and-paper.pdf: pencil-and-paper.ly
+	lilypond pencil-and-paper.ly
 
 watch:
-	find . -name '*.ly' | entr make bridges.pdf bridges2.pdf
+	find . -name '*.ly' | entr make bridges.pdf pencil-and-paper.pdf
 

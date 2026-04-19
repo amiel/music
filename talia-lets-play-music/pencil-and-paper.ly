@@ -1,19 +1,20 @@
 \version "2.24.3"
 
 \header {
-  title = "Night Owl"
+  title = "Pencil and Paper"
   composer = "Talia Martin"
   tagline = ""
 }
 
+
 \paper {
-  left-margin = 1\in
-  right-margin = 1\in
+  left-margin = 0.75\in
+  right-margin = 0.75\in
   indent = 0
   systems-per-page = 4
 }
 
-#(set-global-staff-size 31)
+#(set-global-staff-size 24)
 
 upperAmusic = \relative c' {
   \repeat volta 2 {
@@ -68,8 +69,6 @@ upperC = \relative c' {
 
   \repeat unfold 4 { e8 g } |
   e8 d d c d e d4 |
-
-  \bar "||"
 }
 
 
@@ -118,8 +117,6 @@ lowerC = \relative c {
   c,8 a' f a c, a' f a |
   c,8 g' e g c, g' e g |
   b, g' d g b, g' d g |
-
-  \bar "||"
 }
 
 upperEnding = \relative c' {
@@ -127,7 +124,7 @@ upperEnding = \relative c' {
   \bar "|."
 }
 
-lowerEnding = \relative c' {
+lowerEnding = \relative c {
   <d f a>1\arpeggio |
   \bar "|."
 }
@@ -136,25 +133,52 @@ lowerEnding = \relative c' {
 \score {
   \new PianoStaff <<
   \set PianoStaff.connectArpeggios = ##t
+    \set Score.dalSegnoTextFormatter = #format-dal-segno-text-brief
+
     \new Staff = "upper" {
       \time 4/4
-      \upperA
-      \upperB
-      \upperA
+      \repeat segno 2 {
+        \upperA
+        \alternative {
+          \volta 1 { \upperB }
+          \volta 2 \volta #'() {
+
+            \section
+            \sectionLabel "Coda"
+          }
+        }
+      }
+
       \upperC
-      \upperA
-      \transpose c c' {  \upperAmusic }
+      \repeat volta 2 {
+        <>-\markup { \italic "2nd time 8va" }
+        \unfoldRepeats \upperA
+      }
       \upperEnding
+
+      \fine
     }
     \new Staff = "lower" {
       \time 4/4
-      \lowerA
-      \lowerB
-      \lowerA
+      \repeat segno 2 {
+        \lowerA
+        \alternative {
+          \volta 1 { \lowerB }
+          \volta 2 \volta #'() {
+            \section
+            \sectionLabel "Coda"
+          }
+        }
+
+      }
+
       \lowerC
-      \lowerA
-      \transpose c c' { \clef treble \lowerAmusic }
+      \repeat volta 2 {
+        \unfoldRepeats \lowerA
+      }
       \lowerEnding
+
+      \fine
     }
   >>
   \layout { }
