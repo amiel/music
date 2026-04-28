@@ -98,9 +98,8 @@ PartPOneVoiceOne =  \relative e' {
          d16 c16 b16 a16 g16 f16 e16 d16 | % 52
      }
      \alternative {
-       { c4 r16 b16 a16 as16 }
-             | % 53
-       { c4 r16 e16 dis16 e16 }
+       { c4 r16 b16 a16 as16 | }
+       { c4 r16 e16 dis16 e16 |  }
      }
  }
 
