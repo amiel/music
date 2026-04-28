@@ -3,7 +3,19 @@
 % automatically converted by musicxml2ly from Tico-Tico.xml
 \pointAndClickOff
 
-PartPOneVoiceOne =  \relative e' {
+date = #(strftime "%Y-%m-%d" (localtime (current-time)))
+
+revisionInfo = \markup { \concat { "Revision " \date } }
+
+title = \markup "Tico Tico"
+
+\header {
+  title = \title
+  tagline = \revisionInfo
+  instrument = "Bari Sax" 
+}
+
+PartPOneVoiceOne =  \relative e'' {
       \clef "treble"
   \time 2/4
   \key a \minor
@@ -28,7 +40,7 @@ PartPOneVoiceOne =  \relative e' {
           b16 e,16 gis16 b16 e16 d16 c16 b16 | % 17
       \alternative {
         { a8 r8 r16 e16 dis16 e16 | } 
-        { a8 r8 r16 a16 cis16 e16 | }
+        { a8 r8 r16 a,16 cis16 e16 | }
       } 
   }
   
@@ -46,16 +58,18 @@ PartPOneVoiceOne =  \relative e' {
          a16 a,16 cis16 gis'16 ~ gis16 a,16 cis16 fis16 | % 28
          fis16 a,16 cis16 e16 ~ e16 a,16 cis16 e16 | % 29
          fis16 e16 cis16 ais16 fis'16 e16 cis16 ais16 | \barNumberCheck #29
+
          b16 ais16 b16 cis16 d8 r8 | % 31
-         d,16 cis16 d16 e16 fis16 gis16 a16 b16 | % 32
+
+         d16 cis16 d16 e16 fis16 gis16 a16 b16 | % 32
          cis16 d16 dis16 e16 fis16 e16 d16 cis16 | % 33
          b16 a16 gis16 fis16 e16 d16 cis16 b16 | % 34
      }
      \alternative { {
-             a4 r16 a'16 cis16 e16 }
+             a4 r16 a16 cis16 e16 }
          {
              | % 35
-             a,,4 r16 e'16 dis16 e16 }
+             a,4 r16 e'16 dis16 e16 }
          } \bar "||"
 
      % CODA
@@ -66,9 +80,9 @@ PartPOneVoiceOne =  \relative e' {
 
      \repeat volta 2 {
          | % 37
-         g16 c16 e16 g16 c16 e16 g16 gis16 | % 38
-         a8.-. f16-. r16 b,,16 a16 as16 | % 39
-         g16 b16 d16 g16 b16 d16 f16 g16 | \barNumberCheck #39
+         g16 c16 e16 g16 c16 e,16 g16 gis16 | % 38
+         a8.-. f16-. r16 b,16 a16 as16 | % 39
+         g16 b16 d16 g16 b16 d,16 f16 g16 | \barNumberCheck #39
 
          a8.-. e16-. r16 <e c'>16 <e c'>16 <e c'>16 | % 41
          <e c'>16( <g b>16) <g b>16 <g b>16 ~ <g b>16 <f a>16 <f a>16 <f a>16  | %42
@@ -84,22 +98,22 @@ PartPOneVoiceOne =  \relative e' {
          %% <f a>16 <d f>8 <d f>16 ~ <d f>16 <d b'>16 <d b'>16 <d b'>16 | % 43
          %% d8 b'8 f16 a16 f16 a16 f8 a8 e16 g16 e16 g16 | % 44
 
-     <e g>4 r16 b,16 a16 as16 | % 45
+     <e g>4 r16 b16 a16 as16 | % 45
 
 
 
 
-         g16 c16 e16 g16 c16 e16 g16 gis16 | % 46
-         a8.-. f16-. r16 b,,16 a16 as16 | % 47
-         g16 b16 d16 g16 b16 d16 f16 g16 | % 48
+         g16 c16 e16 g16 c16 e,16 g16 gis16 | % 46
+         a8.-. f16-. r16 b,16 a16 as16 | % 47
+         g16 b16 d16 g16 b16 d,16 f16 g16 | % 48
          a8.-. e16-. r16 c16 b16 bes16 | % 49
          a16 gis16 a16 b16 d16 c16 b16 c16 | \barNumberCheck #50
          e16 g,16 c16 e16 g16 ges16 f16 e16 | % 51
          d16 c16 b16 a16 g16 f16 e16 d16 | % 52
      }
      \alternative {
-       { c4 r16 b16 a16 as16 | }
-       { c4 r16 e16 dis16 e16 |  }
+       { c4 r16 b'16 a16 as16 | }
+       { c,4 r16 e'16 dis16 e16 |  }
      }
  }
 
@@ -182,12 +196,12 @@ PartPOneVoiceOne =  \relative e' {
 \score {
         
   <<
-      \context ChordNames = "PartPOneVoiceOneChords" { \PartPOneVoiceOneChords}
+      \context ChordNames = "PartPOneVoiceOneChords" { \transpose ees c \PartPOneVoiceOneChords}
             % \set Staff.instrumentName = "Track 1"
             
              \context Staff << 
                  % \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                 \context Voice = "PartPOneVoiceOne" {  \PartPOneVoiceOne }
+                 \context Voice = "PartPOneVoiceOne" { \transpose ees c  \PartPOneVoiceOne }
                  >>
              >>
         
