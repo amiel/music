@@ -131,65 +131,65 @@ PartPOneVoiceOne =  \relative e' {
    \repeat volta 2 {
          | % 19
          s16 s16 s16 s16 a16:1 s16 s16 s16 | \barNumberCheck #19
-         a16:6 s16 s16 s16 a16:5 s16 s16 s16 | % 21
-         a16:6 s16 s16 s16 a16:5 s16 s16 s16 | % 22
+         a16:6 s16 s16 s16 a16 s16 s16 s16 | % 21
+         a16:6 s16 s16 s16 a16 s16 s16 s16 | % 22
          e16:9 s16 s16 s16 e16:7 s16 s16 s16 | % 23
          e16:7/+a s16 s16 s16 e16:1 s16 s16 s16 | % 24
          e16:9 s16 s16 s16 e16:7 s16 s16 s16 | % 25
          e16:7/+a s16 s16 s16 e16:7 s16 s16 s16 | % 26
-         a16:6 s16 s16 s16 a16:5 s16 s16 s16 | % 27
-         a16:5 s16 s16 s16 a16:1 s16 s16 s16 | % 28
-         a16:6 s16 s16 s16 a16:5 s16 s16 s16 | % 29
+         a16:6 s16 s16 s16 a16 s16 s16 s16 | % 27
+         a16 s16 s16 s16 a16:1 s16 s16 s16 | % 28
+         a16:6 s16 s16 s16 a16 s16 s16 s16 | % 29
          fis16:7 s16 s16 s16 s16 s16 s16 s16 | \barNumberCheck #29
          b16:m s16 s16 s16 s8 s8 | % 31
-         d16:5 s16 s16 s16 dis16:1 s16 s16 s16 | % 32
-         a16:5 s16 s16 s16 fis16:7 s16 s16 s16 | % 33
+         d16 s16 s16 s16 dis16:1 s16 s16 s16 | % 32
+         a16 s16 s16 s16 fis16:7 s16 s16 s16 | % 33
          b16:m s16 s16 s16 e16:7 s16 s16 s16 }
      \alternative { {
              | % 34
              s4 s16 s16 s16 s16 }
          {
              | % 35
-             a4:5 s16 s16 s16 s16 }
+             a4 s16 s16 s16 s16 }
          } \bar "||"
-     a4:5 s16 s16 s16 s16 \repeat volta 2 {
+     a4 s16 s16 s16 s16 \repeat volta 2 {
          | % 37
-         c16:5 s16 s16 s16 s16 s16 s16 s16 | % 38
+         c16 s16 s16 s16 s16 s16 s16 s16 | % 38
          g8.:7 s16 s16 s16 s16 s16 | % 39
          s16 s16 s16 s16 s16 s16 s16 s16 | \barNumberCheck #39
-         c8.:5 s16 s16 s16 s16 s16 | % 41
+         c8. s16 s16 s16 s16 s16 | % 41
          s8 s16 s16 s8 s16 s16 | % 42
          g8:7 s8 s16 s16 s16 s16 | % 43
          s8 s16 s16 s8 s16 s16 | % 44
-         c16:5 s8 s16 s16 s16 s16 s16 | % 45
+         c16 s8 s16 s16 s16 s16 s16 | % 45
          s16 s16 s16 s16 s16 s16 s16 s16 | % 46
          g8.:7 s16 s16 s16 s16 s16 | % 47
          g16:7 s16 s16 s16 s16 s16 s16 s16 | % 48
-         c8.:5 s16 s16 s16 s16 s16 | % 49
-         f16:5 s16 s16 s16 fis16:1 s16 s16 s16 | \barNumberCheck #50
-         c16:5 s16 s16 s16 a16:7 s16 s16 s16 | % 51
+         c8. s16 s16 s16 s16 s16 | % 49
+         f16 s16 s16 s16 fis16:1 s16 s16 s16 | \barNumberCheck #50
+         c16 s16 s16 s16 a16:7 s16 s16 s16 | % 51
          d16:m s16 s16 s16 g16:7 s16 s16 s16 }
      \alternative { {
              | % 52
-             c4:5 s16 s16 s16 s16 }
+             c4 s16 s16 s16 s16 }
          {
              | % 53
-             c4:5 e16:7 s16 s16 s16 }
+             c4 e16:7 s16 s16 s16 }
          } }
 
 
 % The score definition
 \score {
         
-      % \context ChordNames = "PartPOneVoiceOneChords" { \PartPOneVoiceOneChords}
-        \new Staff {  \PartPOneVoiceOne }
+  <<
+      \context ChordNames = "PartPOneVoiceOneChords" { \PartPOneVoiceOneChords}
             % \set Staff.instrumentName = "Track 1"
             
-            %% \context Staff << 
-            %%     % \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-            %%     \context Voice = "PartPOneVoiceOne" {  \PartPOneVoiceOne }
-            %%     >>
-            %% >>
+             \context Staff << 
+                 % \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
+                 \context Voice = "PartPOneVoiceOne" {  \PartPOneVoiceOne }
+                 >>
+             >>
         
     \layout {}
     % To create MIDI output, uncomment the following line:
