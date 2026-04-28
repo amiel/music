@@ -2,6 +2,12 @@
 % automatically converted by musicxml2ly from Baym-rebns-sude.xml
 \pointAndClickOff
 
+date = #(strftime "%Y-%m-%d" (localtime (current-time)))
+
+revisionInfo = \markup { \concat { "Revision " \date } }
+
+title = \markup "Baym Rebns Sude"
+
 PartPOneVoiceOne =  \relative cis' {
     \repeat volta 2 {
         \clef "treble" \time 2/4 \key c \major | % 1
@@ -116,17 +122,22 @@ PartPOneVoiceOneChords =  \chordmode {
         s2 }
     }
 
-
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    instrument = "Bari Sax" 
+  }
+ 
 % The score definition
 \score {
     <<
         
-        \context ChordNames = "PartPOneVoiceOneChords" { \PartPOneVoiceOneChords}
+        \context ChordNames = "PartPOneVoiceOneChords" { \transpose ees c \PartPOneVoiceOneChords}
         \new Staff
         <<
             \context Staff << 
                 \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
-                \context Voice = "PartPOneVoiceOne" {  \PartPOneVoiceOne }
+                \context Voice = "PartPOneVoiceOne" {\transpose ees c \PartPOneVoiceOne }
                 >>
             >>
         

@@ -1,7 +1,6 @@
 .PHONY: watch
 
 
-
 watch:
-	find . -name '*.ly' | entr lilypond /_
+	echo "Try a directory"
 
