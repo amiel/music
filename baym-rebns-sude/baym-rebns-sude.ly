@@ -2,11 +2,6 @@
 % automatically converted by musicxml2ly from Baym-rebns-sude.xml
 \pointAndClickOff
 
-\header {
-    encodingsoftware =  "Soundslice MusicXML exporter"
-    encodingdate =  "2026-04-27"
-    }
-
 PartPOneVoiceOne =  \relative cis' {
     \repeat volta 2 {
         \clef "treble" \time 2/4 \key c \major | % 1
@@ -67,57 +62,57 @@ PartPOneVoiceOne =  \relative cis' {
 PartPOneVoiceOneChords =  \chordmode {
     \repeat volta 2 {
         | % 1
-        e16:5 s16 s8 s8 s8 | % 2
+        e16 s16 s8 s8 s8 | % 2
         s2 | % 3
-        e16:5 s16 s8 d16:m5 s16 s8 | % 4
-        e2:5 | % 5
-        s4 a4:m5 | % 6
-        e4:5 a4:m5 | % 7
-        e4.:5 s8 | % 8
+        e16 s16 s8 d16:m s16 s8 | % 4
+        e2 | % 5
+        s4 a4:m | % 6
+        e4 a4:m | % 7
+        e4. s8 | % 8
         s8 s8 s8 s8 | % 9
-        e16:5 s16 s8 s8 s8 | \barNumberCheck #10
+        e16 s16 s8 s8 s8 | \barNumberCheck #10
         s2 | % 11
-        s16 s16 s8 d16:m5 s16 s8 | % 12
+        s16 s16 s8 d16:m s16 s8 | % 12
         s2 | % 13
         s8 s8 s8 s8 | % 14
         s8 s8 s8 s8 | % 15
-        e2:5 | % 16
+        e2 | % 16
         s4 s4 }
     \repeat volta 2 {
         | % 17
-        a8:m5 s8 s8 s8 | % 18
+        a8:m s8 s8 s8 | % 18
         e8:7 s8 s8 s8 | % 19
-        a4.:m5 s16 s16 | \barNumberCheck #20
+        a4.:m s16 s16 | \barNumberCheck #20
         s2 | % 21
-        d4:m5 e4:7 | % 22
-        s4 a4:m5 | % 23
-        e4.:5 s8 | % 24
+        d4:m e4:7 | % 22
+        s4 a4:m | % 23
+        e4. s8 | % 24
         s8 s8 s4 | % 25
-        e4:5 a4:m5 | % 26
-        e4:5 a4:m5 | % 27
-        e4.:5 s8 | % 28
+        e4 a4:m | % 26
+        e4 a4:m | % 27
+        e4. s8 | % 28
         s8 s8 s8 s8 | % 29
-        d8:m5 s8 s8 s8 | \barNumberCheck #30
+        d8:m s8 s8 s8 | \barNumberCheck #30
         s16 s16 s16 s16 s16 s16 s16 s16 | % 31
-        e4:5 s16 s16 s16 s16 | % 32
+        e4 s16 s16 s16 s16 | % 32
         s2 }
     \repeat volta 2 {
         | % 33
-        a16:m5 s16 s16 s16 s16 s16 s8 | % 34
-        d16:m5 s16 s16 s16 s16 s16 s8 | % 35
-        e16:5 s16 s8 d16:m5 s16 s8 | % 36
+        a16:m s16 s16 s16 s16 s16 s8 | % 34
+        d16:m s16 s16 s16 s16 s16 s8 | % 35
+        e16 s16 s8 d16:m s16 s8 | % 36
         s2 | % 37
         s8 s8 s8 s8 | % 38
         s16 s16 s8 s8 s8 | % 39
-        e4:5 s16 s16 s16 s16 | \barNumberCheck #40
+        e4 s16 s16 s16 s16 | \barNumberCheck #40
         s2 | % 41
-        a16:m5 s16 s16 s16 s16 s16 s8 | % 42
-        d16:m5 s16 s16 s16 s16 s16 s8 | % 43
-        e16:5 s16 s8 d16:m5 s16 s8 | % 44
+        a16:m s16 s16 s16 s16 s16 s8 | % 42
+        d16:m s16 s16 s16 s16 s16 s8 | % 43
+        e16 s16 s8 d16:m s16 s8 | % 44
         s2 | % 45
-        d8:m5 s8 s8 s8 | % 46
+        d8:m s8 s8 s8 | % 46
         s8 s8 s8 s8 | % 47
-        e2:5 | % 48
+        e2 | % 48
         s2 }
     }
 
@@ -129,8 +124,6 @@ PartPOneVoiceOneChords =  \chordmode {
         \context ChordNames = "PartPOneVoiceOneChords" { \PartPOneVoiceOneChords}
         \new Staff
         <<
-            \set Staff.instrumentName = "Track 1"
-            
             \context Staff << 
                 \mergeDifferentlyDottedOn\mergeDifferentlyHeadedOn
                 \context Voice = "PartPOneVoiceOne" {  \PartPOneVoiceOne }
