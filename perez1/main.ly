@@ -18,6 +18,82 @@ global = {
   \tempo 4=125
 }
 
+
+Accordion = {
+  \global
+    \relative c' {
+
+    \repeat segno 2 {
+        
+      \partial 4 r4 |
+      
+      \repeat volta 2 {
+       
+       R1*4
+        
+        \alternative {
+          {
+          }
+    
+          { 
+          }
+        }
+      }
+      
+      \repeat volta 2 {
+        \alternative {
+          {  }
+          { }
+        }
+      }
+      
+      \fine
+      \bar "|."
+    }
+  }
+}
+
+Chords = \chordmode {
+
+    \repeat segno 2 {
+        
+      \partial 4 s4 |
+      
+      \repeat volta 2 {
+       
+       g1 g d d
+       d d g g
+        
+        \alternative {
+          {
+            b:m b:m d/a d/a
+            a:7/g a:7/g d s |
+          }
+    
+          { 
+            g c c g2 g2/f e1:m
+            a:m d g s |
+          }
+        }
+      }
+      
+      \repeat volta 2 {
+        g1 d:maj7
+        \alternative {
+          { e:m d }
+          { e2:m a2 d1 }
+        }
+      }
+      
+      \fine
+      \bar "|."
+      
+      d2 d2 d1 
+    }
+ 
+}
+
+
 Trumpet = {
     \global
   \relative c' {
@@ -62,7 +138,7 @@ Trumpet = {
       \bar "|."
       
       fis8-^ r8 r4 a8-^ r8 r4 |
-      d8-^ r8 r4 r2 |\bar "||"
+      d8-^ r8 r4 r2 | \bar "||"
     }
   }
 }
@@ -143,6 +219,7 @@ Sax = {
 
 Trombone = {
   \global
+  \clef bass
 
   \relative c {
     \repeat segno 2 {
@@ -202,7 +279,12 @@ Trombone = {
 }
 
 
+
+
+
 % Concert pitch parts (for score)
+chordsChart = \new ChordNames \Chords
+accordionPartC = \new Staff \with { instrumentName = "Accordion" } \Accordion
 trumpetPartC = \new Staff \with { instrumentName = "Trumpet" } \Trumpet
 saxPartC = \new Staff \with { instrumentName = "Bari Sax" } \transpose c c' \Sax
 trombonePartC = \new Staff \with { instrumentName = "Trombone" } \Trombone
@@ -224,10 +306,45 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   }
   \score {
     <<
+      \chordsChart
+      \accordionPartC
       \trumpetPartC
       \saxPartC
       \trombonePartC
     >>
+    \layout {}
+  }
+}
+
+% Accordion
+\book {
+  \bookOutputName "perez1-accordion"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    subtitle = "Drop Sequence"
+    instrument = "Accordion"
+  }
+  \score {
+    <<
+      \chordsChart
+      \new Staff \Accordion
+    >>
+    \layout {}
+  }
+}
+
+% Chords
+\book {
+  \bookOutputName "perez1-chords"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    subtitle = "Drop Sequence"
+    instrument = "Chords"
+  }
+  \score {
+    \chordsChart
     \layout {}
   }
 }
