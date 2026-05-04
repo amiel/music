@@ -356,7 +356,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     title = \title
     tagline = \revisionInfo
     subtitle = "Drop Sequence"
-    instrument = "Trumpet in B\\flat"
+    instrument = \markup { "Trumpet in B" \flat }
   }
   \score {
     \trumpetPartBb
@@ -371,7 +371,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     title = \title
     tagline = \revisionInfo
     subtitle = "Drop Sequence"
-    instrument = "Bari Sax in E\\flat"
+    instrument = \markup { "Bari Sax in E" \flat }
   }
   \score {
     \bariSaxPartEb
