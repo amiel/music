@@ -62,16 +62,16 @@ Chords = \chordmode {
       \repeat volta 2 {
        
        g1 g d d
-       d d g
+       d d g g
         
         \alternative {
           {
-            g b:m b:m d/a d/a
+            b:m b:m d/a d/a
             a:7/g a:7/g d s |
           }
     
           { 
-            g c c g2 g2/f e1:m
+            c c g2 g2/f e1:m
             a:m d g s |
           }
         }
@@ -80,15 +80,18 @@ Chords = \chordmode {
       \repeat volta 2 {
         g1 d:maj7
         \alternative {
-          { e:m d }
-          { e2:m a2 d1 }
+          { e:m d \break }
+          {
+            e2:m a2 d1
+            
+            \fine
+            \bar "||"
+      
+            d2 d2 d1
+          }
         }
       }
       
-      \fine
-      \bar "|."
-      
-      d2 d2 d1 
     }
  
 }
@@ -99,13 +102,12 @@ ChordsRhythm = {
     \partial 4 s4 |
 
     \repeat volta 2 {
-      \repeat unfold 4 { s1 } \break
-      \repeat unfold 3 { s1 }
-
+      
+      s1 s s s \break
+      s1 s s s \break
+      
       \alternative {
-        { 
-          s1 \break
-          
+        {           
           \repeat unfold 4 { s1 } \break
           \repeat unfold 4 { s1 } \break
         }
@@ -120,14 +122,17 @@ ChordsRhythm = {
       s1*2
       \alternative {
         { s1*2 }
-        { s1*2 }
+        {
+          s1*2
+          
+          \fine
+          \bar "||"
+
+          s1*2	
+        }
       }
     }
 
-    \fine
-    \bar "|."
-
-    s1*2
   }
 }
 
@@ -344,7 +349,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   }
   \score {
     <<
-      \chordsChart
+%      \chordsChart % TODO: Figure out how to have the last G of the A section before the repeat
       \accordionPartC
       \trumpetPartC
       \saxPartC
@@ -398,6 +403,10 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     >>
     \layout {
       indent = -45
+      \context {
+        \Score
+        \omit BarNumber
+      }
     }
   }
 }
