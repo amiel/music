@@ -62,11 +62,11 @@ Chords = \chordmode {
       \repeat volta 2 {
        
        g1 g d d
-       d d g g
+       d d g
         
         \alternative {
           {
-            b:m b:m d/a d/a
+            g b:m b:m d/a d/a
             a:7/g a:7/g d s |
           }
     
@@ -91,6 +91,44 @@ Chords = \chordmode {
       d2 d2 d1 
     }
  
+}
+
+ChordsRhythm = {
+  \repeat segno 2 {
+    
+    \partial 4 s4 |
+
+    \repeat volta 2 {
+      \repeat unfold 4 { s1 } \break
+      \repeat unfold 3 { s1 }
+
+      \alternative {
+        { 
+          s1 \break
+          
+          \repeat unfold 4 { s1 } \break
+          \repeat unfold 4 { s1 } \break
+        }
+        {
+          \repeat unfold 4 { s1 } \break
+          \repeat unfold 4 { s1 } \break
+        }
+      }
+    }
+
+    \repeat volta 2 {
+      s1*2
+      \alternative {
+        { s1*2 }
+        { s1*2 }
+      }
+    }
+
+    \fine
+    \bar "|."
+
+    s1*2
+  }
 }
 
 
@@ -344,8 +382,23 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     instrument = "Chords"
   }
   \score {
-    \chordsChart
-    \layout {}
+    <<
+      \new ChordNames \with {
+        \override ChordName.Y-offset = #-2
+      } \Chords
+      \new Staff \with {
+        \override StaffSymbol.line-count = #0
+        \override BarLine.bar-extent = #'(-2 . 2)
+      } {
+        \omit Staff.Clef
+        \omit Staff.TimeSignature
+
+        \ChordsRhythm
+      }
+    >>
+    \layout {
+      indent = -45
+    }
   }
 }
 
