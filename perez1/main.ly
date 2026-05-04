@@ -12,12 +12,14 @@ title = \markup "Perez 1"
 % modules
 %
 
-
-
-Trumpet = {
+global = {
   \key g \major
   \clef treble
-  
+  \tempo 4=125
+}
+
+Trumpet = {
+    \global
   \relative c' {
     
     \repeat segno 2 {
@@ -35,7 +37,7 @@ Trumpet = {
             d4 r r2 |
           }
     
-          \volta 2 {
+          \volta 2 { 
             r2. d,4\glissando | g2. a8 fis |
             g2 e8 fis g a |
             b2. c8 ais |
@@ -69,8 +71,7 @@ Trumpet = {
 
 
 Sax = {
-  \key g \major
-  \clef treble
+  \global
  
  \relative c' {
    \repeat segno 2 {
@@ -141,9 +142,7 @@ Sax = {
 }
 
 Trombone = {
-  \key g \major
-  \clef bass
- 
+  \global
 
   \relative c {
     \repeat segno 2 {
