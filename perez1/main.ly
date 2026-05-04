@@ -203,29 +203,77 @@ Trombone = {
 }
 
 
-trombonePartC = \new Staff \Trombone
+% Concert pitch parts (for score)
+trumpetPartC = \new Staff \with { instrumentName = "Trumpet" } \Trumpet
+saxPartC = \new Staff \with { instrumentName = "Bari Sax" } \transpose c c' \Sax
+trombonePartC = \new Staff \with { instrumentName = "Trombone" } \Trombone
+
+% Transposed parts (for individual parts)
 trumpetPartBb = \new Staff \transpose bes c' \Trumpet
 bariSaxPartEb = \new Staff \transpose ees c' \Sax
-%% melodyPartEb = \new Staff \transpose ees c \melodyPart
 
 #(set-global-staff-size 24)
 
+% Score -- all parts at concert pitch
 \book {
-  \bookOutputName "perez1"
+  \bookOutputName "perez1-score"
   \header {
     title = \title
     tagline = \revisionInfo
     subtitle = "Drop Sequence"
-    instrument = "score" 
+    instrument = "Score"
   }
   \score {
- 
     <<
-        \trumpetPartBb
-        \bariSaxPartEb
-        \trombonePartC
+      \trumpetPartC
+      \saxPartC
+      \trombonePartC
     >>
-      
+    \layout {}
+  }
+}
+
+% Trumpet in Bb
+\book {
+  \bookOutputName "perez1-trumpet"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    subtitle = "Drop Sequence"
+    instrument = "Trumpet in B\\flat"
+  }
+  \score {
+    \trumpetPartBb
+    \layout {}
+  }
+}
+
+% Bari Sax in Eb
+\book {
+  \bookOutputName "perez1-bari-sax"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    subtitle = "Drop Sequence"
+    instrument = "Bari Sax in E\\flat"
+  }
+  \score {
+    \bariSaxPartEb
+    \layout {}
+  }
+}
+
+% Trombone
+\book {
+  \bookOutputName "perez1-trombone"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    subtitle = "Drop Sequence"
+    instrument = "Trombone"
+  }
+  \score {
+    \new Staff \Trombone
     \layout {}
   }
 }
