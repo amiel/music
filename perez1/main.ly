@@ -19,6 +19,7 @@ global = {
 }
 
 
+
 Accordion = {
   \global
     \relative c' {
@@ -29,26 +30,56 @@ Accordion = {
       
       \repeat volta 2 {
        
-       R1*4
+        R1*2 |
+        r2 r8 \tuplet 3/2 { a'16 b cis } d16 d d d |
+        <<
+          { d4 r4 r2 }
+          \\
+              { \xNotesOn r16 e, e e e e e e2 \xNotesOff  }
+        >>|
+        
+        R1*2 |
+        
         
         \alternative {
           {
+            r2 r8 \tuplet 3/2 { a16 b cis } d d d d |
+
+            <<
+              { d4 r4 r2 }
+              \\
+              { \xNotesOn r16 e, e e e e e e2 \xNotesOff  }
+            >>|
+            R1*6 |
+            r8 \tuplet 3/2 { d'16 e d } cis8 d e d c b |
+            R1*1 |
           }
     
           { 
+            r2 r8 \tuplet 3/2 { d,16 e fis } g g g g |
+            g8 16 16(16) 16 8 4 r |
+              
+            R1*5 |
+            r2 r4 r8 \tuplet 3/2 { d16 e fis } |
+            g8 16 16(16) 16 8 b8 16 16(16) 16 8 | d8 16 16(16) 16 8 \glissando g8 r8 r4 |
           }
         }
       }
       
       \repeat volta 2 {
+        R1*2
         \alternative {
-          {  }
-          { }
+          { R1*2 }
+          {
+            R1 |
+            r2 r8 \tuplet 3/2 { d16 e eis } fis16 16 16 16 |
+            \fine
+            fis8 \tuplet 3/2 { fis16 g gis } a16 16 16 16 a8 \tuplet 3/2 { a16 b cis } d16 16 16 16 |
+            d8 r r4 r2 |
+          }
         }
       }
       
-      \fine
-      \bar "|."
     }
   }
 }
@@ -128,7 +159,7 @@ ChordsRhythm = {
           \fine
           \bar "||"
 
-          s1*2	
+          s1*2
         }
       }
     }
@@ -148,40 +179,42 @@ Trumpet = {
       \repeat volta 2 {
         R1*5 |
         r8 d'^\markup { \italic "2nd/3rd time" } r2. |
-        R1 |
-        
+
         \alternative {
           \volta 1 {
+            R1 |
             R1*8 |
             d4 r r2 |
           }
     
           \volta 2 { 
+            R1 |
             r2. d,4\glissando | g2. a8 fis |
             g2 e8 fis g a |
             b2. c8 ais |
             b2 c8 b a gis |
             a2. b8 gis |
             a2 b8 a g fis |
-            g4 r4 r2 |
+            g4 r4 r2 | 
             r2 r8 d'8\bendAfter -3 r4 |
-          }
+          } 
         }
       }
-      
+
       \repeat volta 2 {
         R1*2 |
         \alternative {
           { R1*2 }
-          { R1 | r4 r8 a d-^ r8 r4 | }
+          {
+            R1 | r4 r8 a d-^ r8 r4 |
+            \fine
+            \bar "||"
+
+            fis8-^ r8 r4 a8-^ r8 r4 |
+            d8-^ r8 r4 r2 | \bar "||"
+          }
         }
       }
-      
-      \fine
-      \bar "|."
-      
-      fis8-^ r8 r4 a8-^ r8 r4 |
-      d8-^ r8 r4 r2 | \bar "||"
     }
   }
 }
@@ -203,11 +236,12 @@ Sax = {
         fis,8. a16 e'8 d r e d4 |
         fis,8. a16 e'8 d r e d4 |
         fis,8. a16 e'8 d r e d4 |
-        g,8. b16 e8 d r e d4 |
        
        \alternative {
          {
-           g,8. b16 e8 d r e d4 |
+        g,8. b16 e8 d r e d4 |
+
+g,8. b16 e8 d r e d4 |
         
             b8. d16 g8 fis r g fis4 |
             b,8. d16 g8 fis r g fis4 |
@@ -219,7 +253,9 @@ Sax = {
          }
          
          {
-           g,8. b16 e8 d r e d4 |
+        g,8. b16 e8 d r e d4 |
+
+g,4 r4 r2 |
            
            <c e>1\p |
            q |
@@ -274,11 +310,12 @@ Trombone = {
   
         r2. d,4\glissando | a'4 r r b8 g |
         a4 r b8 a g fis |
-        g4 r r2 |
   
         \alternative {
           \volta 1 {
-            r2. g4\glissando | d'4 r r e8 cis |
+        g4 r r2 |
+
+r2. g4\glissando | d'4 r r e8 cis |
             d4 r b8 cis d e |
             fis4 r r g8 e |
             fis4 r g8 fis e d |
@@ -289,7 +326,9 @@ Trombone = {
           }
     
           \volta 2 {   
-            R1 |
+        g4 r r2 |
+
+R1 |
             
            <c, e>1\p |
            q |
@@ -370,7 +409,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   }
   \score {
     <<
-      \chordsChart
+%      \chordsChart
       \new Staff \Accordion
     >>
     \layout {}
