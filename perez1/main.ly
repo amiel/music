@@ -16,7 +16,7 @@ global = {
   \set Score.rehearsalMarkFormatter = #format-mark-circle-numbers
   \key g \major
   \clef treble
-  \tempo 4=125
+  \tempo 4=124
 }
 
 
@@ -85,7 +85,7 @@ Accordion = {
             R1 |
             % r2 r8_\markup { \italic "Fine" } \tuplet 3/2 { d16 e eis }
             r2 r8 \fine \bar "" \tuplet 3/2 { d16 e eis }
-            fis16 16 16 16 |
+            fis16 16 16 16 | \bar "||"
 
             % \fine
 
@@ -100,6 +100,7 @@ Accordion = {
 }
 
 Chords = \chordmode {
+  \global
 
     \repeat segno 2 {
         
@@ -107,16 +108,19 @@ Chords = \chordmode {
       
       \repeat volta 2 {
        
+        \section \mark \default
        g1 g d d
        d d g g
         
         \alternative {
           {
+        \section \mark \default
             b:m b:m d/a d/a
             a:7/g a:7/g d s |
           }
     
           { 
+        \section \mark \default
             c c g2 g2/f e1:m
             a:m d g s |
           }
@@ -124,13 +128,17 @@ Chords = \chordmode {
       }
       
       \repeat volta 2 {
+        \section \mark \default
         g1 d:maj7
         \alternative {
           { e:m d \break }
           {
-            e2:m a2 d1
+            e2:m a2
+
+          d2
+            \fine \bar ""
+          s2
             
-            \fine
             \bar "||"
       
             d2 d2 d1
@@ -169,9 +177,11 @@ ChordsRhythm = {
       \alternative {
         { s1*2 }
         {
-          s1*2
-          
-          \fine
+          s1
+
+          s2
+          \fine \bar ""
+          s2 
           \bar "||"
 
           s1*2
@@ -192,22 +202,28 @@ Trumpet = {
       \partial 4 r4 |
       
       \repeat volta 2 {
+        \section \mark \default
         R1*5 |
         r8 d'^\markup { \italic "2nd/3rd time" } r2. |
 
         \alternative {
           \volta 1 {
-            R1 |
-            R1*8 |
+            R1*2 |
+
+        \section \mark \default \break
+            R1*7 |
             d4 r r2 |
           }
     
           \volta 2 { 
             R1 |
-            r2. d,4\glissando | g2. a8 fis |
+            r2. d,4\glissando |
+
+            \section \mark \default \break
+            g2. a8 fis |
             g2 e8 fis g a |
             b2. c8 ais |
-            b2 c8 b a gis |
+            b2 c8 b a gis | \break
             a2. b8 gis |
             a2 b8 a g fis |
             g4 r4 r2 | 
@@ -217,12 +233,16 @@ Trumpet = {
       }
 
       \repeat volta 2 {
+        \section \mark \default \break
         R1*2 |
         \alternative {
           { R1*2 }
           {
-            R1 | r4 r8 a d-^ r8 r4 |
-            \fine
+            \break
+            R1 | r4 r8 a d-^
+
+            \fine \bar ""
+            r8 r4 |
             \bar "||"
 
             fis8-^ r8 r4 a8-^ r8 r4 |
@@ -245,49 +265,56 @@ Sax = {
      \partial 4 r4 |
      
      \repeat volta 2 {
+        \section \mark \default
         g8. b16 e8 d r e d4 |
         g,8. b16 e8 d r e d4 |
         fis,8. a16 e'8 d r e d4 |
         fis,8. a16 e'8 d r e d4 |
+        \break
         fis,8. a16 e'8 d r e d4 |
         fis,8. a16 e'8 d r e d4 |
        
        \alternative {
          {
-        g,8. b16 e8 d r e d4 |
+           g,8. b16 e8 d r e d4 |
 
-g,8. b16 e8 d r e d4 |
+           g,8. b16 e8 d r e d4 |
+           \section \mark \default \break
         
             b8. d16 g8 fis r g fis4 |
             b,8. d16 g8 fis r g fis4 |
             a,8. d16 g8 fis r g fis4 |
             a,8. d16 g8 fis r g fis4 |
+            \break
             g,8. cis16 fis8 e r fis e4 |
             g,8. cis16 fis8 e r fis e4 |
             d4 r4 r2 | R1 |
+            \break
          }
          
          {
         g,8. b16 e8 d r e d4 |
 
-g,4 r4 r2 |
+        g,4 r4 r2 |
            
-           <c e>1\p |
-           q |
+        \section \mark \default 
+           c1\p |
+           c1 |
            g2\f f |
            e1 |
-           <c' e>1\p |
-           <d fis> |
+            \break
+           c'1\p |
+           d |
            e4 r4 r2 |
-           R1 |
+           R1 | \break
          }
        }
      }
      
      \repeat volta 2 {
+        \section \mark \default 
        d'8 d16 cis(cis) d cis8 d b g16 d g d' |
        cis8 cis16 c(c) cis c8 cis a fis16 d fis cis' |
-  
      
        \alternative {
          {
@@ -295,20 +322,23 @@ g,4 r4 r2 |
            a8 r8 r4 r2 |
          }
          {
+            \break
            b8 b16 ais(ais) b16 g8 cis cis16 a(a) cis e8 |
-           d8 r r a, d-^ r r4 |
+           d8 r r a, d-^
+
+            \fine \bar ""
+            r r4 |
+       
+           \bar "||"
+            d,8-^ r8 r4 d8-^ r8 r4 |
+            d8-^ r8 r4 r2 |\bar "||"
+
          }
        }
      }
    
-     \fine
-     \bar "|."
-      
-      d,8-^ r8 r4 d8-^ r8 r4 |
-      d8-^ r8 r4 r2 |\bar "||"
-   }
+    }
   }
-  
 }
 
 Trombone = {
@@ -319,18 +349,24 @@ Trombone = {
     \repeat segno 2 {
       \partial 4 d4\glissando |
       \repeat volta 2 {
+        \section \mark \default
         b'4 r r c8 a |
         b4 r c8 b a g |
         a4 r r2 |
   
-        r2. d,4\glissando | a'4 r r b8 g |
+        r2. d,4\glissando |
+        \break
+        a'4 r r b8 g |
         a4 r b8 a g fis |
   
         \alternative {
           \volta 1 {
-        g4 r r2 |
+            g4 r r2 |
 
-r2. g4\glissando | d'4 r r e8 cis |
+            r2. g4\glissando |
+
+            \section \mark \default \break
+            d'4 r r e8 cis |
             d4 r b8 cis d e |
             fis4 r r g8 e |
             fis4 r g8 fis e d |
@@ -341,16 +377,16 @@ r2. g4\glissando | d'4 r r e8 cis |
           }
     
           \volta 2 {   
-        g4 r r2 |
+            g4 r r2 |
 
-R1 |
-            
-           <c, e>1\p |
-           q |
-           g'2\f f |
+            R1 |
+            \section \mark \default \break
+           e1\p |
+           e |
+           g2\f f |
            e1 |
-           <c e>1\p |
-           <d fis> | 
+           e1\p |
+           fis | 
            e4 r4 r2 |
            r2 r8 d 8\bendAfter -3 r4 |
           }
@@ -358,19 +394,27 @@ R1 |
       }
       
       \repeat volta 2 {
+            \section \mark \default \break
         R1*2 |
         
         \alternative {
           { R1 | r8 d\ff f e d f e d | }
-          { R1*2 }
+          {
+            \break
+            R1
+            r4 r8 a d-^
+
+            \fine \bar ""
+            r r4 |
+       
+           \bar "||"
+
+           d8-^ r8 r4 fis8-^ r8 r4 |
+           fis8-^ r8 r4 r d\glissando \bar "" \once \hideNotes \grace { b'32 } |\bar "||"
+
+          }
         }
       }
-    
-     \fine
-     \bar "|."
-      
-      d8-^ r8 r4 fis8-^ r8 r4 |
-      fis8-^ r8 r4 r d\glissando \bar "" \once \hideNotes \grace { b'32 } |\bar "||"
     }
   }
 }
@@ -390,8 +434,6 @@ trombonePartC = \new Staff \with { instrumentName = "Trombone" } \Trombone
 trumpetPartBb = \new Staff \transpose bes c' \Trumpet
 bariSaxPartEb = \new Staff \transpose ees c' \Sax
 
-#(set-global-staff-size 22)
-
 % Score -- all parts at concert pitch
 \book {
   \bookOutputName "perez1-score"
@@ -409,7 +451,9 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
       \saxPartC
       \trombonePartC
     >>
-    \layout {}
+    \layout {
+      #(layout-set-staff-size 20)
+    }
   }
 }
 
@@ -429,6 +473,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     >>
     \layout {
       indent = 0
+      #(layout-set-staff-size 24)
     }
   }
 }
@@ -459,6 +504,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     >>
     \layout {
       indent = -45
+      #(layout-set-staff-size 28)
       \context {
         \Score
         \omit BarNumber
@@ -478,7 +524,10 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   }
   \score {
     \trumpetPartBb
-    \layout {}
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 30)
+    }
   }
 }
 
@@ -493,7 +542,10 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   }
   \score {
     \bariSaxPartEb
-    \layout {}
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 26)
+    }
   }
 }
 
@@ -508,6 +560,9 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   }
   \score {
     \new Staff \Trombone
-    \layout {}
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 28)
+    }
   }
 }
