@@ -13,6 +13,7 @@ title = \markup "Perez 1"
 %
 
 global = {
+  \set Score.rehearsalMarkFormatter = #format-mark-circle-numbers
   \key g \major
   \clef treble
   \tempo 4=125
@@ -30,16 +31,18 @@ Accordion = {
       
       \repeat volta 2 {
        
+        \section \mark \default
         R1*2 |
         r2 r8 \tuplet 3/2 { a'16 b cis } d16 d d d |
         <<
           { d4 r4 r2 }
           \\
-              { \xNotesOn r16 e, e e e e e e2 \xNotesOff  }
+              { \xNotesOn r16 e, e e e e e e e2 \xNotesOff  }
         >>|
+
+        \break
         
         R1*2 |
-        
         
         \alternative {
           {
@@ -48,32 +51,44 @@ Accordion = {
             <<
               { d4 r4 r2 }
               \\
-              { \xNotesOn r16 e, e e e e e e2 \xNotesOff  }
+              { \xNotesOn r16 e, e e e e e e e2 \xNotesOff  }
             >>|
-            R1*6 |
+
+            \break
+
+            \section \mark \default
+            R1*6 | \break
+
             r8 \tuplet 3/2 { d'16 e d } cis8 d e d c b |
             R1*1 |
           }
-    
+
           { 
             r2 r8 \tuplet 3/2 { d,16 e fis } g g g g |
-            g8 16 16(16) 16 8 4 r |
+            g8 16 16(16) 16 8 4 r | \break
               
+            \section \mark \default
             R1*5 |
             r2 r4 r8 \tuplet 3/2 { d16 e fis } |
-            g8 16 16(16) 16 8 b8 16 16(16) 16 8 | d8 16 16(16) 16 8 \glissando g8 r8 r4 |
+            g8 16 16(16) 16 8 b8 16 16(16) 16 8 | d8 16 16(16) 16 8 \glissando g8 r8 r4 | 
+            \break
           }
         }
       }
-      
+
       \repeat volta 2 {
+        \section \mark \default
         R1*2
         \alternative {
-          { R1*2 }
+          { R1*2 \break }
           {
             R1 |
-            r2 r8 \tuplet 3/2 { d16 e eis } fis16 16 16 16 |
-            \fine
+            % r2 r8_\markup { \italic "Fine" } \tuplet 3/2 { d16 e eis }
+            r2 r8 \fine \bar "" \tuplet 3/2 { d16 e eis }
+            fis16 16 16 16 |
+
+            % \fine
+
             fis8 \tuplet 3/2 { fis16 g gis } a16 16 16 16 a8 \tuplet 3/2 { a16 b cis } d16 16 16 16 |
             d8 r r4 r2 |
           }
@@ -375,7 +390,7 @@ trombonePartC = \new Staff \with { instrumentName = "Trombone" } \Trombone
 trumpetPartBb = \new Staff \transpose bes c' \Trumpet
 bariSaxPartEb = \new Staff \transpose ees c' \Sax
 
-#(set-global-staff-size 24)
+#(set-global-staff-size 22)
 
 % Score -- all parts at concert pitch
 \book {
@@ -412,7 +427,9 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
 %      \chordsChart
       \new Staff \Accordion
     >>
-    \layout {}
+    \layout {
+      indent = 0
+    }
   }
 }
 
