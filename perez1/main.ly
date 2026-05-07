@@ -13,17 +13,27 @@ title = \markup "Perez 1"
 %
 
 global = {
-  \set Score.rehearsalMarkFormatter = #format-mark-circle-numbers
+  % \set Score.rehearsalMarkFormatter = #format-mark-circle-numbers
+  \set Score.rehearsalMarkFormatter = #format-mark-box-alphabet
   \key g \major
   \clef treble
   \tempo 4=124
+
 }
 
+punch = \markup { \rhythm{{8->}} }
 
+  \layout {
+    \context {
+      \StandaloneRhythmVoice
+      \xNotesOn
+    }
+  }
 
 Accordion = {
+
   \global
-    \relative c' {
+  \relative c' {
 
     \repeat segno 2 {
         
@@ -59,8 +69,8 @@ Accordion = {
             \section \mark \default
             R1*6 | \break
 
-            r8 \tuplet 3/2 { d'16 e d } cis8 d e d c b |
-            R1*1 |
+            r8^\punch \tuplet 3/2 { d'16 e d } cis8 d e d c b |
+            r1^\punch |
           }
 
           { 
@@ -70,7 +80,9 @@ Accordion = {
             \section \mark \default
             R1*5 |
             r2 r4 r8 \tuplet 3/2 { d16 e fis } |
-            g8 16 16(16) 16 8 b8 16 16(16) 16 8 | d8 16 16(16) 16 8 \glissando g8 r8 r4 | 
+
+            g8^\punch 16 16(16) 16 8 b8 16 16(16) 16 8 |
+            d8 16 16(16) 16 8 \glissando g8 r8 r4 | 
             \break
           }
         }
@@ -83,14 +95,14 @@ Accordion = {
           { R1*2 \break }
           {
             R1 |
-            % r2 r8_\markup { \italic "Fine" } \tuplet 3/2 { d16 e eis }
-            r2 r8 \fine \bar "" \tuplet 3/2 { d16 e eis }
+            r4^\punch r8 r8^\punch r8^\punch \fine \bar "" \tuplet 3/2 { d16 e eis }
             fis16 16 16 16 | \bar "||"
 
             % \fine
 
-            fis8 \tuplet 3/2 { fis16 g gis } a16 16 16 16 a8 \tuplet 3/2 { a16 b cis } d16 16 16 16 |
-            d8 r r4 r2 |
+            fis8^\punch \tuplet 3/2 { fis16 g gis } a16 16 16 16
+            a8^\punch \tuplet 3/2 { a16 b cis } d16 16 16 16 |
+            d8^\punch r r4 r2 |
           }
         }
       }
