@@ -14,8 +14,12 @@ title = \markup "Perez 2"
 
 % \caesura is the drum break
 
-melodyPart = {
+global = {
   \key c \major
+}
+
+Accordion = {
+  \global
   \relative c' {
     %% \break \mark \markup \box "Intro"
 
@@ -168,21 +172,282 @@ melodyPart = {
 }
 
 
-melodyPartC = \new Staff \melodyPart
-%% melodyPartBb = \new Staff \transpose bes c' \melodyPart
-%% melodyPartEb = \new Staff \transpose ees c \melodyPart
+Trumpet = {
+  \global
+  \relative c' {
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+
+
+    \break
+    \break \mark \markup \small "Horns"
+
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    \break \mark \markup \small "No Horns"
+
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    %% \break \mark \markup "Bridge"
+
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    \break \mark \markup \small "Horns"
+
+    R1*4 |
+    \break
+    R1*3 |
+  }
+}
+
+
+Sax = {
+  \global
+  \relative c' {
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+
+
+    \break
+    \break \mark \markup \small "Horns"
+
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    \break \mark \markup \small "No Horns"
+
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    %% \break \mark \markup "Bridge"
+
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    \break \mark \markup \small "Horns"
+
+    R1*4 |
+    \break
+    R1*3 |
+  }
+}
+
+
+Trombone = {
+  \global
+  \clef bass
+
+  \relative c {
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+
+
+    \break
+    \break \mark \markup \small "Horns"
+
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    \break \mark \markup \small "No Horns"
+
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    %% \break \mark \markup "Bridge"
+
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    R1*4 |
+
+    \break
+    \break \mark \markup \small "Horns"
+
+    R1*4 |
+    \break
+    R1*3 |
+  }
+}
+
+
+% Concert pitch parts (for score)
+accordionPartC = \new Staff \with { instrumentName = "Accordion" } \Accordion
+trumpetPartC = \new Staff \with { instrumentName = "Trumpet" } \Trumpet
+saxPartC = \new Staff \with { instrumentName = "Bari Sax" } \transpose c c' \Sax
+trombonePartC = \new Staff \with { instrumentName = "Trombone" } \Trombone
+
+% Transposed parts (for individual parts)
+trumpetPartBb = \new Staff \transpose bes c' \Trumpet
+bariSaxPartEb = \new Staff \transpose ees c' \Sax
 
 #(set-global-staff-size 24)
 
+% Score -- all parts at concert pitch
 \book {
-  \bookOutputName "perez2"
+  \bookOutputName "perez2-score"
   \header {
     title = \title
     tagline = \revisionInfo
-    instrument = "(Patricia)" 
+    instrument = "Score"
   }
   \score {
-    \melodyPartC
-    \layout {}
+    <<
+      \accordionPartC
+      \trumpetPartC
+      \saxPartC
+      \trombonePartC
+    >>
+    \layout {
+      #(layout-set-staff-size 20)
+    }
+  }
+}
+
+% Accordion
+\book {
+  \bookOutputName "perez2-accordion"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    instrument = "Accordion (Patricia)"
+  }
+  \score {
+    \new Staff \Accordion
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 24)
+    }
+  }
+}
+
+% Trumpet in Bb
+\book {
+  \bookOutputName "perez2-trumpet"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    instrument = \markup { "Trumpet in B" \flat }
+  }
+  \score {
+    \trumpetPartBb
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 30)
+    }
+  }
+}
+
+% Bari Sax in Eb
+\book {
+  \bookOutputName "perez2-bari-sax"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    instrument = \markup { "Bari Sax in E" \flat }
+  }
+  \score {
+    \bariSaxPartEb
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 26)
+    }
+  }
+}
+
+% Trombone
+\book {
+  \bookOutputName "perez2-trombone"
+  \header {
+    title = \title
+    tagline = \revisionInfo
+    instrument = "Trombone"
+  }
+  \score {
+    \new Staff \Trombone
+    \layout {
+      indent = 0
+      #(layout-set-staff-size 28)
+    }
   }
 }

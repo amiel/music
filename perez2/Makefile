@@ -1,8 +1,15 @@
-.PHONY: watch
+.PHONY: all watch clean
 
-.DEFAULT: perez2.pdf
+PDFS = \
+	perez2-score.pdf \
+	perez2-accordion.pdf \
+	perez2-trumpet.pdf \
+	perez2-bari-sax.pdf \
+	perez2-trombone.pdf
 
-perez2.pdf: main.ly
+all: $(PDFS)
+
+$(PDFS): main.ly
 	@echo
 	@echo "****************************"
 	@echo
@@ -10,5 +17,7 @@ perez2.pdf: main.ly
 	@echo
 
 watch:
-	find . -name '*.ly' | entr make 
+	find . -name '*.ly' | entr make
 
+clean:
+	rm -f $(PDFS)
