@@ -175,6 +175,8 @@ Accordion = {
     f8 g r2. |
     f8 g f g d' b g f |
     e4 r2. |
+
+    \bar "|."
   }
 }
 
@@ -253,6 +255,7 @@ Trumpet = {
     
     c4 r4 r2 |
 
+    \bar "|."
   }
 }
 
@@ -261,54 +264,83 @@ Sax = {
   \global
   \relative c' {
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
+    R1*16 |
+
+    e8 g r2. |
+    e8 g e g e g e g |
+    f8 g r4 r2 |
+    R1 |
+
     \break
 
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
+    f8 g r2. |
+    f8 g f g d' b g f |
+    e4 r4 r2 |
+    r1 |
+
     \break
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
+
+    R1*8 |
+
     \section \mark \default
-    R1*4 |
+    R1*8 |
     \break
-    R1*4 |
-    \break
+
     \section \mark \default
-    R1*4 |
+
+
+    e8 e e e g g g g |
+    a8 a a a c4 c |
+    b4 r4 r2 |
+    g,1\ff |
+
     \break
-    R1*4 |
-    \break
+
+    f8 f f f g g g g |
+    a8 a a a b4 b |
+    a4 r4 r2 |
+    R1 |
+
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
+    R1*8 |
+
     \section \mark \default
-    R1*4 |
+    R1 |
+    g4-^ r4 r2 |
+
+    R1*2 |
+
+    R1*2 |
+    c,4-^ r4 r2 |
+    R1 |
+
+    e'8 g r4 r2 |
+    e8 g e g e g e g |
+    f8 g r4 r2 |
+    g,1 |
+
     \break
-    R1*4 |
+
+    f'8 g r4 r2 |
+    f8 g f g d' b g f |
+    e4 r4 r2 |
+    r1 |
+    
     \break
-    \section \mark \default
-    R1*4 |
+
+    e8 g r4 r2 |
+    e8 g e g e g e g |
+    f8 g r4 r2 |
+    R1 |
+
     \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*3 |
+
+    f8 g r4 r2 |
+    f8 g f g d' b g f |
+    e4 r4 r2 |
+
+    \bar "|."
   }
 }
 
@@ -319,56 +351,79 @@ Trombone = {
 
   \relative c {
     \section \mark \default
-    R1*4 |
+    R1*15 |
+    r8 e\noBeam e e b' b a a|
     \break
-    R1*4 |
+    \section \mark \default
+    
+    e8 e r dis e a r4 |
+
+    r8 e\noBeam e e b' b a a|
+    f8 f r e f b r4 |
+
+    r8 f\noBeam f f c' c b b|
+    \break
+    
+    f8 f r e f b r4 |
+    
+    r8 f\noBeam f f c' c b b |
+    a4 r4 r2 |
+    R1 |
+
+    \break
+    \section \mark \default
+
+    R1*8 |
+
+    \section \mark \default
+    R1*8 |
     \break
 
-    R1*4 |
+    \section \mark \default
+
+
+    e8 e e e g g g g |
+    a8 a a a c4 c |
+    b4 r4 r2 |
+    g,1\ff |
+
     \break
 
-    R1*4 |
-    \break
+    f'8 f f f g g g g |
+    a8 a a a b4 b |
+    a4 r4 r2 |
+    R1 |
 
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
+    R1*8 |
+
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
+    R1 |
+    d4-^ r4 r2 |
+
+    R1*2 |
+
+    R1*2 |
+    g,4-^ r4 r2 |
+    R1 |
+
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
     R1*3 |
+    g,1\ff |
+    R1*4 |
+    \break
+
+    \section \mark \default
+    e'8 g a a a4 b|
+    e,4 e8 g  a a b b|
+    f8 g a a a4 b |
+    f4 r4 r2 |
+    f8 g a a a4 b|
+    f4 f8 g a a b b|
+    
+    c4 r4 r2 |
+
+    \bar "|."
   }
 }
 
@@ -449,7 +504,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     instrument = \markup { "Bari Sax in E" \flat }
   }
   \score {
-    \bariSaxPartEb
+    \compressMMRests \bariSaxPartEb
     \layout {
       indent = 0
       #(layout-set-staff-size 26)
@@ -466,7 +521,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     instrument = "Trombone"
   }
   \score {
-    \new Staff \Trombone
+    \new Staff \compressMMRests \Trombone
     \layout {
       indent = 0
       #(layout-set-staff-size 28)
