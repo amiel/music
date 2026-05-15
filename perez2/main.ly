@@ -70,7 +70,7 @@ Accordion = {
     r8 \tiny <dis' e>8 <dis e>4 \normalsize r2 |
 
     \break
-    \section \mark \default
+    \section
     \textMark \markup \italic "No Horns"
 
     e,8 g r2. |
@@ -102,7 +102,7 @@ Accordion = {
     R1 |
 
     \break
-    \section \mark \default
+    \section
 
     \improvisationOn
     c,4 r4 c4 r4 |
@@ -138,7 +138,7 @@ Accordion = {
     f2 e2 |
 
     \break
-    \section \mark \default
+    \section
 
     <d d'>1 |
     r8 \caesura b'8-. c-. b-. d-. c-. b-. a-. |
@@ -170,7 +170,7 @@ Accordion = {
     r8 <d ees>8 \normalsize |
 
     \break
-    \section \mark \default
+    \section
     \textMark \markup \italic "Horns"
 
     e,8 g r2. |
@@ -213,7 +213,7 @@ Trumpet = {
     R1 |
 
     \break
-    \section \mark \default
+    \section
 
     R1*8 |
 
@@ -221,7 +221,7 @@ Trumpet = {
     R1*8 |
     \break
 
-    \section \mark \default
+    \section
 
 
     e'8 e e e g g g g |
@@ -239,7 +239,7 @@ Trumpet = {
     \section \mark \default
     R1*8 |
 
-    \section \mark \default
+    \section
     R1 |
     b4-^ r4 r2 |
 
@@ -253,7 +253,7 @@ Trumpet = {
     R1*8 |
     \break
 
-    \section \mark \default
+    \section
     e8 g a a a4 b|
     e,4 e8 g  a a b b|
     f8 g a a a4 b |
@@ -274,6 +274,7 @@ Sax = {
     \section \mark \default
     R1*16 |
 
+    \section \mark \default
     e8 g r2. |
     e8 g e g e g e g |
     f8 g r4 r2 |
@@ -287,7 +288,7 @@ Sax = {
     r1 |
 
     \break
-    \section \mark \default
+    \section
 
     R1*8 |
 
@@ -295,7 +296,7 @@ Sax = {
     R1*8 |
     \break
 
-    \section \mark \default
+    \section
 
 
     e8 e e e g g g g |
@@ -313,7 +314,7 @@ Sax = {
     \section \mark \default
     R1*8 |
 
-    \section \mark \default
+    \section
     R1 |
     g4-^ r4 r2 |
 
@@ -323,6 +324,8 @@ Sax = {
     c,4-^ r4 r2 |
     R1 |
 
+    \break
+    \section \mark \default
     e'8 g r4 r2 |
     e8 g e g e g e g |
     f8 g r4 r2 |
@@ -337,6 +340,7 @@ Sax = {
     
     \break
 
+    \section
     e8 g r4 r2 |
     e8 g e g e g e g |
     f8 g r4 r2 |
@@ -379,7 +383,7 @@ Trombone = {
     R1 |
 
     \break
-    \section \mark \default
+    \section
 
     R1*8 |
 
@@ -387,7 +391,7 @@ Trombone = {
     R1*8 |
     \break
 
-    \section \mark \default
+    \section
 
 
     e8 e e e g g g g |
@@ -405,7 +409,7 @@ Trombone = {
     \section \mark \default
     R1*8 |
 
-    \section \mark \default
+    \section
     R1 |
     d4-^ r4 r2 |
 
@@ -421,7 +425,7 @@ Trombone = {
     R1*4 |
     \break
 
-    \section \mark \default
+    \section
     e'8 g a a a4 b|
     e,4 e8 g  a a b b|
     f8 g a a a4 b |
