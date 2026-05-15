@@ -6,7 +6,7 @@ revisionInfo = \markup { \concat { "Revision " \date } }
 
 title = \markup "Perez 2"
 
-\pointAndClickOff
+% \pointAndClickOff
 
 %%%%%%%%%%%%%%%%%
 % modules
@@ -38,7 +38,6 @@ Accordion = {
     e2 r8 <e dis> \normalsize r4 |
 
     \break
-    \section \mark \default
 
     e,,8 g r2. |
     e8 g e g e g e g |
@@ -142,7 +141,7 @@ Accordion = {
 
     e1 |
     d1 |
-    <c e'>4-^ \caesura r4 \tiny \grace {e32(d c)} b4 r4 | 
+    <g, c e>4-^ \caesura r4 \tiny \grace {e'32(d c)} b4 r4 | 
     \grace {e32(d c)} a4 <d ees> <d ees> \normalsize r4 |
 
     \break
@@ -184,54 +183,76 @@ Trumpet = {
   \global
   \relative c' {
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
+    R1*15 |
+    r8 e\noBeam e e b' b a a|
     \break
     \section \mark \default
-    R1*4 |
+    
+    e8 e r dis e a r4 |
+
+    r8 e\noBeam e e b' b a a|
+    f8 f r e f b r4 |
+
+    r8 f\noBeam f f c' c b b|
     \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
-    \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
+    
+    f8 f r e f b r4 |
+    
+    r8 f\noBeam f f c' c b b |
+    a4 r4 r2 |
+    R1 |
+
     \break
     \section \mark \default
-    R1*4 |
-    \break
-    R1*4 |
-    \break
+
+    R1*8 |
+
     \section \mark \default
-    R1*4 |
+    R1*8 |
     \break
-    R1*4 |
-    \break
+
     \section \mark \default
-    R1*4 |
+
+
+    e'8 e e e g g g g |
+    a8 a a a c4 c |
+    b4 r4 r2 |
+    R1 |
+
     \break
-    R1*4 |
-    \break
+
+    f8 f f f g g g g |
+    a8 a a a b4 b |
+    a4 r4 r2 |
+    R1 |
+
     \section \mark \default
-    R1*4 |
+    R1*8 |
+
+    \section \mark \default
+    R1 |
+    b4-^ r4 r2 |
+
+    R1*2 |
+
+    R1*2 |
+    e,4-^ r4 r2 |
+    R1 |
+
+    \section \mark \default
+    R1*8 |
     \break
-    R1*3 |
+
+    \section \mark \default
+    e8 g a a a4 b|
+    e,4 e8 g  a a b b|
+    f8 g a a a4 b |
+    f4 r4 r2 |
+    f8 g a a a4 b|
+    f4 f8 g a a b b|
+    
+    c4 r4 r2 |
+
   }
 }
 
@@ -244,7 +265,7 @@ Sax = {
     \break
     R1*4 |
     \break
-    \section \mark \default
+
     R1*4 |
     \break
     R1*4 |
@@ -302,11 +323,13 @@ Trombone = {
     \break
     R1*4 |
     \break
-    \section \mark \default
+
     R1*4 |
     \break
+
     R1*4 |
     \break
+
     \section \mark \default
     R1*4 |
     \break
@@ -409,7 +432,7 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
     instrument = \markup { "Trumpet in B" \flat }
   }
   \score {
-    \trumpetPartBb
+    \compressMMRests \trumpetPartBb
     \layout {
       indent = 0
       #(layout-set-staff-size 30)
