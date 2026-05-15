@@ -147,9 +147,10 @@ Chords = \chordmode {
           {
             e2:m a2
 
-          d2
+          d2 s8
             \fine \bar ""
-          s2
+          s8 s4 |
+
             
             \bar "||"
       
@@ -168,6 +169,11 @@ ChordsRhythm = {
     \partial 4 s4 |
 
     \repeat volta 2 {
+
+      % \improvisationOn
+      \xNotesOn
+      \stemDown
+      % \omit Stem
       
       s1 s s s \break
       s1 s s s \break
@@ -175,11 +181,16 @@ ChordsRhythm = {
       \alternative {
         {           
           \repeat unfold 4 { s1 } \break
-          \repeat unfold 4 { s1 } \break
+          \repeat unfold 2 { s1 }
+          \repeat unfold 2 { g'8 s8 s4 s2 }
+          \break
         }
         {
           \repeat unfold 4 { s1 } \break
-          \repeat unfold 4 { s1 } \break
+          \repeat unfold 2 { s1 }
+          g'8 s8 s4 s2 |
+          R1 |
+          \break
         }
       }
     }
@@ -191,12 +202,12 @@ ChordsRhythm = {
         {
           s1
 
-          s2
+          g'8 r8 r8 g'8 g'8
           \fine \bar ""
-          s2 
+          r8 r4 |
           \bar "||"
 
-          s1*2
+          g'8 s8 s4 g'8 s8 s4 | g'8 s8 s4 s2 |
         }
       }
     }
@@ -502,11 +513,11 @@ bariSaxPartEb = \new Staff \transpose ees c' \Sax
   \score {
     <<
       \new ChordNames \with {
-        \override ChordName.Y-offset = #-2
+        \override ChordName.Y-offset = #-3
       } \Chords
       \new Staff \with {
         \override StaffSymbol.line-count = #0
-        \override BarLine.bar-extent = #'(-2 . 2)
+        \override BarLine.bar-extent = #'(-4 . 4)
       } {
         \omit Staff.Clef
         \omit Staff.TimeSignature
