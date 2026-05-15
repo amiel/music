@@ -15,12 +15,14 @@ title = \markup "Perez 2"
 % \caesura is the drum break
 
 global = {
+  \set Score.rehearsalMarkFormatter = #format-mark-box-alphabet
   \key c \major
 }
 
 Accordion = {
   \global
   \relative c' {
+    \section \mark \default
     %% \break \mark \markup \box "Intro"
 
     e8 g r2. |
@@ -36,6 +38,7 @@ Accordion = {
     e2 r8 <e dis> \normalsize r4 |
 
     \break
+    \section \mark \default
 
     e,,8 g r2. |
     e8 g e g e g e g |
@@ -48,10 +51,10 @@ Accordion = {
     f8 g f g d' b g f |
     e4 \caesura r4 \tiny <c'' e>2 |
     <c d>4 \normalsize r2.^\markup { trumpet } |
-    
-    
+
     \break
-    \break \mark \markup \small "Horns"
+    \section \mark \default
+    \textMark \markup \italic "Horns"
 
     e,,8 g r2. |
     e8 g e g e g e g |
@@ -66,7 +69,8 @@ Accordion = {
     r8 \tiny <dis' e>8 <dis e>4 \normalsize r2 |
 
     \break
-    \break \mark \markup \small "No Horns"
+    \section \mark \default
+    \textMark \markup \italic "No Horns"
 
     e,8 g r2. |
     e8 g r g r g r g |
@@ -81,7 +85,8 @@ Accordion = {
     R1 |
 
     \break
-    %% \break \mark \markup "Bridge"
+    \section \mark \default
+    %% \textMark \markup \italic "Bridge"
 
     c,1~ |
     c8 d c b d c b a |
@@ -96,6 +101,7 @@ Accordion = {
     R1 |
 
     \break
+    \section \mark \default
 
     e,8 e e e g g g g |
     a8 a a a c4 c |
@@ -110,6 +116,7 @@ Accordion = {
     r4 \tiny <ees' d> <ees d> \normalsize r4 |
 
     \break
+    \section \mark \default
 
     c1~ |
     c8 d c b d c b a |
@@ -124,6 +131,7 @@ Accordion = {
     f2 e2 |
 
     \break
+    \section \mark \default
 
     <d d'>1 |
     b''8-^ \caesura b,8 c b d c b a |
@@ -138,7 +146,7 @@ Accordion = {
     \grace {e32(d c)} a4 <d ees> <d ees> \normalsize r4 |
 
     \break
-
+    \section \mark \default
 
     e,8 g r4 \tiny <d ees>8 <d ees> <d ees>4 \normalsize |
     e8 g e g e g e g |
@@ -154,9 +162,9 @@ Accordion = {
     ^\markup { trumpet } 
     r8 <d ees>8 \normalsize |
 
-    
     \break
-    \break \mark \markup \small "Horns"
+    \section \mark \default
+    \textMark \markup \italic "Horns"
 
     e,8 g r2. |
     e8 g e g e g e g |
@@ -175,55 +183,52 @@ Accordion = {
 Trumpet = {
   \global
   \relative c' {
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
-    R1*4 |
-    \break
-    R1*4 |
-
-
-    \break
-    \break \mark \markup \small "Horns"
-
-    R1*4 |
-    \break
-    R1*4 |
-
-    \break
-    \break \mark \markup \small "No Horns"
-
-    R1*4 |
-    \break
-    R1*4 |
-
-    \break
-    %% \break \mark \markup "Bridge"
-
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
-
     \break
-    \break \mark \markup \small "Horns"
-
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
     R1*4 |
     \break
     R1*3 |
@@ -234,55 +239,52 @@ Trumpet = {
 Sax = {
   \global
   \relative c' {
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
-    R1*4 |
-    \break
-    R1*4 |
-
-
-    \break
-    \break \mark \markup \small "Horns"
-
-    R1*4 |
-    \break
-    R1*4 |
-
-    \break
-    \break \mark \markup \small "No Horns"
-
-    R1*4 |
-    \break
-    R1*4 |
-
-    \break
-    %% \break \mark \markup "Bridge"
-
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
-
     \break
-    \break \mark \markup \small "Horns"
-
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
     R1*4 |
     \break
     R1*3 |
@@ -295,55 +297,52 @@ Trombone = {
   \clef bass
 
   \relative c {
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
-    R1*4 |
-    \break
-    R1*4 |
-
-
-    \break
-    \break \mark \markup \small "Horns"
-
-    R1*4 |
-    \break
-    R1*4 |
-
-    \break
-    \break \mark \markup \small "No Horns"
-
-    R1*4 |
-    \break
-    R1*4 |
-
-    \break
-    %% \break \mark \markup "Bridge"
-
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
     \break
+    \section \mark \default
     R1*4 |
     \break
     R1*4 |
-
     \break
-    \break \mark \markup \small "Horns"
-
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
+    R1*4 |
+    \break
+    R1*4 |
+    \break
+    \section \mark \default
     R1*4 |
     \break
     R1*3 |
