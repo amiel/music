@@ -21,7 +21,9 @@ global = {
 
 Accordion = {
   \global
-  \relative c' {
+  \new Voice \with {
+    \consists Pitch_squash_engraver
+  } \relative c' {
     \section \mark \default
     %% \break \mark \markup \box "Intro"
 
@@ -89,7 +91,7 @@ Accordion = {
 
     c,1~ |
     c8 d c b d c b a |
-    c8 f, r4 r8 e8 \bendAfter -3 r4 |
+    c8 f, r2 r8 e8 \bendAfter -3 |
     R1 |
 
     \break
@@ -102,16 +104,22 @@ Accordion = {
     \break
     \section \mark \default
 
-    e,8 e e e g g g g |
-    a8 a a a c4 c |
-    b4 \caesura r <g b ees>2 |
-    g,,2.-> r4 |
+    \improvisationOn
+    c,4 r4 c4 r4 |
+    a4 r4 a4 a4 |
+
+    g4 \improvisationOff
+    \caesura r <g' b ees>2 |
+    R1 |
 
     \break
 
-    f''8 f f f g g g g |
-    a8 a a a b4 b |
-    a4 \caesura r8. b,16 r4 r8. a16 |
+    \improvisationOn
+    g4 r4 g4 r4 |
+    a4 r4 g4 g4 |
+
+    a4 \improvisationOff
+    \caesura r8. b,16 r4 r8. a16 |
     r4 \tiny <ees' d> <ees d> \normalsize r4 |
 
     \break
@@ -133,7 +141,7 @@ Accordion = {
     \section \mark \default
 
     <d d'>1 |
-    b''8-^ \caesura b,8 c b d c b a |
+    r8 \caesura b'8-. c-. b-. d-. c-. b-. a-. |
     g2. c4 |
     e2 f2 |
 
