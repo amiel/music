@@ -285,7 +285,7 @@ Sax = {
     f8 g r2. |
     f8 g f g d' b g f |
     e4 r4 r2 |
-    r1 |
+    R1 |
 
     \break
     \section
@@ -299,10 +299,10 @@ Sax = {
     \section
 
 
-    e8 e e e g g g g |
+    e,8 e e e g g g g |
     a8 a a a c4 c |
     b4 r4 r2 |
-    g,1\ff |
+    g1\ff |
 
     \break
 
@@ -335,7 +335,7 @@ Sax = {
 
     f'8 g r4 r2 |
     f8 g f g d' b g f |
-    e4 r4 r2 |
+    e8 g8 r4 r2 |
     r1 |
     
     \break
