@@ -1,6 +1,6 @@
 .PHONY: watch
 
-.DEFAULT: tico-tico.pdf
+.DEFAULT: tico-tico.pdf tico-tico-trombone.pdf
 
 tico-tico.pdf: tico-tico.ly
 	@echo
@@ -8,6 +8,14 @@ tico-tico.pdf: tico-tico.ly
 	@echo
 	lilypond tico-tico.ly
 	@echo
+
+tico-tico-trombone.pdf: tico-tico-trombone.ly
+	@echo
+	@echo "****************************"
+	@echo
+	lilypond tico-tico-trombone.ly
+	@echo
+
 
 watch:
 	find . -name '*.ly' | entr make 
