@@ -26,7 +26,7 @@ PartPOneVoiceOne =  \relative e'' {
   \time 2/4
   \key a \minor
 
-  \partial 8. e16 dis16 e16 | % 0
+  \partial 8. \small e16 dis16 e16 | % 0
 
   \section \mark \default
   \repeat volta 2 {
@@ -47,15 +47,16 @@ PartPOneVoiceOne =  \relative e'' {
           b16 e,16 gis16 b16 e16 d16 c16 b16 | % 15
 
     \alternative {
-      { \barNumberCheck #16 a8 r8 r16 a,16^\markup "to B" cis16 e16 \bar "||" | } % 16
+      { \barNumberCheck #16 a8 \normalsize r8 r16 a,16^\markup "to B" cis16 e16 \bar "||" | } % 16
     
-      { a4 r16 b,16^\markup "to C" a16 as16 | } % 17
+      { a4 r16 \small b,16^\markup "to C" a16 as16 | } % 17
     }
   }
 
   \section \mark \default
 
     \key a \major 
+  \normalsize
          a'16 a,16 cis16 gis'16 ~ gis16 a,16 cis16 fis16 | % 18
          fis16 a,16 cis16 e16 ~ e16 a,16 cis16 fis16 | % 19
          fis16 a,16 cis16 e16 ~ e16 a,16 cis16 fis16 | % 20
@@ -74,7 +75,7 @@ PartPOneVoiceOne =  \relative e'' {
          cis16 d16 dis16 e16 fis16 e16 d16 cis16 | % 31
 \barNumberCheck #32         b16 a16 gis16 fis16 e16 d16 cis16 b16 | % 32
 
-             a4 r16 e'16^\markup "to A" dis16 e16 \bar ":|." | % 33
+             a4 r16 \small e'16^\markup "to A" dis16 e16 \bar ":|." | % 33
 
      % CODA
 
@@ -84,34 +85,46 @@ PartPOneVoiceOne =  \relative e'' {
      \key a \minor
 
 
-         g,16 c16 e16 g16 c16 e,16 g16 gis16 | % 34
+         \small g,16 c16 e16 g16 c16 e,16 g16 gis16 | % 34
          a8.-. f16-. r16 b,16 a16 as16 | % 35
          g16 b16 d16 g16 b16 d,16 f16 g16 | % 36
 
-         a8.-. e16-. r16 <e c'>16 <e c'>16 <e c'>16 | % 37
-         <e c'>16( <g b>16) <g b>16 <g b>16 ~ <g b>16 <f a>16 <f a>16 <f a>16  | % 38
-     <f a>16( <d f>16) <d f>16 <d f>16 ~ <d f>16 <d b'>16 <d b'>16 <d b'>16  | % 39
-\barNumberCheck #40     <d b'>16( <e g>16) <e g>16 <d b'>16 <f a>16 <d f>16 <d f>16 <f a>16 | % 40
+         a8.-. e16-. r16 \normalsize <e c'>16 <e c'>16 <e c'>16 | % 37
+
+%%          <e c'>16( <g b>16) <g b>16 <g b>16 ~ <g b>16 <f a>16 <f a>16 <f a>16  | % 38
+%%      <f a>16( <d f>16) <d f>16 <d f>16 ~ <d f>16 <d b'>16 <d b'>16 <d b'>16  | % 39
+ %% \barNumberCheck #40     <d b'>16( <e g>16) <e g>16 <d b'>16 <f a>16 <d f>16 <d f>16 <f a>16 | % 40
 
 
 
-         %% <e c'>8 <g b>16 <g b>16 <g b>8 <f a>16 <f a>16 | % 38
-         %% <f a>16 <d f>8 <d f>16 ~ <d f>16 <d b'>16 <d b'>16 <d b'>16 | % 39
-         %% d8 b'8 f16 a16 f16 a16 f8 a8 e16 g16 e16 g16 | % 40
+          <e c'>8 <g b>16 <g b>16 <g b>8 <f a>16 <f a>16 | % 38
+          <f a>16 <d f>8 <d f>16 ~ <d f>16 <d b'>16 <d b'>16 <d b'>16 | % 39
+  \barNumberCheck #40     <d b'>8 <f a>16 <f a>16 <f a>8 <e g>16 <e g>16  | %40
 
-     <e g>4 r16 b16 a16 as16 | % 41
-
-
+    <e g>16 <c e>8 <c e>16( <c e>16) \small b16 a aes |
 
 
          g16 c16 e16 g16 c16 e,16 g16 gis16 | % 42
          a8.-. f16-. r16 b,16 a16 as16 | % 43
          g16 b16 d16 g16 b16 d,16 f16 g16 | % 44
          a8.-. e16-. r16 c16 b16 bes16 | % 45
-         a16 gis16 a16 b16 d16 c16 b16 c16 | % 46
-         e16 g,16 c16 e16 g16 ges16 f16 e16 | % 47
-\barNumberCheck #48         d16 c16 b16 a16 g16 f16 e16 d16 | % 48
-       c4 r16 e'16^\markup "to A" dis16 e16 \bar ":|." | % 49
+
+  \normalsize
+
+  <f a>8 r <fis a> r  | %46
+
+ <g b>8 r <g a> r | % 47
+  <f a>8 r <f g> r  | % 48
+
+
+
+%%          a16 gis16 a16 b16 d16 c16 b16 c16 | % 46
+%%          e16 g,16 c16 e16 g16 ges16 f16 e16 | % 47
+%% \barNumberCheck #48         d16 c16 b16 a16 g16 f16 e16 d16 | % 48
+
+       
+  <e g>8 r
+  \small r16 e'16^\markup "to A" dis16 e16 \bar ":|." | % 49
  }
  %%
  %% PartPOneVoiceOneChords =  \chordmode {
