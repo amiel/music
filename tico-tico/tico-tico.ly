@@ -111,7 +111,7 @@ PartPOneVoiceOne =  \relative e'' {
          a16 gis16 a16 b16 d16 c16 b16 c16 | 
          e16 g,16 c16 e16 g16 ges16 f16 e16 | % 51
          d16 c16 b16 a16 g16 f16 e16 d16 | % 52
-       c,4 r16 e'16^\markup "to A" dis16 e16 \bar ":|." |
+       c4 r16 e'16^\markup "to A" dis16 e16 \bar ":|." |
  }
  %%
  %% PartPOneVoiceOneChords =  \chordmode {
