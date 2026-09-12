@@ -17,15 +17,13 @@
 
 concertTonic = f
 
-%%  How much room there is to draw in.  The more sections share a page,
-%%  the smaller everything has to be.
-#(define formula-staff-size 37)
-#(define formula-line-width 90)
-#(define grid-roman-size 2.4)
-#(define grid-hint-size -0.4)
-#(define grid-column-width 11)
-#(define grid-baseline 6)
-#(define grid-top-offset 4.6)
+%%  How big things are drawn.  These all move together when the amount of
+%%  room on the page changes, so they live in one place.
+#(define formula-staff-size 29)
+#(define formula-line-width 168)
+#(define grid-roman-size 4.5)
+#(define grid-column-width 18)
+#(define grid-baseline 6.5)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Nothing below here needs editing to change key.
@@ -111,35 +109,28 @@ concertTonic = f
 
 #(define roman-numerals (vector "I" "II" "III" "IV" "V" "VI" "VII"))
 
-%% Degree 0/3/4 above the tonic is a unison/fourth/fifth up.
-#(define (chord-root tonic degree)
-   (ly:pitch-transpose tonic (ly:make-pitch 0 degree 0)))
+%% The grid carries roman numerals only, which makes it the same chart for
+%% every key and every transposition -- so it is drawn once per page
+%% rather than once per part.  The chords it works out to are already
+%% named over each staff.
+#(define (form-cell-markup degree seventh?)
+   (make-bold-markup
+    (make-fontsize-markup
+     grid-roman-size
+     (make-concat-markup
+      (cons (vector-ref roman-numerals degree)
+            (if seventh? (list (make-super-markup "7")) '()))))))
 
-#(define (chord-symbol-markup root seventh?)
-   (make-concat-markup
-    (cons (chord-root-namer root #f)
-          (if seventh? (list (make-super-markup "7")) '()))))
-
-%% One bar of the chart: roman numeral first -- that is the thing being
-%% learned -- with the chord it works out to in this key as a hint.
-#(define (grid-cell-markup tonic degree seventh?)
-   (make-concat-markup
-    (list (make-bold-markup
-           (make-fontsize-markup grid-roman-size (vector-ref roman-numerals degree)))
-          (make-hspace-markup 0.7)
-          (make-fontsize-markup
-           grid-hint-size (chord-symbol-markup (chord-root tonic degree) seventh?)))))
-
-#(define (grid-markup tonic)
+#(define (form-grid-markup)
    (make-override-markup
     (cons 'baseline-skip grid-baseline)
     (make-column-markup
      (map (lambda (row)
             (make-concat-markup
              (map (lambda (cell)
-                    (make-pad-to-box-markup
-                     (cons 0 grid-column-width) '(0 . 0)
-                     (grid-cell-markup tonic (car cell) (cdr cell))))
+                    (make-hcenter-in-markup
+                     grid-column-width
+                     (form-cell-markup (car cell) (cdr cell))))
                   row)))
           blues-form))))
 
@@ -219,8 +210,7 @@ keyBlock =
      (markup? markup? ly:pitch? ly:pitch? boolean?)
    #{
      \markup {
-       \fill-line {
-         \left-column {
+       \left-column {
            \line {
              \bold \fontsize #2 #heading
              \hspace #0.8
@@ -232,26 +222,22 @@ keyBlock =
            }
            \fontsize #-2 \italic #instruments
            \vspace #0.3
-           \score {
-             <<
-               \new Lyrics \with {
-                 \override VerticalAxisGroup.staff-affinity = #DOWN
-                 \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.padding = #1.2
-               } \formulaRomans
-               \new ChordNames \transpose #concert-tonic #(written-tonic from to) \concertChordNames
-               \new Staff \removeWithTag #'root
-                 \transpose #concert-tonic #(written-tonic from to) \concertNotes
-               #(if bass
-                    #{ \new Staff
-                         { \clef bass \transpose c' c \concertNotes } #}
-                    #{ #})
-             >>
-             \formulaLayout
-           }
+         \score {
+           <<
+             \new Lyrics \with {
+               \override VerticalAxisGroup.staff-affinity = #DOWN
+               \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.padding = #1.2
+             } \formulaRomans
+             \new ChordNames \transpose #concert-tonic #(written-tonic from to) \concertChordNames
+             \new Staff \removeWithTag #'root
+               \transpose #concert-tonic #(written-tonic from to) \concertNotes
+             #(if bass
+                  #{ \new Staff
+                       { \clef bass \transpose c' c \concertNotes } #}
+                  #{ #})
+           >>
+           \formulaLayout
          }
-         \hspace #2
-         %% nudged down so the first row of the grid meets the top of the staff
-         \column { \vspace #grid-top-offset #(grid-markup (written-tonic from to)) }
        }
      }
    #})
@@ -274,7 +260,7 @@ keyBlock =
   %% the air between key blocks is what separates them -- there is no rule.
   %% This is a minimum; on a page with room to spare the blocks spread out
   %% to fill it.  2 is what the tightest keys need to stay on one page.
-  markup-markup-spacing.padding = #2
+  markup-markup-spacing.padding = #3
 }
 
 \header {
@@ -286,6 +272,11 @@ keyBlock =
   tagline = ##f
 }
 
+
+%%  The 12-bar form, once: roman numerals only, the same in every key.
+\markup \vspace #0.2
+\markup \fill-line { #(form-grid-markup) }
+\markup \vspace #0.6
 
 \keyBlock "C"
           \markup "flute · bells · trombone · sousaphone — bass clef reads the lower staff"
