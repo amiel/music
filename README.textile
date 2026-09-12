@@ -26,3 +26,15 @@ The Fox (traditional folk song) melody and chords. http://en.wikipedia.org/wiki/
 
 Transcribed by Amiel Martin.
 
+
+h3. Blues Background Formula
+
+Not an arrangement -- a one-page reference card for harmonizing improvised
+background parts over a 12-bar blues, as taught on a whiteboard in D-flat.
+One person invents a background rhythm on the tonic, everyone repeats it, and
+from then on each player picks any note out of the formula and moves it with
+the chords.
+
+The whole page (four transpositions plus the 12-bar grid) is generated from a
+single pitch at the top of the file, so @concertTonic = d'@ can be changed to
+reprint the entire sheet in any key.
