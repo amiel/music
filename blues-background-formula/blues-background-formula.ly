@@ -15,7 +15,7 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-concertTonic = d'
+concertTonic = f
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Nothing below here needs editing to change key.
@@ -62,6 +62,21 @@ concertTonic = d'
                         ((= alt 1/2) (make-sharp-markup))
                         (else (make-doublesharp-markup))))))))))
 
+%% Chord names for the grid squares: the chord symbol with its roman
+%% numeral underneath, since the point of the sheet is learning how the
+%% two line up.  Curried on the tonic of whichever part is being drawn.
+#(define ((grid-chord-namer tonic) pitches bass inversion context)
+   (let* ((root (car pitches))
+          (degree (modulo (- (ly:pitch-notename root)
+                             (ly:pitch-notename tonic))
+                          7))
+          (roman (case degree ((0) "I") ((3) "IV") ((4) "V") (else "")))
+          (name (ignatzek-chord-names pitches bass inversion context)))
+     (make-center-column-markup
+      (list name
+            (make-vspace-markup 0.1)
+            (make-fontsize-markup -1 (make-bold-markup roman))))))
+
 %% The written tonic for an instrument pitched so that concert `from'
 %% is written as `to'.
 #(define (written-tonic from to)
@@ -74,6 +89,10 @@ concertTonic = d'
 %%    IV  =  IV6   6 1 3 5  (bottom to top)
 %%    V   =  V7    the same four notes as IV, over the V root
 %%
+%%  The degree numbers live in the note at the top of the page rather
+%%  than on the staff -- printed beside the noteheads they crowd the
+%%  close-voiced stacks badly.
+%%
 %%  The small bottom note of each stack is the root -- tuba/sousaphone.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,9 +100,9 @@ formulaNotes = {
   \key c \major
   \omit Staff.TimeSignature
   \cadenzaOn
-  <\tweak font-size #-3 c'  e'-3  g'-5  a'-6  c''-1>1  s1*2
-  <\tweak font-size #-3 f   d'-6  f'-1  a'-3  c''-5>1  s1*2
-  <\tweak font-size #-3 g   d'    f'    a'    c''   >1
+  <\tweak font-size #-3 c'  e'  g'  a'  c''>1  s1*2
+  <\tweak font-size #-3 f   d'  f'  a'  c''>1  s1*2
+  <\tweak font-size #-3 g   d'  f'  a'  c''>1
 }
 
 formulaChordNames = \chordmode {
@@ -98,9 +117,9 @@ formulaRomans = \lyricmode {
 }
 
 %% 12-bar blues:  I I I I | IV IV I I | V IV I I
-gridLineOne   = \chordmode { c1:6  c:6  c:6  c:6 }
-gridLineTwo   = \chordmode { f1:6  f:6  c:6  c:6 }
-gridLineThree = \chordmode { g1:7  f:6  c:6  c:6 }
+gridLineOne   = \chordmode { c1  c  c  c }
+gridLineTwo   = \chordmode { f1  f  c  c }
+gridLineThree = \chordmode { g1:7  f  c  c }
 
 %% ...and the same material in the chosen concert key.
 concertNotes      = \transpose c' #concert-tonic \formulaNotes
@@ -125,23 +144,15 @@ gridLayout = \layout {
     \override NonMusicalPaperColumn.line-break-permission = ##f
   }
   \context { \ChordGrid chordRootNamer = #chord-root-namer }
+  \context { \Score \override ChordName.font-size = #0.5 }
 }
 
 formulaLayout = \layout {
-  #(layout-set-staff-size 30)
+  #(layout-set-staff-size 34)
   indent = 0
-  line-width = 92\mm
+  line-width = 84\mm
   ragged-right = ##f
   \context { \Score \omit BarNumber }
-  \context {
-    \Staff
-    fingeringOrientations = #'(left)
-    \override Fingering.font-size = #-4
-    \override Fingering.padding = #0.3
-    %% keep each number beside its own notehead instead of letting
-    %% LilyPond spread the column apart to avoid the digits touching
-    \override FingeringColumn.padding = #0
-  }
   \context {
     \ChordNames
     chordRootNamer = #chord-root-namer
@@ -179,11 +190,12 @@ keyBlock =
              <<
                \new Lyrics \with {
                  \override VerticalAxisGroup.staff-affinity = #DOWN
+                 \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.padding = #1.2
                } \formulaRomans
                \new ChordNames \transpose #concert-tonic #(written-tonic from to) \concertChordNames
                \new Staff \transpose #concert-tonic #(written-tonic from to) \concertNotes
                #(if bass
-                    #{ \new Staff \with { \omit Fingering }
+                    #{ \new Staff
                          { \clef bass \transpose c' c \concertNotes } #}
                     #{ #})
              >>
@@ -192,9 +204,12 @@ keyBlock =
          }
          \hspace #2
          \column {
-           \score { \new ChordGrid \transpose #concert-tonic #(written-tonic from to) \concertGridOne   \gridLayout }
-           \score { \new ChordGrid \transpose #concert-tonic #(written-tonic from to) \concertGridTwo   \gridLayout }
-           \score { \new ChordGrid \transpose #concert-tonic #(written-tonic from to) \concertGridThree \gridLayout }
+           \score { \new ChordGrid \with { chordNameFunction = #(grid-chord-namer (written-tonic from to)) }
+                      \transpose #concert-tonic #(written-tonic from to) \concertGridOne   \gridLayout }
+           \score { \new ChordGrid \with { chordNameFunction = #(grid-chord-namer (written-tonic from to)) }
+                      \transpose #concert-tonic #(written-tonic from to) \concertGridTwo   \gridLayout }
+           \score { \new ChordGrid \with { chordNameFunction = #(grid-chord-namer (written-tonic from to)) }
+                      \transpose #concert-tonic #(written-tonic from to) \concertGridThree \gridLayout }
          }
        }
      }
@@ -229,12 +244,12 @@ keyBlock =
               "one person makes up a background rhythm on the tonic; everyone repeats it." }
       \line { "Next time around each player picks" \italic any
               "one note out of the formula and moves it with the chords of the blues." }
-      \line { \concat { \bold "I" \super 6 } "= 3 5 6 1" \bold "·"
+      \line { "Bottom to top:" \concat { \bold "I" \super 6 } "= 3 5 6 1" \bold "·"
               \concat { \bold "IV" \super 6 } "= 6 1 3 5" \bold "·"
               \concat { \bold "V" \super 7 } "= the same four notes as IV"
               \concat { "(5 " \flat "7 9 11 over the V root)." } }
       \line { "The small bottom note of each stack is the root — tuba/sousaphone."
-              "Horns choose from the four numbered notes above it." }
+              "Horns choose any of the four notes above it." }
     }
   }
 }
