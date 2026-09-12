@@ -19,7 +19,7 @@ concertTonic = f
 
 %%  How big things are drawn.  These all move together when the amount of
 %%  room on the page changes, so they live in one place.
-#(define formula-staff-size 29)
+#(define formula-staff-size 31)
 #(define formula-line-width 168)
 #(define grid-roman-size 4.5)
 #(define grid-column-width 18)
@@ -102,10 +102,11 @@ concertTonic = f
 %% The 12-bar blues, as scale degrees rather than notes, so that one
 %% description serves every key: (degree . seventh?), four bars to a row.
 %%   I I I I | IV IV I I | V IV I I
+%% The cdr is the extension to print over the numeral, or #f for none.
 #(define blues-form
    '(((0 . #f) (0 . #f) (0 . #f) (0 . #f))
      ((3 . #f) (3 . #f) (0 . #f) (0 . #f))
-     ((4 . #t) (3 . #f) (0 . #f) (0 . #f))))
+     ((4 . "11") (3 . #f) (0 . #f) (0 . #f))))
 
 #(define roman-numerals (vector "I" "II" "III" "IV" "V" "VI" "VII"))
 
@@ -113,13 +114,13 @@ concertTonic = f
 %% every key and every transposition -- so it is drawn once per page
 %% rather than once per part.  The chords it works out to are already
 %% named over each staff.
-#(define (form-cell-markup degree seventh?)
+#(define (form-cell-markup degree extension)
    (make-bold-markup
     (make-fontsize-markup
      grid-roman-size
      (make-concat-markup
       (cons (vector-ref roman-numerals degree)
-            (if seventh? (list (make-super-markup "7")) '()))))))
+            (if extension (list (make-super-markup extension)) '()))))))
 
 #(define (form-grid-markup)
    (make-override-markup
@@ -145,29 +146,31 @@ concertTonic = f
 %%
 %%    I   =  I6    3 5 6 1  (bottom to top)
 %%    IV  =  IV6   6 1 3 5  (bottom to top)
-%%    V   =  V7    the same four notes as IV, over the V root
+%%    V   =  V11   the same four notes as IV, over the V root -- which
+%%                 makes them the 5th, flat 7th, 9th and 11th of the V
 %%
 %%  The degree numbers live in the note at the top of the page rather
 %%  than on the staff -- printed beside the noteheads they crowd the
 %%  close-voiced stacks badly.
 %%
 %%  The tagged bottom note of each stack is the root.  It is printed only
-%%  on the concert bass-clef staff, where the sousaphone reads it; every
-%%  other part gets \removeWithTag and shows the four harmony notes alone.
+%%  on the concert bass-clef staff, where the sousaphone reads it -- it is
+%%  their note, so it is drawn full size.  Every other part gets
+%%  \removeWithTag and shows the four harmony notes alone.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 formulaNotes = {
   \key c \major
   \omit Staff.TimeSignature
   \cadenzaOn
-  <\tag #'root \tweak font-size #-3 c'  e'  g'  a'  c''>1  s1*2
-  <\tag #'root \tweak font-size #-3 f   d'  f'  a'  c''>1  s1*2
-  <\tag #'root \tweak font-size #-3 g   d'  f'  a'  c''>1
+  <\tag #'root c'  e'  g'  a'  c''>1  s1*2
+  <\tag #'root f   d'  f'  a'  c''>1  s1*2
+  <\tag #'root g   d'  f'  a'  c''>1
 }
 
 formulaChordNames = \chordmode {
   \cadenzaOn
-  c1:6  s1*2  f1:6  s1*2  g1:7
+  c1:6  s1*2  f1:6  s1*2  g1:11
 }
 
 formulaRomans = \lyricmode {
@@ -206,8 +209,8 @@ formulaLayout = \layout {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 keyBlock =
-#(define-scheme-function (heading instruments from to bass)
-     (markup? markup? ly:pitch? ly:pitch? boolean?)
+#(define-scheme-function (heading from to bass)
+     (markup? ly:pitch? ly:pitch? boolean?)
    #{
      \markup {
        \left-column {
@@ -220,8 +223,7 @@ keyBlock =
                ")"
              }
            }
-           \fontsize #-2 \italic #instruments
-           \vspace #0.3
+         \vspace #0.3
          \score {
            <<
              \new Lyrics \with {
@@ -259,7 +261,8 @@ keyBlock =
   markup-system-spacing.padding = #1
   %% the air between key blocks is what separates them -- there is no rule.
   %% This is a minimum; on a page with room to spare the blocks spread out
-  %% to fill it.  2 is what the tightest keys need to stay on one page.
+  %% to fill it.  3 is as much as the tightest keys can afford and still
+  %% stay on one page.
   markup-markup-spacing.padding = #3
 }
 
@@ -278,18 +281,10 @@ keyBlock =
 \markup \fill-line { #(form-grid-markup) }
 \markup \vspace #0.6
 
-\keyBlock "C"
-          \markup "flute · bells · trombone · sousaphone — bass clef reads the lower staff"
-          c' c' ##t
+\keyBlock "C"  c' c' ##t
 
-\keyBlock \markup \concat { "B" \flat }
-          \markup "trumpet · clarinet · soprano & tenor sax · baritone · bass sax"
-          bes c' ##f
+\keyBlock \markup \concat { "B" \flat }  bes c' ##f
 
-\keyBlock \markup \concat { "E" \flat }
-          \markup "alto sax · bari sax"
-          ees c' ##f
+\keyBlock \markup \concat { "E" \flat }  ees c' ##f
 
-\keyBlock "F"
-          \markup "french horn"
-          f c' ##f
+\keyBlock "F"  f c' ##f
