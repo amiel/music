@@ -17,6 +17,16 @@
 
 concertTonic = f
 
+%%  How much room there is to draw in.  The more sections share a page,
+%%  the smaller everything has to be.
+#(define formula-staff-size 37)
+#(define formula-line-width 90)
+#(define grid-roman-size 2.4)
+#(define grid-hint-size -0.4)
+#(define grid-column-width 11)
+#(define grid-baseline 6)
+#(define grid-top-offset 4.6)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Nothing below here needs editing to change key.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -115,16 +125,14 @@ concertTonic = f
 #(define (grid-cell-markup tonic degree seventh?)
    (make-concat-markup
     (list (make-bold-markup
-           (make-fontsize-markup 1.5 (vector-ref roman-numerals degree)))
+           (make-fontsize-markup grid-roman-size (vector-ref roman-numerals degree)))
           (make-hspace-markup 0.7)
           (make-fontsize-markup
-           -1.5 (chord-symbol-markup (chord-root tonic degree) seventh?)))))
-
-#(define grid-column-width 9)
+           grid-hint-size (chord-symbol-markup (chord-root tonic degree) seventh?)))))
 
 #(define (grid-markup tonic)
    (make-override-markup
-    '(baseline-skip . 4.6)
+    (cons 'baseline-skip grid-baseline)
     (make-column-markup
      (map (lambda (row)
             (make-concat-markup
@@ -186,9 +194,9 @@ concertChordNames = \transpose c' #concert-tonic \formulaChordNames
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 formulaLayout = \layout {
-  #(layout-set-staff-size 34)
+  #(layout-set-staff-size formula-staff-size)
   indent = 0
-  line-width = 84\mm
+  line-width = #(* formula-line-width mm)
   ragged-right = ##f
   \context { \Score \omit BarNumber }
   \context {
@@ -243,13 +251,17 @@ keyBlock =
          }
          \hspace #2
          %% nudged down so the first row of the grid meets the top of the staff
-         \column { \vspace #4.2 #(grid-markup (written-tonic from to)) }
+         \column { \vspace #grid-top-offset #(grid-markup (written-tonic from to)) }
        }
      }
    #})
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  The page
+%%
+%%  No how-it-works note here on purpose: leaving it off buys enough room
+%%  to draw everything larger, and the explanation travels with the sheet
+%%  in the email instead.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \paper {
@@ -261,8 +273,8 @@ keyBlock =
   markup-system-spacing.padding = #1
   %% the air between key blocks is what separates them -- there is no rule.
   %% This is a minimum; on a page with room to spare the blocks spread out
-  %% to fill it.  1.5 is what the tightest keys need to stay on one page.
-  markup-markup-spacing.padding = #1.5
+  %% to fill it.  2 is what the tightest keys need to stay on one page.
+  markup-markup-spacing.padding = #2
 }
 
 \header {
@@ -274,24 +286,6 @@ keyBlock =
   tagline = ##f
 }
 
-\markup \fill-line {
-  \column {
-    \fontsize #-1 \override #'(baseline-skip . 2.6) \column {
-      \line { \bold "How it works:"
-              "one person makes up a background rhythm on the tonic; everyone repeats it." }
-      \line { "Next time around each player picks" \italic any
-              "one note out of the formula and moves it with the chords of the blues." }
-      \line { "Bottom to top:" \concat { \bold "I" \super 6 } "= 3 5 6 1" \bold "·"
-              \concat { \bold "IV" \super 6 } "= 6 1 3 5" \bold "·"
-              \concat { \bold "V" \super 7 } "= the same four notes as IV"
-              \concat { "(5 " \flat "7 9 11 over the V root)." } }
-      \line { "Everyone picks from the four notes of the stack; the small note on the"
-              "concert bass staff is the root, for the sousaphone." }
-    }
-  }
-}
-
-\markup \vspace #0.4
 
 \keyBlock "C"
           \markup "flute · bells · trombone · sousaphone — bass clef reads the lower staff"
