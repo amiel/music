@@ -27,7 +27,36 @@ concertTonic = f
 #(define (normalize-octave p)
    (ly:make-pitch 0 (ly:pitch-notename p) (ly:pitch-alteration p)))
 
-#(define concert-tonic (normalize-octave concertTonic))
+%% Transposing by interval can land a part in a key nobody wants to read
+%% -- concert B puts the E-flat instruments in G-sharp major, eight sharps
+%% -- so any key needing more than six accidentals gets respelled as its
+%% enharmonic equivalent (G-sharp major becomes A-flat major).
+#(define key-fifths (vector 0 2 4 -1 1 3 5))     % C D E F G A B
+#(define semitones-above-c (vector 0 2 4 5 7 9 11))
+
+#(define (key-accidentals p)
+   (+ (vector-ref key-fifths (ly:pitch-notename p))
+      (* 14 (ly:pitch-alteration p))))
+
+%% The same sounding pitch spelled one letter name up (+1) or down (-1).
+#(define (respell p direction)
+   (let* ((semitones (modulo (+ (vector-ref semitones-above-c (ly:pitch-notename p))
+                                (* 2 (ly:pitch-alteration p)))
+                             12))
+          (letter (modulo (+ (ly:pitch-notename p) direction) 7))
+          (raw (/ (- semitones (vector-ref semitones-above-c letter)) 2)))
+     (ly:make-pitch 0 letter
+                    (cond ((> raw 1) (- raw 6))
+                          ((< raw -1) (+ raw 6))
+                          (else raw)))))
+
+#(define (simplify-key p)
+   (let ((accidentals (key-accidentals p)))
+     (cond ((> accidentals 6) (respell p 1))
+           ((< accidentals -6) (respell p -1))
+           (else p))))
+
+#(define concert-tonic (simplify-key (normalize-octave concertTonic)))
 
 %% Spell a pitch with a real flat/sharp sign, for titles and headings.
 #(define (pitch-name-markup p)
@@ -62,25 +91,55 @@ concertTonic = f
                         ((= alt 1/2) (make-sharp-markup))
                         (else (make-doublesharp-markup))))))))))
 
-%% Chord names for the grid squares: the chord symbol with its roman
-%% numeral underneath, since the point of the sheet is learning how the
-%% two line up.  Curried on the tonic of whichever part is being drawn.
-#(define ((grid-chord-namer tonic) pitches bass inversion context)
-   (let* ((root (car pitches))
-          (degree (modulo (- (ly:pitch-notename root)
-                             (ly:pitch-notename tonic))
-                          7))
-          (roman (case degree ((0) "I") ((3) "IV") ((4) "V") (else "")))
-          (name (ignatzek-chord-names pitches bass inversion context)))
-     (make-center-column-markup
-      (list name
-            (make-vspace-markup 0.1)
-            (make-fontsize-markup -1 (make-bold-markup roman))))))
+%% The 12-bar blues, as scale degrees rather than notes, so that one
+%% description serves every key: (degree . seventh?), four bars to a row.
+%%   I I I I | IV IV I I | V IV I I
+#(define blues-form
+   '(((0 . #f) (0 . #f) (0 . #f) (0 . #f))
+     ((3 . #f) (3 . #f) (0 . #f) (0 . #f))
+     ((4 . #t) (3 . #f) (0 . #f) (0 . #f))))
+
+#(define roman-numerals (vector "I" "II" "III" "IV" "V" "VI" "VII"))
+
+%% Degree 0/3/4 above the tonic is a unison/fourth/fifth up.
+#(define (chord-root tonic degree)
+   (ly:pitch-transpose tonic (ly:make-pitch 0 degree 0)))
+
+#(define (chord-symbol-markup root seventh?)
+   (make-concat-markup
+    (cons (chord-root-namer root #f)
+          (if seventh? (list (make-super-markup "7")) '()))))
+
+%% One bar of the chart: roman numeral first -- that is the thing being
+%% learned -- with the chord it works out to in this key as a hint.
+#(define (grid-cell-markup tonic degree seventh?)
+   (make-concat-markup
+    (list (make-bold-markup
+           (make-fontsize-markup 1.5 (vector-ref roman-numerals degree)))
+          (make-hspace-markup 0.7)
+          (make-fontsize-markup
+           -1.5 (chord-symbol-markup (chord-root tonic degree) seventh?)))))
+
+#(define grid-column-width 9)
+
+#(define (grid-markup tonic)
+   (make-override-markup
+    '(baseline-skip . 4.6)
+    (make-column-markup
+     (map (lambda (row)
+            (make-concat-markup
+             (map (lambda (cell)
+                    (make-pad-to-box-markup
+                     (cons 0 grid-column-width) '(0 . 0)
+                     (grid-cell-markup tonic (car cell) (cdr cell))))
+                  row)))
+          blues-form))))
 
 %% The written tonic for an instrument pitched so that concert `from'
 %% is written as `to'.
 #(define (written-tonic from to)
-   (normalize-octave (ly:pitch-transpose concert-tonic (ly:pitch-diff to from))))
+   (simplify-key
+    (normalize-octave (ly:pitch-transpose concert-tonic (ly:pitch-diff to from)))))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  The formula, written in C.  Everything else is a transposition of it.
@@ -93,16 +152,18 @@ concertTonic = f
 %%  than on the staff -- printed beside the noteheads they crowd the
 %%  close-voiced stacks badly.
 %%
-%%  The small bottom note of each stack is the root -- tuba/sousaphone.
+%%  The tagged bottom note of each stack is the root.  It is printed only
+%%  on the concert bass-clef staff, where the sousaphone reads it; every
+%%  other part gets \removeWithTag and shows the four harmony notes alone.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 formulaNotes = {
   \key c \major
   \omit Staff.TimeSignature
   \cadenzaOn
-  <\tweak font-size #-3 c'  e'  g'  a'  c''>1  s1*2
-  <\tweak font-size #-3 f   d'  f'  a'  c''>1  s1*2
-  <\tweak font-size #-3 g   d'  f'  a'  c''>1
+  <\tag #'root \tweak font-size #-3 c'  e'  g'  a'  c''>1  s1*2
+  <\tag #'root \tweak font-size #-3 f   d'  f'  a'  c''>1  s1*2
+  <\tag #'root \tweak font-size #-3 g   d'  f'  a'  c''>1
 }
 
 formulaChordNames = \chordmode {
@@ -116,36 +177,13 @@ formulaRomans = \lyricmode {
   \markup \bold "V"  1
 }
 
-%% 12-bar blues:  I I I I | IV IV I I | V IV I I
-gridLineOne   = \chordmode { c1  c  c  c }
-gridLineTwo   = \chordmode { f1  f  c  c }
-gridLineThree = \chordmode { g1:7  f  c  c }
-
 %% ...and the same material in the chosen concert key.
 concertNotes      = \transpose c' #concert-tonic \formulaNotes
 concertChordNames = \transpose c' #concert-tonic \formulaChordNames
-concertGridOne    = \transpose c' #concert-tonic \gridLineOne
-concertGridTwo    = \transpose c' #concert-tonic \gridLineTwo
-concertGridThree  = \transpose c' #concert-tonic \gridLineThree
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Layouts
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-gridLayout = \layout {
-  #(layout-set-staff-size 13)
-  indent = 0
-  line-width = 64\mm
-  ragged-right = ##f
-  \context {
-    \Score
-    \omit BarNumber
-    %% four bars to a line, always
-    \override NonMusicalPaperColumn.line-break-permission = ##f
-  }
-  \context { \ChordGrid chordRootNamer = #chord-root-namer }
-  \context { \Score \override ChordName.font-size = #0.5 }
-}
 
 formulaLayout = \layout {
   #(layout-set-staff-size 34)
@@ -193,7 +231,8 @@ keyBlock =
                  \override VerticalAxisGroup.nonstaff-relatedstaff-spacing.padding = #1.2
                } \formulaRomans
                \new ChordNames \transpose #concert-tonic #(written-tonic from to) \concertChordNames
-               \new Staff \transpose #concert-tonic #(written-tonic from to) \concertNotes
+               \new Staff \removeWithTag #'root
+                 \transpose #concert-tonic #(written-tonic from to) \concertNotes
                #(if bass
                     #{ \new Staff
                          { \clef bass \transpose c' c \concertNotes } #}
@@ -203,14 +242,8 @@ keyBlock =
            }
          }
          \hspace #2
-         \column {
-           \score { \new ChordGrid \with { chordNameFunction = #(grid-chord-namer (written-tonic from to)) }
-                      \transpose #concert-tonic #(written-tonic from to) \concertGridOne   \gridLayout }
-           \score { \new ChordGrid \with { chordNameFunction = #(grid-chord-namer (written-tonic from to)) }
-                      \transpose #concert-tonic #(written-tonic from to) \concertGridTwo   \gridLayout }
-           \score { \new ChordGrid \with { chordNameFunction = #(grid-chord-namer (written-tonic from to)) }
-                      \transpose #concert-tonic #(written-tonic from to) \concertGridThree \gridLayout }
-         }
+         %% nudged down so the first row of the grid meets the top of the staff
+         \column { \vspace #4.2 #(grid-markup (written-tonic from to)) }
        }
      }
    #})
@@ -226,6 +259,10 @@ keyBlock =
   left-margin = 13\mm
   right-margin = 13\mm
   markup-system-spacing.padding = #1
+  %% the air between key blocks is what separates them -- there is no rule.
+  %% This is a minimum; on a page with room to spare the blocks spread out
+  %% to fill it.  1.5 is what the tightest keys need to stay on one page.
+  markup-markup-spacing.padding = #1.5
 }
 
 \header {
@@ -248,8 +285,8 @@ keyBlock =
               \concat { \bold "IV" \super 6 } "= 6 1 3 5" \bold "·"
               \concat { \bold "V" \super 7 } "= the same four notes as IV"
               \concat { "(5 " \flat "7 9 11 over the V root)." } }
-      \line { "The small bottom note of each stack is the root — tuba/sousaphone."
-              "Horns choose any of the four notes above it." }
+      \line { "Everyone picks from the four notes of the stack; the small note on the"
+              "concert bass staff is the root, for the sousaphone." }
     }
   }
 }
