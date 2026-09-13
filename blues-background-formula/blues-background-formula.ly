@@ -106,7 +106,7 @@ concertTonic = f
 #(define blues-form
    '(((0 . #f) (0 . #f) (0 . #f) (0 . #f))
      ((3 . #f) (3 . #f) (0 . #f) (0 . #f))
-     ((4 . "11") (3 . #f) (0 . #f) (0 . #f))))
+     ((4 . "7") (3 . #f) (0 . #f) (0 . #f))))
 
 #(define roman-numerals (vector "I" "II" "III" "IV" "V" "VI" "VII"))
 
