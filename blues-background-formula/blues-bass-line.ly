@@ -1,105 +1,14 @@
 \version "2.26.0"
 \pointAndClickOff
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%%  A bass line to go under the background formula -- same 12-bar blues,
-%%  same concert key.  Set the key here; everything else follows.
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include "_form.ly"
 
-concertTonic = f
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Nothing below here needs editing to change key.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#(define grid-roman-size 4.5)
-#(define grid-column-width 18)
-#(define grid-baseline 6.5)
-
-%% Same helpers as blues-background-formula.ly, so the two sheets agree.
-#(define (normalize-octave p)
-   (ly:make-pitch 0 (ly:pitch-notename p) (ly:pitch-alteration p)))
-
-#(define key-fifths (vector 0 2 4 -1 1 3 5))     % C D E F G A B
-#(define semitones-above-c (vector 0 2 4 5 7 9 11))
-
-#(define (key-accidentals p)
-   (+ (vector-ref key-fifths (ly:pitch-notename p))
-      (* 14 (ly:pitch-alteration p))))
-
-#(define (respell p direction)
-   (let* ((semitones (modulo (+ (vector-ref semitones-above-c (ly:pitch-notename p))
-                                (* 2 (ly:pitch-alteration p)))
-                             12))
-          (letter (modulo (+ (ly:pitch-notename p) direction) 7))
-          (raw (/ (- semitones (vector-ref semitones-above-c letter)) 2)))
-     (ly:make-pitch 0 letter
-                    (cond ((> raw 1) (- raw 6))
-                          ((< raw -1) (+ raw 6))
-                          (else raw)))))
-
-#(define (simplify-key p)
-   (let ((accidentals (key-accidentals p)))
-     (cond ((> accidentals 6) (respell p 1))
-           ((< accidentals -6) (respell p -1))
-           (else p))))
-
-#(define concert-tonic (simplify-key (normalize-octave concertTonic)))
-
-%% ...and two octaves down, where the sousaphone lives.
+%% concert-tonic lands in the octave above middle C; the sousaphone reads
+%% two octaves down from there.
 #(define bass-tonic
    (ly:make-pitch -2
                   (ly:pitch-notename concert-tonic)
                   (ly:pitch-alteration concert-tonic)))
-
-#(define (chord-root-namer pitch lowercase?)
-   (let* ((letters (vector "C" "D" "E" "F" "G" "A" "B"))
-          (letter (vector-ref letters (ly:pitch-notename pitch)))
-          (alt (ly:pitch-alteration pitch)))
-     (if (= alt 0)
-         (make-simple-markup letter)
-         (make-concat-markup
-          (list letter
-                (make-hspace-markup 0.25)
-                (make-raise-markup
-                 0.4
-                 (make-fontsize-markup
-                  -3
-                  (cond ((= alt -1) (make-doubleflat-markup))
-                        ((= alt -1/2) (make-flat-markup))
-                        ((= alt 1/2) (make-sharp-markup))
-                        (else (make-doublesharp-markup))))))))))
-
-%%  The same 12-bar grid that sits on top of the formula sheet.
-#(define blues-form
-   '(((0 . #f) (0 . #f) (0 . #f) (0 . #f))
-     ((3 . #f) (3 . #f) (0 . #f) (0 . #f))
-     ((4 . "7") (3 . #f) (0 . #f) (0 . #f))))
-
-#(define roman-numerals (vector "I" "II" "III" "IV" "V" "VI" "VII"))
-
-#(define (form-cell-markup degree extension)
-   (make-bold-markup
-    (make-fontsize-markup
-     grid-roman-size
-     (make-concat-markup
-      (cons (vector-ref roman-numerals degree)
-            (if extension (list (make-super-markup extension)) '()))))))
-
-#(define (form-grid-markup)
-   (make-override-markup
-    (cons 'baseline-skip grid-baseline)
-    (make-column-markup
-     (map (lambda (row)
-            (make-concat-markup
-             (map (lambda (cell)
-                    (make-hcenter-in-markup
-                     grid-column-width
-                     (form-cell-markup (car cell) (cdr cell))))
-                  row)))
-          blues-form))))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  The line, written in C.
