@@ -19,8 +19,10 @@
 %%      4  r8 8  4  4
 %%
 %%  The second bar answers on the clave: hits on 1, the and-of-2 and 4,
-%%  with beat three off.  Same three notes coming back down, do sol me,
-%%  so the pair is one idea said twice, the second time with a hole in it:
+%%  with beat three off -- do sol mi, the climb's notes coming back down.
+%%  The flat 3 only works going past it; landing on it on beat 4 with
+%%  nowhere to go rubs against the natural 3 in the backgrounds' 6 chord,
+%%  so the clave bar takes the major third instead:
 %%
 %%      4  r8 8  r4 4
 %%
@@ -50,12 +52,12 @@ bassLine = {
   \tempo 4 = 104
   \repeat volta 2 {
     c,4  r8 ees,8  e,4  g,4    |  % 1   climb:  do me mi sol
-    c,4  r8 g,8    r4   ees,4  |  % 2   clave:  do sol me
+    c,4  r8 g,8    r4   e,4    |  % 2   clave:  do sol mi
     c,4  r8 ees,8  e,4  g,4    |  % 3
-    c,4  r8 g,8    r4   bes,4  |  % 4   ...te instead of me, pulling to the IV
+    c,4  r8 g,8    r4   bes,4  |  % 4   ...te instead of mi, pulling to the IV
     \break
     f,4  r8 aes,8  a,4  c4     |  % 5
-    f,4  r8 c8     r4   aes,4  |  % 6
+    f,4  r8 c8     r4   a,4    |  % 6
     c,4  r8 ees,8  e,4  g,4    |  % 7
     c,4  r8 e,8    f,4  fis,4  |  % 8   fill: walk up into the V
     \break
