@@ -89,7 +89,7 @@ bassChords = \chordmode {
 
 \header {
   title = "12-bar blues bass line"
-  tagline = ##f
+  tagline = \revisionInfo
 }
 
 \markup \vspace #0.2

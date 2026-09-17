@@ -134,9 +134,9 @@ keyBlock =
   markup-system-spacing.padding = #1
   %% the air between key blocks is what separates them -- there is no rule.
   %% This is a minimum; on a page with room to spare the blocks spread out
-  %% to fill it.  3 is as much as the tightest keys can afford and still
-  %% stay on one page.
-  markup-markup-spacing.padding = #3
+  %% to fill it.  2.75 is as much as the tightest keys can afford and
+  %% still stay on one page with the revision line at the foot.
+  markup-markup-spacing.padding = #2.75
 }
 
 \header {
@@ -145,7 +145,7 @@ keyBlock =
     "Harmonizing improvised backgrounds over a 12-bar blues in concert "
     #(pitch-name-markup concert-tonic)
   }
-  tagline = ##f
+  tagline = \revisionInfo
 }
 
 

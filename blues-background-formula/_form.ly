@@ -68,6 +68,11 @@ concertTonic = f
 
 #(define concert-tonic (simplify-key (normalize-octave concertTonic)))
 
+%% Printed at the foot of both sheets, so a pile of paper on a stand can
+%% be sorted by which printing it came from.
+date = #(strftime "%Y-%m-%d" (localtime (current-time)))
+revisionInfo = \markup { \concat { "Revision " \date } }
+
 %% Spell a pitch with a real flat/sharp sign, for titles and headings.
 #(define (pitch-name-markup p)
    (let* ((letters (vector "C" "D" "E" "F" "G" "A" "B"))
