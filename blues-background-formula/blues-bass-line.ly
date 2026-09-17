@@ -54,18 +54,6 @@ concertTonic = f
                   (ly:pitch-notename concert-tonic)
                   (ly:pitch-alteration concert-tonic)))
 
-#(define (pitch-name-markup p)
-   (let* ((letters (vector "C" "D" "E" "F" "G" "A" "B"))
-          (letter (vector-ref letters (ly:pitch-notename p)))
-          (alt (ly:pitch-alteration p)))
-     (make-concat-markup
-      (list letter
-            (cond ((= alt -1) (make-doubleflat-markup))
-                  ((= alt -1/2) (make-flat-markup))
-                  ((= alt 1/2) (make-sharp-markup))
-                  ((= alt 1) (make-doublesharp-markup))
-                  (else ""))))))
-
 #(define (chord-root-namer pitch lowercase?)
    (let* ((letters (vector "C" "D" "E" "F" "G" "A" "B"))
           (letter (vector-ref letters (ly:pitch-notename pitch)))
@@ -116,16 +104,32 @@ concertTonic = f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  The line, written in C.
 %%
-%%  One cell, three notes, every bar: the root on 1, the 5th on the
-%%  and-of-2, the 6th on 3, and beat 4 off to breathe.  The 5th and 6th
-%%  go up from the I and down from the IV and V, which keeps the whole
-%%  line inside a ninth and makes the three chords sound different from
-%%  each other without changing the rule.
+%%  A two-bar riff.  The first bar climbs -- do me mi sol, the blues
+%%  flat-3-to-3 on the way up -- and fills all four beats:
 %%
-%%  Three bars break the pattern, and they are the three that mark the
-%%  form: bar 4 swaps the 6th for the flat 7th to pull to the IV, bar 8
-%%  walks up chromatically into the V, and bar 12 turns it around and
-%%  lands on the 5th, which is the V root, to send it back to the top.
+%%      4  r8 8  4  4
+%%
+%%  The second bar answers on the clave: hits on 1, the and-of-2 and 4,
+%%  with beat three off.  Same three notes coming back down, do sol me,
+%%  so the pair is one idea said twice, the second time with a hole in it:
+%%
+%%      4  r8 8  r4 4
+%%
+%%  The riff sits on whatever chord the bar is on, so the shape never
+%%  changes -- only the root it starts from.
+%%
+%%  Bar 4 swaps the clave bar's last note, the flat 3, for the flat 7,
+%%  which pulls into the IV.
+%%
+%%  Bars 9 and 10 both climb -- the V and the IV get the same figure and
+%%  just step down from one to the other, the way that pair of bars
+%%  usually goes.
+%%
+%%  The two bars that end a phrase walk up chromatically into the next
+%%  chord instead of answering: bar 8 into the V, from the 3rd, and bar
+%%  12 into the I, from the flat 7 below it.  Bar 12 takes beat two off
+%%  first, so the chorus stops and picks itself up rather than grooving
+%%  straight through -- and there is a breath before the top.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 bassLine = {
@@ -136,20 +140,20 @@ bassLine = {
   %% is here so the \midi block plays back at the right speed
   \tempo 4 = 104
   \repeat volta 2 {
-    c,4  r8 g,8   a,4   r4     |  % 1   1 5 6
-    c,4  r8 a,8   g,4   r4     |  % 2   1 6 5
-    c,4  r8 g,8   a,4   r4     |  % 3
-    c,4  r8 g,8   bes,4 r4     |  % 4   flat 7 pulls to the IV
+    c,4  r8 ees,8  e,4  g,4    |  % 1   climb:  do me mi sol
+    c,4  r8 g,8    r4   ees,4  |  % 2   clave:  do sol me
+    c,4  r8 ees,8  e,4  g,4    |  % 3
+    c,4  r8 g,8    r4   bes,4  |  % 4   ...te instead of me, pulling to the IV
     \break
-    f,4  r8 c,8   d,4   r4     |  % 5
-    f,4  r8 d,8   c,4   r4     |  % 6
-    c,4  r8 g,8   a,4   r4     |  % 7
-    c,4  r8 e,8   f,4   fis,4  |  % 8   walk up into the V
+    f,4  r8 aes,8  a,4  c4     |  % 5
+    f,4  r8 c8     r4   aes,4  |  % 6
+    c,4  r8 ees,8  e,4  g,4    |  % 7
+    c,4  r8 e,8    f,4  fis,4  |  % 8   fill: walk up into the V
     \break
-    g,4  r8 d,8   e,4   r4     |  % 9
-    f,4  r8 c,8   d,4   r4     |  % 10
-    c,4  r8 g,8   a,4   r4     |  % 11
-    c,4  r8 g,8   bes,4 g,4    |  % 12  turnaround, landing on the V root
+    g,4  r8 bes,8  b,4  d4     |  % 9   V and IV climb the same way,
+    f,4  r8 aes,8  a,4  c4     |  % 10  stepping down from one to the other
+    c,4  r8 ees,8  e,4  g,4    |  % 11
+    c,4  r4 bes,,4 b,,4        |  % 12  stop, breathe, walk back up into the I
   }
 }
 
@@ -168,32 +172,18 @@ bassChords = \chordmode {
   left-margin = 13\mm
   right-margin = 13\mm
   markup-markup-spacing.padding = #3
+  %% with the text gone, let the three systems spread down the page
+  ragged-last-bottom = ##f
 }
 
 \header {
-  title = "Blues Bass Line"
-  subtitle = \markup \concat {
-    "A background bass line for the 12-bar blues in concert "
-    #(pitch-name-markup concert-tonic)
-  }
+  title = "12-bar blues bass line"
   tagline = ##f
 }
 
 \markup \vspace #0.2
 \markup \fill-line { #(form-grid-markup) }
 \markup \vspace #0.8
-
-\markup \fill-line {
-  \line {
-    \bold "Medium shuffle"
-    \hspace #0.8
-    \rhythm { 8[ 8] } = \rhythm { \tuplet 3/2 { 4 8 } }
-    \hspace #1.5
-    \normal-text \italic "root · 5th · 6th, every bar"
-  }
-}
-
-\markup \vspace #0.3
 
 \score {
   <<
@@ -203,8 +193,8 @@ bassChords = \chordmode {
       \transpose c, #bass-tonic \bassLine
   >>
   \layout {
-    #(layout-set-staff-size 32)
-    system-system-spacing.padding = #9
+    #(layout-set-staff-size 40)
+    system-system-spacing.padding = #16
     indent = 0
     ragged-right = ##f
     \context {
@@ -221,16 +211,4 @@ bassChords = \chordmode {
     }
   }
   \midi { }
-}
-
-\markup \vspace #0.6
-
-\markup \fill-line {
-  \column {
-    \fontsize #-1 \override #'(baseline-skip . 2.6) \column {
-      \line { \bold "The rests are breaths." "Take them — the line is meant to leave holes for the backgrounds to sit in." }
-      \line { "Bar 4 leans on the flat 7th, bar 8 walks up into the V, bar 12 turns it around. Everything else is the same three notes: root, 5th, 6th." }
-      \line { "To end: hold the first note of bar 12." }
-    }
-  }
 }
