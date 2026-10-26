@@ -1,6 +1,6 @@
 .PHONY: watch
 
-.DEFAULT: blues-background-formula.pdf blues-background-formula-roots.pdf blues-bass-line.pdf
+.DEFAULT: blues-background-formula.pdf blues-background-formula-roots.pdf blues-bass-line.pdf one-oclock-jump-example.pdf
 
 blues-background-formula.pdf: blues-background-formula.ly _formula-sheet.ly _form.ly
 	@echo
@@ -16,11 +16,18 @@ blues-background-formula-roots.pdf: blues-background-formula-roots.ly _formula-s
 	lilypond blues-background-formula-roots.ly
 	@echo
 
-blues-bass-line.pdf: blues-bass-line.ly _form.ly
+blues-bass-line.pdf: blues-bass-line.ly _bass-line.ly _form.ly
 	@echo
 	@echo "****************************"
 	@echo
 	lilypond blues-bass-line.ly
+	@echo
+
+one-oclock-jump-example.pdf: one-oclock-jump-example.ly _bass-line.ly _form.ly
+	@echo
+	@echo "****************************"
+	@echo
+	lilypond one-oclock-jump-example.ly
 	@echo
 
 watch:
