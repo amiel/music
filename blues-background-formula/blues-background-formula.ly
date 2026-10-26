@@ -17,10 +17,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  The formula, written in C.  Everything else is a transposition of it.
 %%
-%%    I   =  I6    3 5 6 1  (bottom to top)
-%%    IV  =  IV6   6 1 3 5  (bottom to top)
-%%    V   =  V11   the same four notes as IV, over the V root -- which
-%%                 makes them the 5th, flat 7th, 9th and 11th of the V
+%%    I   =  I6        1 3 5 6   of the key
+%%    IV  =  IV9       1 b3 5 6  of the key -- the 5th, flat 7th, 9th and
+%%                     3rd of the IV, root omitted
+%%    V   =  V9sus4    1 2 4 6   of the key -- the 4th, 5th, flat 7th and
+%%                     9th of the V
+%%
+%%  Voiced close so each change moves as little as possible: 1 and 6 sit
+%%  on top and never move; the IV lowers one voice a half step, and the V
+%%  lowers two.
 %%
 %%  The degree numbers live in the note at the top of the page rather
 %%  than on the staff -- printed beside the noteheads they crowd the
@@ -37,13 +42,13 @@ formulaNotes = {
   \omit Staff.TimeSignature
   \cadenzaOn
   <\tag #'root c'  e'  g'  a'  c''>1  s1*2
-  <\tag #'root f   d'  f'  a'  c''>1  s1*2
-  <\tag #'root g   d'  f'  a'  c''>1
+  <\tag #'root f   ees' g'  a'  c''>1  s1*2
+  <\tag #'root g   d'   f'  a'  c''>1
 }
 
 formulaChordNames = \chordmode {
   \cadenzaOn
-  c1:6  s1*2  f1:6  s1*2  g1:11
+  c1:6  s1*2  f1:9  s1*2  g1:9sus4
 }
 
 formulaRomans = \lyricmode {
