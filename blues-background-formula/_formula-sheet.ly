@@ -18,12 +18,6 @@
 #(define formula-staff-size 31)
 #(define formula-line-width 168)
 
-%% The written tonic for an instrument pitched so that concert `from'
-%% is written as `to'.
-#(define (written-tonic from to)
-   (simplify-key
-    (normalize-octave (ly:pitch-transpose concert-tonic (ly:pitch-diff to from)))))
-
 formulaRomans = \lyricmode {
   \markup \bold "I"  1  \skip 1*2
   \markup \bold "IV" 1  \skip 1*2

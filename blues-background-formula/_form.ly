@@ -68,6 +68,12 @@ concertTonic = f
 
 #(define concert-tonic (simplify-key (normalize-octave concertTonic)))
 
+%% The written tonic for an instrument pitched so that concert `from'
+%% is written as `to'.
+#(define (written-tonic from to)
+   (simplify-key
+    (normalize-octave (ly:pitch-transpose concert-tonic (ly:pitch-diff to from)))))
+
 %% Printed at the foot of both sheets, so a pile of paper on a stand can
 %% be sorted by which printing it came from.
 date = #(strftime "%Y-%m-%d" (localtime (current-time)))

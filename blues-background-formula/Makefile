@@ -1,6 +1,6 @@
 .PHONY: watch
 
-.DEFAULT: blues-background-formula.pdf blues-background-formula-roots.pdf blues-bass-line.pdf one-oclock-jump-example.pdf
+.DEFAULT: blues-background-formula.pdf blues-background-formula-roots.pdf blues-bass-line.pdf one-oclock-jump-example-C.pdf
 
 blues-background-formula.pdf: blues-background-formula.ly _formula-sheet.ly _form.ly
 	@echo
@@ -23,7 +23,8 @@ blues-bass-line.pdf: blues-bass-line.ly _bass-line.ly _form.ly
 	lilypond blues-bass-line.ly
 	@echo
 
-one-oclock-jump-example.pdf: one-oclock-jump-example.ly _bass-line.ly _form.ly
+# also writes the C-bass, Bb, Eb and F parts
+one-oclock-jump-example-C.pdf: one-oclock-jump-example.ly _bass-line.ly _form.ly
 	@echo
 	@echo "****************************"
 	@echo
